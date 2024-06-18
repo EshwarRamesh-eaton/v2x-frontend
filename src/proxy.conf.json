@@ -1,0 +1,20 @@
+{
+    "/api": {
+      "target": "http://192.168.68.60:8001/",
+      "secure": false,
+      "pathRewrite": {
+        "^/": ""
+      },
+      "logLevel": "debug"
+    },
+    "/eaton": {
+        "target": "https://api.em.eaton.com/",
+        "secure": true,
+        "pathRewrite": {
+          "^/": ""
+       
+      },
+      "logLevel": "debug"
+    }
+  }
+  

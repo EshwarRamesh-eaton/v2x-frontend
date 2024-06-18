@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { AuthService } from 'src/app/demo/service/auth.service';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
 
 @Component({
@@ -13,11 +17,46 @@ import { LayoutService } from 'src/app/layout/service/app.layout.service';
         }
     `]
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
     valCheck: string[] = ['remember'];
 
-    password!: string;
+    username!: FormControl;
+    password!: FormControl;
+    userLoginForm!: FormGroup;
 
-    constructor(public layoutService: LayoutService) { }
+    constructor(
+        public layoutService: LayoutService, 
+        private router: Router,
+        private messageService: MessageService,
+        private authService: AuthService) { }
+
+    ngOnInit(): void {
+        this.createForm();
+    }
+
+    createForm() {
+        this.username = new FormControl('', [Validators.required]);
+        this.password = new FormControl('', [Validators.required]);
+        this.userLoginForm = new FormGroup({
+            username: this.username,
+            password: this.password
+        });
+    }
+
+    submitLogin() {
+        this.authService.login(this.userLoginForm.controls['username'].value, this.userLoginForm.controls['password'].value)
+        .then(() => {
+            this.authService.navToDashboard();
+            this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Login Successful', life: 3000 });
+        }).catch(() => {
+            this.messageService.add({ severity: 'danger', summary: 'Error', detail: 'Invalid Credentials', life: 3000 });
+        })
+        // this.authService.bypassLogin();
+    }
+
+
+    navToForgotPassword() {
+        this.router.navigate(['login/forgot-password'])
+    }
 }

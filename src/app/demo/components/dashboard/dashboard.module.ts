@@ -9,6 +9,12 @@ import { ButtonModule } from 'primeng/button';
 import { StyleClassModule } from 'primeng/styleclass';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { DashboardsRoutingModule } from './dashboard-routing.module';
+import { DialogService } from 'primeng/dynamicdialog';
+import { EulaComponent } from './eula/eula.component';
+import { EulaService } from '../../service/eula.service';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { AvatarModule } from 'primeng/avatar';
+import { TagModule } from 'primeng/tag';
 
 @NgModule({
     imports: [
@@ -20,8 +26,12 @@ import { DashboardsRoutingModule } from './dashboard-routing.module';
         StyleClassModule,
         PanelMenuModule,
         ButtonModule,
-        DashboardsRoutingModule
+        DashboardsRoutingModule,
+        SelectButtonModule,
+        AvatarModule,
+        TagModule
     ],
-    declarations: [DashboardComponent]
+    declarations: [DashboardComponent, EulaComponent],
+    providers: [EulaService, DialogService]
 })
 export class DashboardModule { }

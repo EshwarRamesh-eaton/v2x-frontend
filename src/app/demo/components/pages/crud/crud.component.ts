@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/demo/api/product';
-import { MessageService } from 'primeng/api';
-import { Table } from 'primeng/table';
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { MessageService, TreeNode } from 'primeng/api';
+import { Subscription } from 'rxjs';
 import { ProductService } from 'src/app/demo/service/product.service';
 
 @Component({
@@ -9,133 +8,204 @@ import { ProductService } from 'src/app/demo/service/product.service';
     providers: [MessageService]
 })
 export class CrudComponent implements OnInit {
-
-    productDialog: boolean = false;
-
-    deleteProductDialog: boolean = false;
-
-    deleteProductsDialog: boolean = false;
-
-    products: Product[] = [];
-
-    product: Product = {};
-
-    selectedProducts: Product[] = [];
-
-    submitted: boolean = false;
-
-    cols: any[] = [];
-
-    statuses: any[] = [];
-
-    rowsPerPageOptions = [5, 10, 20];
-
+    trigger: boolean = false;
+    powerSupplyTrigger: boolean = false;
+    dataTemp: any;
+    optionsTemp: any;
+    temperature: boolean = true;
+    subscription: Subscription = new Subscription();
+    datasetTemp = [];
+    labelTemp = []
+    @ViewChild('chart', { read: ViewContainerRef }) chart;
+    data: TreeNode[] = [
+        {
+            label: 'Beaglebone Black',
+            expanded: true,
+            children: [
+                {
+                    label: 'EVSE - 1',
+                    expanded: true,
+                    styleClass: this.trigger ? 'bg-blue-500 text-white': '',
+                },
+                {
+                    label: 'EVSE - 2',
+                    expanded: true,
+                    styleClass: !this.trigger ? 'bg-blue-500 text-white': '',
+                }
+            ]
+        }
+    ];
     constructor(private productService: ProductService, private messageService: MessageService) { }
 
     ngOnInit() {
-        this.productService.getProducts().then(data => this.products = data);
-
-        this.cols = [
-            { field: 'product', header: 'Product' },
-            { field: 'price', header: 'Price' },
-            { field: 'category', header: 'Category' },
-            { field: 'rating', header: 'Reviews' },
-            { field: 'inventoryStatus', header: 'Status' }
-        ];
-
-        this.statuses = [
-            { label: 'INSTOCK', value: 'instock' },
-            { label: 'LOWSTOCK', value: 'lowstock' },
-            { label: 'OUTOFSTOCK', value: 'outofstock' }
-        ];
+        // this.getRelayStatus();
+        this.chartTemp(true);
     }
 
-    openNew() {
-        this.product = {};
-        this.submitted = false;
-        this.productDialog = true;
+    getRelayStatus() {
+        this.productService.getRelayStatus()
+        .then((resp) => {
+            this.trigger = resp[0].trigger;
+            this.updateTree();
+        }).catch(() => {
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Failed to fetch relay status. Please try later', life: 3000 });
+        })
     }
 
-    deleteSelectedProducts() {
-        this.deleteProductsDialog = true;
+    recursiveCall() {
+        setInterval(() => {
+            this.getTemperatureReading();
+        },10000)
+        
+        // setInterval(() => {
+        //     let currDate = new Date()
+        //     let time = currDate.getHours() + ':' + currDate.getMinutes() + ':' + currDate.getSeconds()
+        //     if (this.datasetTemp.length > 10) {
+        //         this.datasetTemp.shift();
+        //         this.labelTemp.shift();
+        //     }
+        //     this.datasetTemp.push(this.randomTemperatureGenerator);
+        //     this.labelTemp.push(time);
+        //     this.chartTemp(false)
+        // },10000)
+    }
+    
+    
+    get randomTemperatureGenerator(): any {
+        return Math.floor(Math.random() * (25 - 23 + 1) + 23);
     }
 
-    editProduct(product: Product) {
-        this.product = { ...product };
-        this.productDialog = true;
-    }
-
-    deleteProduct(product: Product) {
-        this.deleteProductDialog = true;
-        this.product = { ...product };
-    }
-
-    confirmDeleteSelected() {
-        this.deleteProductsDialog = false;
-        this.products = this.products.filter(val => !this.selectedProducts.includes(val));
-        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Products Deleted', life: 3000 });
-        this.selectedProducts = [];
-    }
-
-    confirmDelete() {
-        this.deleteProductDialog = false;
-        this.products = this.products.filter(val => val.id !== this.product.id);
-        this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
-        this.product = {};
-    }
-
-    hideDialog() {
-        this.productDialog = false;
-        this.submitted = false;
-    }
-
-    saveProduct() {
-        this.submitted = true;
-
-        if (this.product.name?.trim()) {
-            if (this.product.id) {
-                // @ts-ignore
-                this.product.inventoryStatus = this.product.inventoryStatus.value ? this.product.inventoryStatus.value : this.product.inventoryStatus;
-                this.products[this.findIndexById(this.product.id)] = this.product;
-                this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Updated', life: 3000 });
-            } else {
-                this.product.id = this.createId();
-                this.product.code = this.createId();
-                this.product.image = 'product-placeholder.svg';
-                // @ts-ignore
-                this.product.inventoryStatus = this.product.inventoryStatus ? this.product.inventoryStatus.value : 'INSTOCK';
-                this.products.push(this.product);
-                this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Product Created', life: 3000 });
+    chartTemp(first) {
+        const documentStyle = getComputedStyle(document.documentElement);
+        const textColor = documentStyle.getPropertyValue('--text-color');
+        const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
+        const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
+        this.dataTemp = {
+            labels: this.labelTemp,
+            datasets: [
+                {
+                    type: 'line',
+                    label: 'Temperature',
+                    backgroundColor: documentStyle.getPropertyValue('--blue-500'),
+                    data: this.datasetTemp,
+                    tension: 0.5
+                }
+            ]
+        };
+        
+        this.optionsTemp = {
+            maintainAspectRatio: false,
+            aspectRatio: 0.8,
+            animation: {
+                duration: 0
+            },
+            plugins: {
+                tooltip: {
+                    mode: 'index',
+                    intersect: false
+                },
+                legend: {
+                    labels: {
+                        color: textColor
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    stacked: true,
+                    ticks: {
+                        color: textColorSecondary
+                    },
+                    grid: {
+                        color: surfaceBorder,
+                        drawBorder: false
+                    }
+                },
+                y: {
+                    stacked: true,
+                    ticks: {
+                        color: textColorSecondary
+                    },
+                    grid: {
+                        color: surfaceBorder,
+                        drawBorder: false
+                    }
+                }
             }
-
-            this.products = [...this.products];
-            this.productDialog = false;
-            this.product = {};
+        };
+        if (first) {
+            this.recursiveCall();
         }
     }
 
-    findIndexById(id: string): number {
-        let index = -1;
-        for (let i = 0; i < this.products.length; i++) {
-            if (this.products[i].id === id) {
-                index = i;
-                break;
+    updateTree() {
+        this.data = [
+            {
+                label: 'Beaglebone Black',
+                expanded: true,
+                children: [
+                    {
+                        label: 'EVSE - 1',
+                        expanded: true,
+                        styleClass: this.trigger ? 'bg-blue-500 text-white': '',
+                    },
+                    {
+                        label: 'EVSE - 2',
+                        expanded: true,
+                        styleClass: !this.trigger ? 'bg-blue-500 text-white': '',
+                    }
+                ]
             }
+        ];
+    }
+ 
+    toggleRelay() {
+        const data = {
+            trigger: this.trigger,
+            user: 'admin'
         }
-
-        return index;
+        this.productService.updateRelay(data)
+        .then(() => {
+            this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'EVSE successfully changed', life: 3000 });
+        }).catch(() => {
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'EVSE toggle failed. Please try later', life: 3000 });
+        }).finally(() => {
+            this.updateTree()
+        })
     }
 
-    createId(): string {
-        let id = '';
-        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        for (let i = 0; i < 5; i++) {
-            id += chars.charAt(Math.floor(Math.random() * chars.length));
+    togglePowerSupply() {
+        const data = {
+            trigger: this.powerSupplyTrigger
         }
-        return id;
+        this.productService.togglePowerSupply(data)
+        .then(() => {
+            this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Power Supply toggled successfully', life: 3000 });
+        }).catch(() => {
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'power supply toggle failed. Please try later', life: 3000 });
+        })
     }
 
-    onGlobalFilter(table: Table, event: Event) {
-        table.filterGlobal((event.target as HTMLInputElement).value, 'contains');
+    getTemperatureReading() {
+        this.productService.getTemperatureReading()
+        .then((resp) => {
+            let currDate = new Date()
+            let time = currDate.getHours() + ':' + currDate.getMinutes() + ':' + currDate.getSeconds()
+            if (this.datasetTemp.length > 10) {
+                this.datasetTemp.shift();
+                this.labelTemp.shift();
+            }
+            this.datasetTemp.push(resp.temperature);
+            this.labelTemp.push(time);
+            this.chartTemp(false)
+        }).catch(() => {
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Cannot obtain temperature reading. Please try later', life: 3000 });
+        })
+    }
+
+    ngOnDestroy() {
+        if (this.subscription) {
+            this.subscription.unsubscribe();
+        }
     }
 }

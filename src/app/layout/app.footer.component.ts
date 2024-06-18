@@ -6,5 +6,7 @@ import { LayoutService } from "./service/app.layout.service";
     templateUrl: './app.footer.component.html'
 })
 export class AppFooterComponent {
-    constructor(public layoutService: LayoutService) { }
+    constructor(public layoutService: LayoutService) { 
+       
+    }
 }

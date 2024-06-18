@@ -16,6 +16,9 @@ import { DropdownModule } from 'primeng/dropdown';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { DialogModule } from 'primeng/dialog';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { OrganizationChartModule } from 'primeng/organizationchart';
+import { ChartModule } from 'primeng/chart';
 
 @NgModule({
     imports: [
@@ -34,7 +37,10 @@ import { DialogModule } from 'primeng/dialog';
         DropdownModule,
         RadioButtonModule,
         InputNumberModule,
-        DialogModule
+        DialogModule,
+        ToggleButtonModule,
+        OrganizationChartModule,
+        ChartModule
     ],
     declarations: [CrudComponent]
 })

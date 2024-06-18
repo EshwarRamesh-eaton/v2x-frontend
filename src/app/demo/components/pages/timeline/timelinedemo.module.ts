@@ -5,6 +5,7 @@ import { TimelineDemoComponent } from './timelinedemo.component';
 import { TimelineModule } from 'primeng/timeline';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
+import { FileUploadModule } from 'primeng/fileupload';
 
 @NgModule({
     imports: [
@@ -12,7 +13,8 @@ import { CardModule } from 'primeng/card';
         TimelineModule,
         ButtonModule,
         CardModule,
-        TimelineDemoRoutingModule
+        TimelineDemoRoutingModule,
+        FileUploadModule
     ],
     declarations: [TimelineDemoComponent]
 })

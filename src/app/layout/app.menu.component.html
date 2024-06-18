@@ -3,9 +3,14 @@
         <li app-menuitem *ngIf="!item.separator" [item]="item" [index]="i" [root]="true"></li>
         <li *ngIf="item.separator" class="menu-separator"></li>
     </ng-container>
-    <li>
-        <a href="https://www.primefaces.org/primeblocks-ng/#/">
-            <img src="assets/layout/images/{{layoutService.config().colorScheme === 'light' ? 'banner-primeblocks' : 'banner-primeblocks-dark'}}.png" alt="Prime Blocks" class="w-full mt-3"/>
+    <div>
+        <hr class="mb-3 mx-3 border-top-1 border-none surface-border">
+        <a pripple="" class="p-ripple p-element flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors">
+            <span class="pi pi-fw pi-wifi mr-2" ></span>
+            <span class="font-medium">Wifi Connection</span>
+            <span class="p-ink" style="height: 247px; width: 247px; top: -84.5px; left: 7.5px;"></span>
+            &nbsp;&nbsp;
+            <p-badge class="custom-zoom" [value]="" severity="success" badgeSize="large" />
         </a>
-    </li>
+    </div>
 </ul>
