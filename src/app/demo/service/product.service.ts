@@ -22,4 +22,8 @@ export class ProductService {
     getTemperatureReading() {
         return lastValueFrom(this.http.get<any>(`${this.baseUrl}/temperature`));
     }
+
+    updateOperationMode(data: any) {
+        return lastValueFrom(this.http.patch<any>(`${this.baseUrl}/operation-mode`, data));
+    }
 }

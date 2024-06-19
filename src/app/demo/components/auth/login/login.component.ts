@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
             this.authService.navToDashboard();
             this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Login Successful', life: 3000 });
         }).catch(() => {
-            this.messageService.add({ severity: 'danger', summary: 'Error', detail: 'Invalid Credentials', life: 3000 });
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Invalid Credentials', life: 3000 });
         })
         // this.authService.bypassLogin();
     }

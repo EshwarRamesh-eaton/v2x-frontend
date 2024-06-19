@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { MenuItem } from 'primeng/api';
+import { MenuItem, MessageService } from 'primeng/api';
 import { Product } from '../../api/product';
 import { ProductService } from '../../service/product.service';
 import { Subscription, debounceTime } from 'rxjs';
@@ -38,6 +38,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         private productService: ProductService, 
         public layoutService: LayoutService, 
         private eulaService: EulaService, 
+        private messageService: MessageService,
         private auth: AuthService) {
         this.subscription = this.layoutService.configUpdate$
         .pipe(debounceTime(25))
@@ -63,6 +64,19 @@ export class DashboardComponent implements OnInit, OnDestroy {
             { label: 'Add New', icon: 'pi pi-fw pi-plus' },
             { label: 'Remove', icon: 'pi pi-fw pi-minus' }
         ];
+    }
+
+
+    changeOperationMode() {
+        const data = {
+            operation: this.value
+        }
+        this.productService.updateOperationMode(data)
+        .then(() => {
+            this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'New password has been sent to your email address', life: 3000 });
+        }).catch(() => {
+
+        })
     }
 
     initChart() {

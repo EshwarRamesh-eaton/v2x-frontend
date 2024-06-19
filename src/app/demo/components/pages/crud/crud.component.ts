@@ -15,8 +15,10 @@ export class CrudComponent implements OnInit {
     temperature: boolean = true;
     subscription: Subscription = new Subscription();
     datasetTemp = [];
-    labelTemp = []
+    labelTemp = [];
+    subscriptions: Subscription = new Subscription();
     @ViewChild('chart', { read: ViewContainerRef }) chart;
+    sub: any;
     data: TreeNode[] = [
         {
             label: 'Beaglebone Black',
@@ -53,9 +55,13 @@ export class CrudComponent implements OnInit {
     }
 
     recursiveCall() {
-        setInterval(() => {
+        this.sub = setInterval(() => {
             this.getTemperatureReading();
         },10000)
+        this.subscriptions.add(
+            this.sub
+        )
+        
         
         // setInterval(() => {
         //     let currDate = new Date()
@@ -204,6 +210,7 @@ export class CrudComponent implements OnInit {
     }
 
     ngOnDestroy() {
+        clearInterval(this.sub);
         if (this.subscription) {
             this.subscription.unsubscribe();
         }
