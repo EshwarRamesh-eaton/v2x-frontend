@@ -26,7 +26,7 @@ export class AuthService implements CanLoad, CanActivate, CanActivateChild {
   }
 
   forgotPassword(data: any, headers?: HttpHeaders): Promise<any> {
-    return lastValueFrom(this.http.post(`${environment.tokenEndpoint}/forgot-password`, data, {headers}))
+    return lastValueFrom(this.http.patch(`${environment.tokenEndpoint}/forgot-password`, data, {headers}))
   }
 
   async login(u: string, p: string, headers?: HttpHeaders): Promise<void> {

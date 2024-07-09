@@ -73,9 +73,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
         }
         this.productService.updateOperationMode(data)
         .then(() => {
-            this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'New password has been sent to your email address', life: 3000 });
+            this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Operation mode updated successfully', life: 3000 });
         }).catch(() => {
-
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Operation mode cannot be changed currently. Please try later', life: 3000 });
         })
     }
 
