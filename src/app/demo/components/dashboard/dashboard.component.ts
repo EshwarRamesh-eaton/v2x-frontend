@@ -26,6 +26,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
     value: string = 'V2H';
 
+    orderBreakers = [{name: 'Breaker 1'},{name: 'Breaker 2'},{name: 'Breaker 3'},{name: 'Breaker 4'}]
+
     notifications = [
         {user: 'Admin', message: 'V2H Mode Enabled', time: '10:15 am'},
         {user: 'Admin', message: 'Auto Transformer Closed', time: '10:14 am'},

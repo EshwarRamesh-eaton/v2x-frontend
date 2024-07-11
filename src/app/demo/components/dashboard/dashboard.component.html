@@ -104,6 +104,17 @@
                 
             </div>
             <div class="card">
+                <h5>V2H Breaker Priority</h5>
+                <p-orderList [value]="orderBreakers" header="Priority List" [dragdrop]="true" [listStyle]="{'height':'250px'}">
+                    <ng-template let-breaker let-ri="index" pTemplate="item">
+                        <div class="flex flex-row justify-content-between">
+                            <span>{{breaker.name}}</span>
+                            <span>Priority {{ri + 1}}</span>
+                        </div>
+                    </ng-template>
+                </p-orderList>
+            </div>
+            <div class="card">
                 <h5>Load Details</h5>
                 <p-table [value]="products" [paginator]="true" [rows]="5" responsiveLayout="scroll">
                     <ng-template pTemplate="header">

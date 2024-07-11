@@ -15,6 +15,7 @@ import { EulaService } from '../../service/eula.service';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { AvatarModule } from 'primeng/avatar';
 import { TagModule } from 'primeng/tag';
+import { OrderListModule } from 'primeng/orderlist';
 
 @NgModule({
     imports: [
@@ -29,7 +30,8 @@ import { TagModule } from 'primeng/tag';
         DashboardsRoutingModule,
         SelectButtonModule,
         AvatarModule,
-        TagModule
+        TagModule,
+        OrderListModule
     ],
     declarations: [DashboardComponent, EulaComponent],
     providers: [EulaService, DialogService]
