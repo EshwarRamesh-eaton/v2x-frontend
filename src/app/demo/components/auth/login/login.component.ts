@@ -8,20 +8,13 @@ import { LayoutService } from 'src/app/layout/service/app.layout.service';
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
-    styles: [`
-        :host ::ng-deep .pi-eye,
-        :host ::ng-deep .pi-eye-slash {
-            transform:scale(1.6);
-            margin-right: 1rem;
-            color: var(--primary-color) !important;
-        }
-    `]
+    styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
 
     valCheck: string[] = ['remember'];
 
-    username!: FormControl;
+    email!: FormControl;
     password!: FormControl;
     userLoginForm!: FormGroup;
 
@@ -36,23 +29,23 @@ export class LoginComponent implements OnInit {
     }
 
     createForm() {
-        this.username = new FormControl('', [Validators.required]);
+        this.email = new FormControl('', [Validators.required]);
         this.password = new FormControl('', [Validators.required]);
         this.userLoginForm = new FormGroup({
-            username: this.username,
+            email: this.email,
             password: this.password
         });
     }
 
     submitLogin() {
-        this.authService.login(this.userLoginForm.controls['username'].value, this.userLoginForm.controls['password'].value)
-        .then(() => {
-            this.authService.navToDashboard();
-            this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Login Successful', life: 3000 });
-        }).catch(() => {
-            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Invalid Credentials', life: 3000 });
-        })
-        // this.authService.bypassLogin();
+        // this.authService.login(this.userLoginForm.controls['username'].value, this.userLoginForm.controls['password'].value)
+        // .then(() => {
+        //     this.authService.navToDashboard();
+        //     this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Login Successful', life: 3000 });
+        // }).catch(() => {
+        //     this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Invalid Credentials', life: 3000 });
+        // })
+        this.authService.bypassLogin();
     }
 
 

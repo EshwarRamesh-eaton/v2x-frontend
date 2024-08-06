@@ -47,9 +47,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
         .subscribe((config) => {
             this.initChart();
         });
-        if (this.auth.eula === 'false') {
-            this.eulaService.showEULA();
-        }
+        // if (this.auth.eula === 'false') {
+        //     this.eulaService.showEULA();
+        // }
         
     }
 

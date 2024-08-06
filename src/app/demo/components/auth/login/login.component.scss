@@ -1,0 +1,46 @@
+    :host ::ng-deep .pi-eye,
+        :host ::ng-deep .pi-eye-slash {
+            transform:scale(1.6);
+            margin-right: 1rem;
+            color: var(--primary-color) !important;
+        }
+
+.text-forgot-password {
+    margin: 0px;
+    line-height: 1.43;
+    font-size: 0.875rem !important;
+    color: rgb(0, 123, 193);
+    font-weight: 600 !important;
+    text-transform: none;
+    text-decoration: none;
+}
+
+.text-need-account {
+    margin: 0px;
+    line-height: 1.43;
+    font-weight: 400 !important;
+    font-size: 0.875rem !important;
+}
+
+.custom-login-button {
+    max-width: 150px;
+    background-color: rgb(224, 239, 248);
+    border-width: 0px;
+    color: rgb(128, 189, 224);
+    opacity: 1;
+}
+
+.text-remember-me {
+    margin: 0px;
+    line-height: 1.5;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.mw-450 {
+    max-width: 450px;
+}
+
+:host ::ng-deep .p-password, p-password {
+    width: 100% !important;
+} 

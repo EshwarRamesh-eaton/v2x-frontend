@@ -1,35 +1,45 @@
-<div class="surface-400 flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden">
+<div class="surface-custom flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden">
     <div class="flex flex-column align-items-center justify-content-center">
-        <div style="border-radius:56px; padding:0.3rem; background: linear-gradient(180deg, var(--primary-color) 10%, rgba(33, 150, 243, 0) 30%);">
-            <div class="w-full surface-card py-8 px-5 sm:px-8" style="border-radius:53px">
-                <div class="text-center mb-5">
-                    <img src="assets/demo/images/eaton/EatonLogoLight.png" alt="Image" height="50" class="mb-3">
-                    <div class="text-900 text-3xl font-medium mb-3">Welcome,</div>
-                    <span class="text-600 font-medium">Sign in to continue</span>
+        <!-- <div style="border-radius:56px; padding:0.3rem; background: linear-gradient(180deg, var(--primary-color) 10%, rgba(33, 150, 243, 0) 30%);"> -->
+            <div class="w-full border-round-sm surface-card mw-450 py-8 px-5 sm:px-8">
+                <div class="w-full">
+                    <img src="assets/layout/images/eaton_stacked_logo.ec1e463b9a319c20b327.png" alt="Image" height="80" class="mb-3">
+                    <div class="text-900 text-3xl font-medium mb-3">&nbsp;</div>
                 </div>
 
                 <div>
                     <form (ngSubmit)="submitLogin()">
-                        <label for="username" class="block text-900 text-xl font-medium mb-2">Username</label>
-                        <input id="username" type="text" placeholder="Username" pInputText class="w-full md:w-30rem mb-5" [formControl]="username" style="padding:1rem">
+                        <label for="email" class="block text-900 text-xl font-medium mb-2"></label>
+                        <input id="email" type="text" placeholder="Email Address" pInputText class="w-full mb-6" [formControl]="email">
     
-                        <label for="password1" class="block text-900 font-medium text-xl mb-2">Password</label>
-                        <p-password id="password1" [formControl]="password" placeholder="Password" [toggleMask]="true" styleClass="mb-5" inputStyleClass="w-full p-3 md:w-30rem"></p-password>
+                        <label for="password1" class="block text-900 font-medium text-xl mb-2"></label>
+                        <p-password id="password1" [formControl]="password" placeholder="Password" [toggleMask]="true" styleClass="mb-6 w-full" inputStyleClass="w-full"></p-password>
                         <div class="flex align-items-center justify-content-between mb-5 gap-5">
                             <div class="flex align-items-center">
                                 <p-checkbox id="rememberme1" [binary]="true" styleClass="mr-2"></p-checkbox>
-                                <label for="rememberme1">Remember me</label>
+                                <label for="rememberme1" class="text-remember-me">Remember me</label>
                             </div>
-                            <a class="font-medium no-underline ml-2 text-right cursor-pointer" style="color: var(--primary-color)" (click)="navToForgotPassword()">Forgot password?</a>
+                            <button type="submit" pButton pRipple label="Log In" class="flex w-auto flex-1 justify-content-end custom-login-button"></button>
+                            
                         </div>
-                        <button type="submit" pButton pRipple label="Sign In" class="w-full p-3 text-xl"></button>
+                        <div class="flex text-center justify-content-center align-items-center flex-column">
+                            <span class="font-medium no-underline cursor-pointer text-forgot-password" (click)="navToForgotPassword()">Forgot your password?</span>
+                            <div class="flex justify-content-center align-items-center flex-column text-center mt-5">
+                                <span class="font-medium no-underline text-need-account">Need an account?</span>
+                                <span class="font-medium no-underline cursor-pointer text-forgot-password">Create Account</span>
+                            </div>
+                            <span class="font-medium no-underline cursor-pointer text-forgot-password mt-5">Contact an Eaton Support Representative</span>
+                        </div>
+                        <div class="w-full mt-3 text-center">
+                            <img src="assets/layout/images/cybersecurity_certified.ee740d27ab89a1117f78.png" alt="Image" width="100" class="mb-3">
+                        </div>
                     </form>
-                    
+
 
                     
                 </div>
             </div>
-        </div>
+        <!-- </div> -->
     </div>
 </div>
-<app-footer></app-footer>
+<!-- <app-footer></app-footer> -->

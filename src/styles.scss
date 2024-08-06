@@ -13,11 +13,37 @@ $gutter: 1rem; //for primeflex grid system
 @import "assets/demo/styles/badges.scss";
 @import "assets/demo/styles/code.scss";
 
+$primary-color: rgb(0, 123, 193);
+
 app-footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+    background: var(--Primary-Black-900, #1D2529);
+    border-radius: 0;
   }
+
+  .surface-custom {
+    background-color: rgb(0, 123, 193);
+    background-image: url(assets/layout/images/background.1468876f792437ff8c92fb3b0eb4f685.svg);
+  }
+
+  .p-toolbar {
+    background: none !important;
+    border: none !important;
+  }
+
+body {
+  background: var(--Primary-Black-900, #1D2529);
+  font-family: "Open Sans", Helvetica, Roboto, sans-serif;
+}
+
+.card {
+  border-radius: 4px;
+  background: var(--Primary-Black-800, #2B353A);
+  padding: 24px 16px 15px 16px;
+  border: 0 none !important
+}
 
 .custom-arrow-property-1 {
   animation-name: bounceAlpha;
@@ -263,4 +289,21 @@ app-footer {
   from {
       opacity: 0;
   }
+}
+
+input {
+    letter-spacing: inherit;
+    color: currentcolor;
+    border: 0px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    box-sizing: content-box;
+    height: 1.4375em;
+    margin: 0px;
+    -webkit-tap-highlight-color: transparent;
+    display: block;
+    min-width: 0px;
+    animation-duration: 10ms;
+    padding: 25px 0px 8px 12px;
+    border-bottom: 1px solid rgb(114, 126, 132);
 }

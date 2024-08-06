@@ -1,0 +1,15 @@
+.custom-footer {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.custom-font {
+    color: var(--Primary-Gray-200, #B9BFC2);
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: "Open Sans";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
