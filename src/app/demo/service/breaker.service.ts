@@ -1,24 +1,30 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
+import { BreakerPriority, BreakerUsage, Breakers, UpdateBreaker } from '../api/breakers';
 
 @Injectable()
 export class BreakerService {
-    baseUrl = `eaton`
+    baseUrl = `api/breakers`
     constructor(private http: HttpClient) { }
 
-    getAllDevices() {
-        return lastValueFrom(this.http.get<any>(`${this.baseUrl}/devices`));
+    updateBreakers(data: UpdateBreaker[]) {
+        return lastValueFrom(this.http.patch<any>(`${this.baseUrl}`, data));
     }
 
-    getDeviceById(id: any) {
-        return lastValueFrom(this.http.get<any>(`${this.baseUrl}/devices/${id}`));
+    getBreakers() {
+        return lastValueFrom(this.http.get<Breakers>(`${this.baseUrl}`));
     }
 
-
-    getDeviceState(id: any) {
-        return lastValueFrom(this.http.get<any>(`${this.baseUrl}/devices/${id}/evse/metadata/state`));
+    updateBreaker(data: Breakers) {
+        return lastValueFrom(this.http.put<any>(`${this.baseUrl}`, data));
     }
 
-    setUdpkey() {}
+    getBreakerUsage(date: string, range: string) {
+        return lastValueFrom(this.http.get<BreakerUsage>(`${this.baseUrl}/usage?date=${date}&range=${range}`));
+    }
+
+    updateBreakerPriority(data: BreakerPriority) {
+        return lastValueFrom(this.http.patch<any>(`${this.baseUrl}/priority`, data));
+    }
 }

@@ -40,3 +40,7 @@ export interface HomeSummary {
   export interface HomeMode {
     mode: string;
   }
+
+  export interface HomeState {
+    state: string;
+  }

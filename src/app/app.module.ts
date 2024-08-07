@@ -5,8 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppLayoutModule } from './layout/app.layout.module';
 import { NotfoundComponent } from './demo/components/notfound/notfound.component';
 import { ProductService } from './demo/service/product.service';
-import { EventService } from './demo/service/event.service';
-import { IconService } from './demo/service/icon.service';
+import { DeviceService } from './demo/service/device.service';
+import { UserService } from './demo/service/user.service';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { BadgeModule } from 'primeng/badge';
@@ -18,7 +18,7 @@ import { AuthInterceptor } from './demo/service/auth-interceptor';
     providers: [
         { provide: LocationStrategy, useClass: PathLocationStrategy },
         { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-        EventService, IconService, ProductService, MessageService
+        DeviceService, UserService, ProductService, MessageService
     ],
     bootstrap: [AppComponent],
 })

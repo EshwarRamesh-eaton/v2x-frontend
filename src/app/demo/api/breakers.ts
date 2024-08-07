@@ -29,3 +29,14 @@ export interface Breakers {
     tripState: boolean;
     tripReason: string;
 }
+
+
+export interface UpdateBreaker {
+    id: string;
+    mode: string;
+}
+
+// TODO: Check what this needs to be
+export interface BreakerPriority {
+
+}

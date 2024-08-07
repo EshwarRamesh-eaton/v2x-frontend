@@ -7,7 +7,7 @@ export interface PowerSource {
 }
 
 export interface Sources {
-    source: HomeSource[]
+    sources: HomeSource[]
 }
 
 export interface EnergySource {

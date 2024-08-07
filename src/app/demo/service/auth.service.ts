@@ -45,7 +45,6 @@ export class AuthService implements CanLoad, CanActivate, CanActivateChild {
   }
 
   setEula(eula) {
-    console.log(eula)
     sessionStorage.setItem('eula', eula);
   }
 
