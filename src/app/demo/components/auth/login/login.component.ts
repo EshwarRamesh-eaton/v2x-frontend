@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
     valCheck: string[] = ['remember'];
 
-    email!: FormControl;
+    username!: FormControl;
     password!: FormControl;
     userLoginForm!: FormGroup;
 
@@ -29,10 +29,10 @@ export class LoginComponent implements OnInit {
     }
 
     createForm() {
-        this.email = new FormControl('', [Validators.required]);
+        this.username = new FormControl('', [Validators.required]);
         this.password = new FormControl('', [Validators.required]);
         this.userLoginForm = new FormGroup({
-            email: this.email,
+            username: this.username,
             password: this.password
         });
     }

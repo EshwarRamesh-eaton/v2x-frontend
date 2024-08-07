@@ -14,11 +14,11 @@ export class AuthService implements CanLoad, CanActivate, CanActivateChild {
   }
 
   userLogin(u: string, p: string, headers?: HttpHeaders): Promise<any> {
-    return lastValueFrom(this.http.post(`${environment.tokenEndpoint}/auth`, {username: u, password: p}, {headers}))
+    return lastValueFrom(this.http.post(`${environment.tokenEndpoint}/login`, {username: u, password: p}, {headers}))
   }
 
   userLogout(headers?: HttpHeaders): Promise<any> {
-    return lastValueFrom(this.http.post(`${environment.tokenEndpoint}/logout`,{id: this.user_id}, {headers}))
+    return lastValueFrom(this.http.get(`${environment.tokenEndpoint}/logout`, {headers}))
   }
 
   updateEula(headers?: HttpHeaders): Promise<any> {
@@ -31,10 +31,7 @@ export class AuthService implements CanLoad, CanActivate, CanActivateChild {
 
   async login(u: string, p: string, headers?: HttpHeaders): Promise<void> {
     return this.userLogin(u, p, headers).then((resp) => {
-        this.setEula(resp.eula === 1 || '1' ? 'true': 'false');
         this.setAccessToken(resp.token);
-        this.setUserId(resp.user.id);      
-        this.setUsername(resp.user.username);  
         return resp;
     })
   }
