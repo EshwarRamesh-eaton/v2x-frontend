@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MenuItem, MessageService } from 'primeng/api';
-import { ProductService } from '../../service/product.service';
+import { ProductService } from '../../../../service/product.service';
 import { Subscription, debounceTime } from 'rxjs';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
-import { EulaService } from '../../service/eula.service';
-import { AuthService } from '../../service/auth.service';
+import { EulaService } from '../../../../service/eula.service';
+import { AuthService } from '../../../../service/auth.service';
 
 @Component({
     templateUrl: './dashboard.component.html',
@@ -69,15 +69,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
 
     changeOperationMode() {
-        const data = {
-            operation: this.value
-        }
-        this.productService.updateOperationMode(data)
-        .then(() => {
-            this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Operation mode updated successfully', life: 3000 });
-        }).catch(() => {
-            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Operation mode cannot be changed currently. Please try later', life: 3000 });
-        })
+        this.messageService.add({ severity: 'secondary', summary: 'Power Outage!', detail: 'Vehicle To Home Power Enabled, Your home is now being powered by your Electric Vehicle battery supply.', life: 50000 });
+        // const data = {
+        //     operation: this.value
+        // }
+        // this.productService.updateOperationMode(data)
+        // .then(() => {
+        //     this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Operation mode updated successfully', life: 3000 });
+        // }).catch(() => {
+        //     this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Operation mode cannot be changed currently. Please try later', life: 3000 });
+        // })
     }
 
     initChart() {

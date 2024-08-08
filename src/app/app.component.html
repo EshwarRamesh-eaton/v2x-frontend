@@ -1,2 +1,19 @@
 <router-outlet></router-outlet>
-<p-toast position="bottom-center"></p-toast>
+<!-- <p-toast position="bottom-center"></p-toast> -->
+<p-toast 
+    position="bottom-center" 
+    [baseZIndex]="5000">
+        <ng-template let-message pTemplate="message">
+            <div class="flex align-items-center gap-4 border-round-2xl">
+                <div class="flex align-items-center justify-content-center border-circle" style="background-color: #CA3C3D;width: 5rem; height: 2rem">
+                    <i class="pi pi-bolt text-white-500 text-xl"></i>
+                </div>
+                
+                <div class="flex flex-column">
+                    <div class="toast-header">{{message.summary}}</div>
+                    <div class="toast-body">{{message.detail}}</div>
+                </div>
+            </div>
+        </ng-template>
+</p-toast>
+<app-mobile-footer></app-mobile-footer>

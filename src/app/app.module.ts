@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -12,9 +13,12 @@ import { MessageService } from 'primeng/api';
 import { BadgeModule } from 'primeng/badge';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './demo/service/auth-interceptor';
+import { MobileFooterComponent } from './layout/mobile-footer/mobile-footer.component';
+import { ToolbarModule } from 'primeng/toolbar';
+
 @NgModule({
-    declarations: [AppComponent, NotfoundComponent],
-    imports: [AppRoutingModule, AppLayoutModule, ToastModule, BadgeModule],
+    declarations: [AppComponent, NotfoundComponent, MobileFooterComponent],
+    imports: [AppRoutingModule, AppLayoutModule, ToastModule, BadgeModule, ToolbarModule, CommonModule],
     providers: [
         { provide: LocationStrategy, useClass: PathLocationStrategy },
         { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

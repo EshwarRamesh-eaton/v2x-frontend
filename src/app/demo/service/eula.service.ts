@@ -1,4 +1,4 @@
-import { EulaComponent } from '../components/dashboard/eula/eula.component';
+import { EulaComponent } from '../components/dashboard/components/eula/eula.component';
 import { Injectable } from '@angular/core';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { AuthService } from './auth.service';

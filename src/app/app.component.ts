@@ -6,7 +6,6 @@ import { PrimeNGConfig } from 'primeng/api';
     templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
-
     constructor(private primengConfig: PrimeNGConfig) { }
 
     ngOnInit() {
