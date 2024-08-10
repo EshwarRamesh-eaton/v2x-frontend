@@ -47,6 +47,14 @@ body {
 }
 
 
+.p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
+  background: #B3D7EC;
+}
+
+.p-inputswitch.p-inputswitch-checked .p-inputswitch-slider:before {
+  background: #FFFFFF;
+}
+
 .toast-header {
   color: var(--Label-Color-Light-Primary, #000);
   font-size: 15px;

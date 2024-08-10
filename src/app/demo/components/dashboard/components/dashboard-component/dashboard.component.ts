@@ -8,6 +8,7 @@ import { AuthService } from '../../../../service/auth.service';
 
 @Component({
     templateUrl: './dashboard.component.html',
+    styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit, OnDestroy {
 

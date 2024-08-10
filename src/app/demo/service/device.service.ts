@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
-import { Devices } from '../api/devices';
+import { DeviceUsage, Device } from '../api/devices';
 
 @Injectable()
 export class DeviceService {
@@ -9,11 +9,11 @@ export class DeviceService {
     constructor(private http: HttpClient) { }
 
     getDevices() {
-        return lastValueFrom(this.http.get<Devices[]>(`${this.baseUrl}`));
+        return lastValueFrom(this.http.get<Device[]>(`${this.baseUrl}`));
     }
 
     getDevicesById(id: string) {
-        return lastValueFrom(this.http.get<Devices>(`${this.baseUrl}/${id}`));
+        return lastValueFrom(this.http.get<Device>(`${this.baseUrl}/${id}`));
     }
 
     //TODO: there is a PUT and a PATCH call -> see what is required here later
@@ -28,7 +28,7 @@ export class DeviceService {
 
 
     getDeviceEnergy() {
-        return lastValueFrom(this.http.get<Devices>(`${this.baseUrl}/energy`));
+        return lastValueFrom(this.http.get<DeviceUsage>(`${this.baseUrl}/energy`));
     }
 
 

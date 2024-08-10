@@ -36,7 +36,8 @@ export interface UpdateBreaker {
     mode: string;
 }
 
-// TODO: Check what this needs to be
 export interface BreakerPriority {
-
+    uuid: string;
+    name: string;
+    priority: number;
 }

@@ -1,0 +1,26 @@
+<div class="flex w-full align-items-start">
+    <span [class]="activeIndex === 1 ? 'flex align-items-start gap-2 custom-tab-padding text-base font-semibold selected-font-color' : 'flex align-items-start gap-2 custom-tab-padding text-base font-normal custom-font-color'" (click)="activeIndex=1">All Devices</span>
+    <span [class]="activeIndex === 2 ? 'flex align-items-start gap-2 custom-tab-padding text-base font-semibold selected-font-color' : 'flex align-items-start gap-2 custom-tab-padding text-base font-normal custom-font-color'" (click)="activeIndex=2">Favorites</span>
+    <span [class]="activeIndex === 3 ? 'flex align-items-start gap-2 custom-tab-padding text-base font-semibold selected-font-color' : 'flex align-items-start gap-2 custom-tab-padding text-base font-normal custom-font-color'" (click)="activeIndex=3">Areas</span>
+</div>
+<div class="flex flex-column align-items-center gap-2">
+    <div class="flex w-full justify-content-between align-items-center custom-dimensions card mb-0">
+        <div class="text-base font-semibold">Total <span class="device-count-color">{{devices.length}}</span> devices</div>
+        <div class="flex align-items-start gap-2 p-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M4.24969 5.61C6.26969 8.2 9.99969 13 9.99969 13V19C9.99969 19.55 10.4497 20 10.9997 20H12.9997C13.5497 20 13.9997 19.55 13.9997 19V13C13.9997 13 17.7197 8.2 19.7397 5.61C20.2497 4.95 19.7797 4 18.9497 4H5.03969C4.20969 4 3.73969 4.95 4.24969 5.61Z" fill="#E8EAEA"/>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M3 9H5V7H3V9ZM5 13H3V11H5V13ZM5 17H3V15H5V17ZM21 13H7V11H21V13ZM7 17H21V15H7V17ZM7 9V7H21V9H7Z" fill="#E8EAEA"/>
+                </svg>
+            <p-inputSwitch class="mt-1" [(ngModel)]="checked" />
+        </div>
+    </div>
+    <div class="flex align-items-start gap-2 flex-wrap">
+        <div class="flex-row inline-block" *ngFor="let device of devices">
+            <app-device-card [device]="device"></app-device-card>
+        </div>
+    </div>
+</div>
+
+

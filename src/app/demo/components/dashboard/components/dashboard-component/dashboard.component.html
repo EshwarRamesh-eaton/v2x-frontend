@@ -1,5 +1,5 @@
-    <div class="grid">
-        <div class="col-12 lg:col-6 xl:col-3">
+<div class="grid">
+        <!-- <div class="col-12 lg:col-6 xl:col-3">
             <div class="card mb-0">
                 <div class="flex justify-content-between mb-3">
                     <div>
@@ -138,14 +138,10 @@
                     </ng-template>
                 </p-table>
             </div>
-        </div>
+        </div>-->
 
-        <div class="col-12 xl:col-6">
-            <div class="card">
-                <h5>Average Charge Duration</h5>
-                <p-chart #myCanvas id="canvas" type="line" [data]="chartData" [options]="chartOptions"></p-chart>
-            </div>
-
+        <!-- <div class="col-12 xl:col-6">
+            
             <div class="card">
                 <div class="flex align-items-center justify-content-between mb-4">
                     <h5>Notifications</h5>
@@ -178,9 +174,19 @@
                     </div>
                 </div>
                 
-            </div>
+            </div> 
 
             
+        </div>  -->
+    <div class="col-12 xl:col-3">
+        <div hidden class="card">
+            <h5>Average Charge Duration</h5>
+            <p-chart #myCanvas id="canvas" type="line" [data]="chartData" [options]="chartOptions"></p-chart>
+        </div>
+        <app-home-power></app-home-power>
+    </div>
+    <div class="col-12 xl:col-9">
+        <app-devices></app-devices>
     </div>
 </div>
 

@@ -1,13 +1,22 @@
 <div class="layout-topbar">
-    <a class="layout-topbar-logo" routerLink="">
+    <!-- <a class="layout-topbar-logo" routerLink="">
         <img src="assets/demo/images/eaton/EatonLogoLight.png" alt="logo">
-    </a>
-
-    <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
-        <i class="pi pi-bars"></i>
-    </button>
-
-    <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button" (click)="layoutService.showProfileSidebar()">
+    </a> -->
+    <div class="flex flex-column custom-size">
+        <div class="flex flex-row justify-content-between align-items-center w-full">
+            <button #menubutton class="flex align-items-start p-link p-3 gap-2" (click)="layoutService.onMenuToggle()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M3 18H21V16H3V18ZM3 13H21V11H3V13ZM3 6V8H21V6H3Z" fill="white"/>
+                </svg>
+            </button>
+            <span>805 Wallbridge</span>
+        </div>
+        <div class="flex flex-column align-items-start gap-4">
+            <span>Hi Rebecca!</span>
+        </div>
+        
+    </div>
+    <!-- <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button" (click)="layoutService.showProfileSidebar()">
         <i class="pi pi-ellipsis-v"></i>
     </button>
 
@@ -17,5 +26,5 @@
             <span>Profile</span>
         </button>
         <p-menu appendTo="body" [popup]="true" [model]="items" #profileMenu></p-menu>
-    </div>
+    </div> -->
 </div>

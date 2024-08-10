@@ -16,6 +16,11 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 import { AvatarModule } from 'primeng/avatar';
 import { TagModule } from 'primeng/tag';
 import { OrderListModule } from 'primeng/orderlist';
+import { HomePowerComponent } from './components/home-power/home-power.component';
+import { DevicesComponent } from './components/devices/devices.component';
+import { DeviceCardComponent } from './components/device-card/device-card.component';
+import { InputSwitchModule } from 'primeng/inputswitch';
+
 @NgModule({
     imports: [
         CommonModule,
@@ -30,9 +35,10 @@ import { OrderListModule } from 'primeng/orderlist';
         SelectButtonModule,
         AvatarModule,
         TagModule,
-        OrderListModule
+        OrderListModule,
+        InputSwitchModule
     ],
-    declarations: [DashboardComponent, EulaComponent],
+    declarations: [DashboardComponent, EulaComponent, HomePowerComponent, DevicesComponent, DeviceCardComponent],
     providers: [EulaService, DialogService]
 })
 export class DashboardModule { }
