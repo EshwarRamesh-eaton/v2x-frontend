@@ -1,45 +1,44 @@
 <div class="surface-custom flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden">
-    <div class="flex flex-column align-items-center justify-content-center">
-        <!-- <div style="border-radius:56px; padding:0.3rem; background: linear-gradient(180deg, var(--primary-color) 10%, rgba(33, 150, 243, 0) 30%);"> -->
-            <div class="w-full border-round-sm surface-card mw-450 py-8 px-5 sm:px-8">
-                <div class="w-full">
-                    <img src="assets/layout/images/eaton_stacked_logo.ec1e463b9a319c20b327.png" alt="Image" height="80" class="mb-3">
-                    <div class="text-900 text-3xl font-medium mb-3">&nbsp;</div>
+    <div class="flex flex-column align-items-start justify-content-between card-size">
+            
+            <div class="flex flex-column w-full align-items-start custom-gap p-3">
+                <div class="flex align-items-center logo-dimensions gap-3">
+                    <div class="flex flex-column justify-content-center align-items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="45" height="38" viewBox="0 0 45 38" fill="none">
+                            <path d="M22.5 0L0.665039 19.6515H7.21554V37.1195H37.7845V19.6515H44.335L22.5 0ZM21.6048 32.7525V24.1713H16.7574L23.7883 10.9175V19.4987H28.461L21.6048 32.7525Z" fill="#F7FAFD"/>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="65" height="19" viewBox="0 0 65 19" fill="none">
+                            <path d="M21.0364 3.56914L22.6023 9.32914H19.3523L21.0364 3.56914ZM18.0818 13.3491L16.7523 18.1191H25.1136L23.7841 13.3491H18.0818ZM40.0341 0.119141H23.9614V5.24914H29.0432V18.1191H37.1977C35.9478 17.1411 34.9393 15.8811 34.2521 14.4387C33.5649 12.9963 33.2179 11.4113 33.2386 9.80914C33.1646 7.66007 33.7902 5.54615 35.0186 3.79448C36.2471 2.04281 38.0098 0.751068 40.0341 0.119141ZM42.8409 13.4991C43.2974 13.4914 43.7479 13.3918 44.1663 13.2063C44.5848 13.0208 44.9628 12.7529 45.2788 12.4182C45.5947 12.0835 45.8421 11.6886 46.0069 11.2562C46.1716 10.8238 46.2504 10.3626 46.2386 9.89914C46.2717 8.95295 45.9424 8.03056 45.3198 7.32571C44.6973 6.62086 43.8299 6.18839 42.9 6.11914C41.9465 6.1809 41.0537 6.61544 40.4091 7.33148C39.7645 8.04753 39.4183 8.98936 39.4432 9.95914C39.4232 10.4247 39.4964 10.8895 39.6582 11.3255C39.8199 11.7616 40.0671 12.1598 40.3846 12.4962C40.7021 12.8326 41.0834 13.1003 41.5056 13.2829C41.9278 13.4656 42.382 13.5596 42.8409 13.5591V13.4991ZM59.7114 11.4891L56.4318 0.119141H48.0705V18.1191H53.1818V6.83914L56.5795 18.1191H65V0.119141H59.7409V11.4291L59.7114 11.4891ZM10.1045 18.1191L11.6114 13.0791H5.90909V11.5491H12.0841L13.5318 6.71914H5.90909V5.24914H13.9455L15.4523 0.119141H0V18.1191H10.1045Z" fill="white"/>
+                        </svg>
+                    </div>
+                    <div class="font-light logo-font">
+                        Brightlayer Home
+                    </div>
                 </div>
-
-                <div>
+                <div class="w-full">
                     <form (ngSubmit)="submitLogin()">
-                        <label for="username" class="block text-900 text-xl font-medium mb-2"></label>
-                        <input id="username" type="text" placeholder="Username" pInputText class="w-full mb-6" [formControl]="username">
-    
-                        <label for="password1" class="block text-900 font-medium text-xl mb-2"></label>
-                        <p-password id="password1" [formControl]="password" placeholder="Password" [toggleMask]="true" styleClass="mb-6 w-full" inputStyleClass="w-full"></p-password>
-                        <div class="flex align-items-center justify-content-between mb-5 gap-5">
-                            <div class="flex align-items-center">
-                                <p-checkbox id="rememberme1" [binary]="true" styleClass="mr-2"></p-checkbox>
-                                <label for="rememberme1" class="text-remember-me">Remember me</label>
+                        <div class="flex flex-column align-items-start gap-3">
+                            <input id="username" type="text" placeholder="Username" pInputText class="w-full mb-4 custom-input-dimensions" [formControl]="username">
+                            <p-password id="password1" [formControl]="password" placeholder="Password" [toggleMask]="true" styleClass="mb-4 w-full" inputStyleClass="w-full"></p-password>
+                            <div class="flex align-items-center justify-content-between remember-me-box w-full">
+                                <div class="flex align-items-center gap-2">
+                                    <p-checkbox id="rememberme1" [binary]="true"></p-checkbox>
+                                    <label for="rememberme1" class="font-normal	text-base remember-me-text">Remember me</label>
+                                </div>
+                                <button type="submit" pButton pRipple label="Log In" class="flex justify-content-center border-round-xs custom-login-button"></button>
                             </div>
-                            <button type="submit" pButton pRipple label="Log In" class="flex w-auto flex-1 justify-content-end custom-login-button"></button>
-                            
                         </div>
-                        <div class="flex text-center justify-content-center align-items-center flex-column">
-                            <span class="font-medium no-underline cursor-pointer text-forgot-password" (click)="navToForgotPassword()">Forgot your password?</span>
-                            <div class="flex justify-content-center align-items-center flex-column text-center mt-5">
-                                <span class="font-medium no-underline text-need-account">Need an account?</span>
-                                <span class="font-medium no-underline cursor-pointer text-forgot-password">Create Account</span>
-                            </div>
-                            <span class="font-medium no-underline cursor-pointer text-forgot-password mt-5">Contact an Eaton Support Representative</span>
-                        </div>
-                        <div class="w-full mt-3 text-center">
-                            <img src="assets/layout/images/cybersecurity_certified.ee740d27ab89a1117f78.png" alt="Image" width="100" class="mb-3">
-                        </div>
-                    </form>
-
-
-                    
+                    </form>                    
+                </div>
+                <div class="flex flex-column justify-content-center align-items-start gap-3">
+                    <a class="text-base text-center font-semibold text-need-account color-highlight cursor-pointer">Forgot your password?</a>
+                    <span class="text-base text-center font-semibold text-need-account color-need-account">Need an account? <a class="text-base text-center font-semibold text-need-account color-highlight cursor-pointer">Create an Account</a></span>
                 </div>
             </div>
-        <!-- </div> -->
+            <div class="flex flex-column justify-content-center align-items-center custom-login-footer p-3 w-full">
+                <a class="text-base text-center font-semibold text-need-account color-highlight cursor-pointer">Contact an Eaton Support Representative</a>
+                <img src="assets/demo/images/eaton/cybersecurity_certified.png" width="69" height="60">
+            </div>
+   
     </div>
 </div>
-<!-- <app-footer></app-footer> -->

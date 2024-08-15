@@ -5,42 +5,83 @@
             color: var(--primary-color) !important;
         }
 
-.text-forgot-password {
-    margin: 0px;
-    line-height: 1.43;
-    font-size: 0.875rem !important;
-    color: rgb(0, 123, 193);
-    font-weight: 600 !important;
-    text-transform: none;
-    text-decoration: none;
-}
 
 .text-need-account {
-    margin: 0px;
-    line-height: 1.43;
-    font-weight: 400 !important;
-    font-size: 0.875rem !important;
+    line-height: 16px;
 }
 
-.custom-login-button {
-    max-width: 150px;
-    background-color: rgb(224, 239, 248);
-    border-width: 0px;
-    color: rgb(128, 189, 224);
-    opacity: 1;
+.color-need-account {
+    color:#7B8387;
 }
 
-.text-remember-me {
-    margin: 0px;
-    line-height: 1.5;
-    font-weight: 400;
-    font-size: 1rem;
+.color-highlight {
+    color: #80BDE0;
 }
 
-.mw-450 {
-    max-width: 450px;
+
+.custom-input-dimensions {
+    height: 56px;
+    flex-shrink: 0;
+    border: 1px solid #3C474D;
+    background: #1D2529;
+    border-radius: 4px;
 }
+
+:host ::ng-deep .p-password {
+    height: 56px;
+    flex-shrink: 0;
+    border: 1px solid #3C474D;
+    background: #1D2529;
+    border-radius: 4px;
+    input {
+        background: #1D2529;
+    }
+} 
 
 :host ::ng-deep .p-password, p-password {
     width: 100% !important;
 } 
+
+.card-size {
+    min-width: 375px !important;
+    height: 812px !important;
+    background: #1D2529;
+}
+
+.custom-gap {
+    gap: 39px;
+}
+
+.logo-dimensions {
+    height: 82px;
+    padding-right: 34px
+}
+
+.logo-font {
+    color: #FFF;
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-family: "Open Sans";
+    font-size: 30px;
+    font-style: normal;
+    width: 154px;
+}
+
+.remember-me-box {
+    gap: 21px;
+}
+
+.remember-me-text {
+    color: #C6CACC;
+    letter-spacing: 0.25px;
+}
+
+.custom-login-button {
+    width: 155px;
+    padding: 10px 20px;
+    background: #007BC1;
+    border: 1px solid #007BC1
+}
+
+.custom-login-footer {
+    gap: 28px;
+}

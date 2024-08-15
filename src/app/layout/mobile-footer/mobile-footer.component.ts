@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LayoutService } from '../service/app.layout.service';
+import { AuthService } from 'src/app/demo/service/auth.service';
 
 @Component({
   selector: 'app-mobile-footer',
@@ -10,7 +11,7 @@ import { LayoutService } from '../service/app.layout.service';
 export class MobileFooterComponent {
  // 1 is home, 2 is energy, 3 is schedules, 4 is scenes
   selectedOption = 1;
-  constructor(public layoutService: LayoutService) {
+  constructor(public layoutService: LayoutService, public authService: AuthService) {
    }
 
    navToHome() {

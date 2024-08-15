@@ -13,11 +13,10 @@ import { MessageService } from 'primeng/api';
 import { BadgeModule } from 'primeng/badge';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './demo/service/auth-interceptor';
-import { MobileFooterComponent } from './layout/mobile-footer/mobile-footer.component';
 import { ToolbarModule } from 'primeng/toolbar';
 
 @NgModule({
-    declarations: [AppComponent, NotfoundComponent, MobileFooterComponent],
+    declarations: [AppComponent, NotfoundComponent],
     imports: [AppRoutingModule, AppLayoutModule, ToastModule, BadgeModule, ToolbarModule, CommonModule],
     providers: [
         { provide: LocationStrategy, useClass: PathLocationStrategy },

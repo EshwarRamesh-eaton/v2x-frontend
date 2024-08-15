@@ -19,6 +19,7 @@ import { AppSidebarComponent } from "./app.sidebar.component";
 import { AppLayoutComponent } from "./app.layout.component";
 import { MenuModule } from 'primeng/menu';
 import { ToolbarModule } from 'primeng/toolbar';
+import { MobileFooterComponent } from './mobile-footer/mobile-footer.component';
 
 @NgModule({
     declarations: [
@@ -28,6 +29,7 @@ import { ToolbarModule } from 'primeng/toolbar';
         AppMenuComponent,
         AppSidebarComponent,
         AppLayoutComponent,
+        MobileFooterComponent
     ],
     imports: [
         BrowserModule,
