@@ -48,7 +48,15 @@ export class DevicesComponent {
       state: false,
       type: 'breaker',
       critical: false
-    }
+    },
+    {
+      uuid: 'ufhmdasd',
+      name: 'TDD Workshop',
+      isEnabled: true,
+      state: true,
+      type: 'breaker',
+      critical: true
+    },
   ];
   activeIndex = 1
   checked = false;
