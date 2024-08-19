@@ -25,7 +25,7 @@
                                     <p-checkbox id="rememberme1" [binary]="true"></p-checkbox>
                                     <label for="rememberme1" class="font-normal	text-base remember-me-text">Remember me</label>
                                 </div>
-                                <button type="submit" pButton pRipple label="Log In" class="flex justify-content-center border-round-xs custom-login-button"></button>
+                                <button id="login-submit" [disabled]="!userLoginForm.valid" type="submit" pButton pRipple label="Log In" class="flex justify-content-center border-round-xs custom-login-button"></button>
                             </div>
                         </div>
                     </form>                    

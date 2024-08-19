@@ -2,19 +2,68 @@
     <!-- <a class="layout-topbar-logo" routerLink="">
         <img src="assets/demo/images/eaton/EatonLogoLight.png" alt="logo">
     </a> -->
-    <div class="flex flex-column custom-size">
-        <div class="flex flex-row justify-content-between align-items-center w-full">
+    <div class="flex flex-column custom-size w-full">
+        <div class="flex flex-row justify-content-between align-items-center align-self-stretch">
             <button #menubutton class="flex align-items-start p-link pt-3 gap-2" (click)="layoutService.onMenuToggle()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path d="M3 18H21V16H3V18ZM3 13H21V11H3V13ZM3 6V8H21V6H3Z" fill="white"/>
                 </svg>
             </button>
-            <span class="flex align-items-start p-link pl-3 pt-3 gap-2">805 Wallbridge</span>
+            <span class="flex align-items-start p-link w-full pl-3 pt-3 gap-2 justify-content-between" *ngIf="layoutService.isMobile()">
+                <span class="text-xl font-semibold top-bar-font pt-2">805 Wallbridge</span>
+                <div class="flex flex-row">
+                    <span class="flex align-items-start gap-2 p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" fill="white"/>
+                        </svg>
+                    </span>
+                    <span class="flex align-items-start gap-2 pt-2 pl-2 pb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="white"/>
+                        </svg>
+                    </span>
+                    
+                </div>
+            </span>
+          
         </div>
-        <!-- <div class="flex flex-column align-items-start gap-4">
-            <span>Hi Rebecca!</span>
+        <div class="flex flex-column align-items-start gap-4 pl-3 pr-3" *ngIf="layoutService.isMobile()">
+            <div class="flex flex-column ">
+                <span class="text-2xl font-normal top-bar-font">Hi Rebecca!</span>
+                <span class="text-sm font-light top-bar-font">Here's what's happening at home today.</span>
+            </div>
+            <div class="flex flex-row align-items-start align-self-stretch gap-4">
+                <div class="flex flex-column align-items-center icon-dimensions">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M15.1667 4H17.8333V17.3333H15.1667V4ZM22.38 8.78667L24.2733 6.89333C26.86 9.09333 28.5 12.3467 28.5 16C28.5 22.6267 23.1267 28 16.5 28C9.87333 28 4.5 22.6267 4.5 16C4.5 12.3467 6.14 9.09333 8.72667 6.89333L10.6067 8.77333C8.51333 10.48 7.16667 13.08 7.16667 16C7.16667 21.16 11.34 25.3333 16.5 25.3333C21.66 25.3333 25.8333 21.16 25.8333 16C25.8333 13.08 24.4867 10.48 22.38 8.78667Z" fill="white"/>
+                    </svg>
+                    <span class="text-sm font-normal top-bar-font">10/13</span>
+                    <span class="text-center text-xs font-normal top-bar-font custom-color">Devices On</span>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="2" height="65" viewBox="0 0 2 65" fill="none">
+                    <path d="M1 0V65" stroke="white" stroke-opacity="0.5"/>
+                </svg>
+                <div class="flex flex-column align-items-center icon-dimensions">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+                        <path d="M1.83301 18.6666H9.83301V21.3333H1.83301V18.6666ZM23.1663 18.6666H31.1663V21.3333H23.1663V18.6666ZM22.153 16.6666C21.738 15.4992 20.9717 14.489 19.9595 13.7745C18.9472 13.0601 17.7386 12.6766 16.4997 12.6766C15.2607 12.6766 14.0521 13.0601 13.0399 13.7745C12.0276 14.489 11.2614 15.4992 10.8463 16.6666L7.07301 15.3333C7.76291 13.3846 9.03978 11.6976 10.7279 10.5045C12.416 9.31131 14.4325 8.67065 16.4997 8.67065C18.5669 8.67065 20.5833 9.31131 22.2714 10.5045C23.9596 11.6976 25.2364 13.3846 25.9263 15.3333L22.153 16.6666Z" fill="white"/>
+                    </svg>
+                    <span class="text-sm font-normal top-bar-font">3/6</span>
+                    <span class="text-center text-xs font-normal top-bar-font custom-color">Breakers In Use</span>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="2" height="65" viewBox="0 0 2 65" fill="none">
+                    <path d="M1 0V65" stroke="white" stroke-opacity="0.5"/>
+                </svg>
+                <div class="flex flex-column align-items-center icon-dimensions">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+                        <path d="M15.1671 28H13.8338L15.1671 18.6667H10.5005C9.72714 18.6667 9.74048 18.24 9.99381 17.7867C10.2471 17.3333 10.0605 17.68 10.0871 17.6267C11.8071 14.5867 14.3938 10.0533 17.8338 4H19.1671L17.8338 13.3333H22.5005C23.1538 13.3333 23.2471 13.7733 23.1271 14.0133L23.0338 14.2133C17.7805 23.4 15.1671 28 15.1671 28Z" fill="white"/>
+                    </svg>
+                    <span class="text-sm font-normal top-bar-font">12 kWh</span>
+                    <span class="text-center text-xs font-normal top-bar-font custom-color">Last 24 hrs</span>
+                </div>
+            </div>
         </div>
-         -->
+        
+        
     </div>
     <!-- <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button" (click)="layoutService.showProfileSidebar()">
         <i class="pi pi-ellipsis-v"></i>
