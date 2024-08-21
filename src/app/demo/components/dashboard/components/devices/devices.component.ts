@@ -22,7 +22,7 @@ export class DevicesComponent {
       name: 'Pool Pump Breaker',
       isEnabled: true,
       state: true,
-      type: 'breaker',
+      type: 'Breaker',
       critical: true
     },
     {
@@ -30,7 +30,7 @@ export class DevicesComponent {
       name: 'Kitchen Breaker',
       isEnabled: true,
       state: false,
-      type: 'breaker',
+      type: 'Breaker',
       critical: false
     },
     {
@@ -38,7 +38,7 @@ export class DevicesComponent {
       name: 'MID Breaker',
       isEnabled: false,
       state: false,
-      type: 'breaker',
+      type: 'Breaker',
       critical: false
     },
     {
@@ -46,7 +46,7 @@ export class DevicesComponent {
       name: 'MID Breaker 2',
       isEnabled: false,
       state: false,
-      type: 'breaker',
+      type: 'Breaker',
       critical: false
     },
     {
@@ -54,7 +54,7 @@ export class DevicesComponent {
       name: 'TDD Workshop',
       isEnabled: true,
       state: true,
-      type: 'breaker',
+      type: 'Breaker',
       critical: true
     },
   ];

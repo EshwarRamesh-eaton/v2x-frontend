@@ -81,3 +81,11 @@ body {
   padding: 24px 16px 15px 16px;
   border: 0 none !important
 }
+
+.outage-bg {
+  background: #CA3C3D;
+}
+
+.default-bg {
+  background: radial-gradient(121.28% 56.25% at 16.45% 100%, rgba(43, 115, 224, 0.60) 0%, rgba(191, 203, 115, 0.00) 100%), radial-gradient(100% 82.89% at 100% 0%, rgba(7, 225, 255, 0.94) 0%, rgba(0, 192, 88, 0.00) 100%), #0068B3;
+}

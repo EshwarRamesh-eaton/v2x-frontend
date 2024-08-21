@@ -1,15 +1,17 @@
-import { Component, OnDestroy, Renderer2, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
 import { LayoutService } from "./service/app.layout.service";
 import { AppSidebarComponent } from "./app.sidebar.component";
 import { AppTopBarComponent } from './app.topbar.component';
+import { HomeService } from '../demo/service/home.service';
+import { HomeSummary } from '../demo/api/home';
 
 @Component({
     selector: 'app-layout',
     templateUrl: './app.layout.component.html'
 })
-export class AppLayoutComponent implements OnDestroy {
+export class AppLayoutComponent implements OnInit, OnDestroy {
 
     overlayMenuOpenSubscription: Subscription;
 
@@ -21,7 +23,9 @@ export class AppLayoutComponent implements OnDestroy {
 
     @ViewChild(AppTopBarComponent) appTopbar!: AppTopBarComponent;
 
-    constructor(public layoutService: LayoutService, public renderer: Renderer2, public router: Router) {
+    homeSummary: HomeSummary;
+
+    constructor(public layoutService: LayoutService, public renderer: Renderer2, public router: Router, private homeService: HomeService) {
         this.overlayMenuOpenSubscription = this.layoutService.overlayOpen$.subscribe(() => {
             if (!this.menuOutsideClickListener) {
                 this.menuOutsideClickListener = this.renderer.listen('document', 'click', event => {
@@ -56,6 +60,41 @@ export class AppLayoutComponent implements OnDestroy {
                 this.hideProfileMenu();
             });
     }
+
+    ngOnInit(): void {
+        this.getHomeSummary();
+    }
+
+    getHomeSummary() {
+        this.homeService.getHomeSummary()
+        .then((resp) => {
+          this.homeSummary = resp;
+        }).catch(() => {
+          this.homeSummary = {
+            homeState: 'CONNECTED',
+            gridState: 'PRESENT',
+            breakersInUse: 10,
+            breakersTotal: 12,
+            dailyUsage: 15,
+            devicesInUse: 10,
+            devicesTotal: 12,
+            sourcesRemaining: [
+              {
+                source: {
+                  id: 'asds',
+                  name: 'V2H',
+                  type: '',
+                  minimumCharge: 80,
+                },
+                timeRemaining: 8,
+                stateOfCharge: 1,
+              }
+            ]
+          }
+          // Currently lets add temporary value for home summary TODO: Change this to real data later
+          // this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Unable to obtain details. Please try later', life: 3000 });
+        })
+      }
 
     hideMenu() {
         this.layoutService.state.overlayMenuActive = false;

@@ -1,47 +1,78 @@
-import { OnInit } from '@angular/core';
+import { Input, OnInit } from '@angular/core';
 import { Component } from '@angular/core';
-import { LayoutService } from './service/app.layout.service';
+import { HomeSummary } from '../demo/api/home';
 
 @Component({
     selector: 'app-menu',
     templateUrl: './app.menu.component.html'
 })
 export class AppMenuComponent implements OnInit {
-
-    model: any[] = [];
-
-    constructor(public layoutService: LayoutService) { }
+    @Input() homeSummary: HomeSummary;
+    menuItem: any[] = [];
+    currentYear: string;
+    constructor() { 
+        this.currentYear = new Date().getFullYear().toString();
+    }
 
     ngOnInit() {
-        this.model = [
+        this.menuItem = [
             {
-                label: 'Home',
-                items: [
-                    { label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/core/dashboard'] }
-                ]
+                label: '805 Walbridge',
+                icon: 'assets/layout/images/icons/home.svg',
+                routerLink: ['']
             },
-           
             {
-                label: 'Pages',
-                icon: 'pi pi-fw pi-briefcase',
-                items: [
-                    {
-                        label: 'Configuration',
-                        icon: 'pi pi-fw pi-cog',
-                        routerLink: ['/core/pages/crud']
-                    },
-                    {
-                        label: 'System',
-                        icon: 'pi pi-fw pi-desktop',
-                        routerLink: ['/core/pages/empty']
-                    },
-                    {
-                        label: 'Firmware Update',
-                        icon: 'pi pi-fw pi-globe',
-                        routerLink: ['/core/pages/timeline']
-                    }  
-                ]
+                label: 'Home Settings',
+                icon: 'assets/layout/images/icons/cog.svg',
+                routerLink: ['']
+            },
+            {
+                label: 'Manage Devices',
+                icon: 'assets/layout/images/icons/manage-device.svg',
+                routerLink: ['']
+            },
+            {
+                label: 'Load Prioritization',
+                icon: 'assets/layout/images/icons/load-prioritization.svg',
+                routerLink: ['']
+            },
+            {
+                label: 'Outage History',
+                icon: 'assets/layout/images/icons/outage-history.svg',
+                routerLink: ['']
+            },
+            {
+                label: 'Account & Security',
+                icon: 'assets/layout/images/icons/user.svg',
+                routerLink: ['']
+            },
+            {
+                label: 'Advanced Features',
+                icon: 'assets/layout/images/icons/advanced-features.svg',
+                routerLink: ['']
+            },
+            {
+                label: 'Works With',
+                icon: 'assets/layout/images/icons/works-with.svg',
+                routerLink: ['']
+            },
+            {
+                label: 'App Settings',
+                icon: 'assets/layout/images/icons/app-settings.svg',
+                routerLink: ['']
+            },
+            {
+                label: 'Help & Support',
+                icon: 'assets/layout/images/icons/help.svg',
+                routerLink: ['']
+            },
+            {
+                label: 'Feedback',
+                icon: 'assets/layout/images/icons/feedback.svg',
+                routerLink: ['']
             }
-        ];
+
+            
+        ]
     }
 }

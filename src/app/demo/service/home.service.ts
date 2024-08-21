@@ -4,7 +4,7 @@ import { lastValueFrom } from 'rxjs';
 import { HomeBreakdown, HomeMode, HomeOutage, HomeState, HomeSummary, HomeTrend } from '../api/home';
 
 @Injectable()
-export class DeviceService {
+export class HomeService {
     baseUrl = `api/home`
     constructor(private http: HttpClient) { }
 

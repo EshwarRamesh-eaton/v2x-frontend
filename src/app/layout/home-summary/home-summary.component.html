@@ -1,0 +1,71 @@
+<div class="flex flex-column align-items-start gap-4 pl-3 pr-3">
+    <div class="flex flex-column ">
+        <span class="text-2xl font-normal top-bar-font">Hi Rebecca!</span>
+        <span class="text-sm font-light top-bar-font">{{homeSummary?.gridState === 'PRESENT' ? "Here's what's happening at home today." : 'You are currently experiencing a power outage.'}}</span>
+    </div>
+
+    <!-- content for normal state -->
+    <div class="flex flex-row align-items-start align-self-stretch gap-4" *ngIf="homeSummary?.gridState === 'PRESENT';else outage_content">
+        <div class="flex flex-column align-items-center icon-dimensions">
+            <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M15.1667 4H17.8333V17.3333H15.1667V4ZM22.38 8.78667L24.2733 6.89333C26.86 9.09333 28.5 12.3467 28.5 16C28.5 22.6267 23.1267 28 16.5 28C9.87333 28 4.5 22.6267 4.5 16C4.5 12.3467 6.14 9.09333 8.72667 6.89333L10.6067 8.77333C8.51333 10.48 7.16667 13.08 7.16667 16C7.16667 21.16 11.34 25.3333 16.5 25.3333C21.66 25.3333 25.8333 21.16 25.8333 16C25.8333 13.08 24.4867 10.48 22.38 8.78667Z" fill="white"/>
+            </svg>
+            <span class="text-sm font-normal top-bar-font">{{homeSummary?.devicesInUse}}/{{homeSummary?.devicesTotal}}</span>
+            <span class="text-center text-xs font-normal top-bar-font custom-color">Devices On</span>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="2" height="65" viewBox="0 0 2 65" fill="none">
+            <path d="M1 0V65" stroke="white" stroke-opacity="0.5"/>
+        </svg>
+        <div class="flex flex-column align-items-center icon-dimensions">
+            <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+                <path d="M1.83301 18.6666H9.83301V21.3333H1.83301V18.6666ZM23.1663 18.6666H31.1663V21.3333H23.1663V18.6666ZM22.153 16.6666C21.738 15.4992 20.9717 14.489 19.9595 13.7745C18.9472 13.0601 17.7386 12.6766 16.4997 12.6766C15.2607 12.6766 14.0521 13.0601 13.0399 13.7745C12.0276 14.489 11.2614 15.4992 10.8463 16.6666L7.07301 15.3333C7.76291 13.3846 9.03978 11.6976 10.7279 10.5045C12.416 9.31131 14.4325 8.67065 16.4997 8.67065C18.5669 8.67065 20.5833 9.31131 22.2714 10.5045C23.9596 11.6976 25.2364 13.3846 25.9263 15.3333L22.153 16.6666Z" fill="white"/>
+            </svg>
+            <span class="text-sm font-normal top-bar-font">{{homeSummary?.breakersInUse}}/{{homeSummary?.breakersTotal}}</span>
+            <span class="text-center text-xs font-normal top-bar-font custom-color">Breakers In Use</span>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="2" height="65" viewBox="0 0 2 65" fill="none">
+            <path d="M1 0V65" stroke="white" stroke-opacity="0.5"/>
+        </svg>
+        <div class="flex flex-column align-items-center icon-dimensions">
+            <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+                <path d="M15.1671 28H13.8338L15.1671 18.6667H10.5005C9.72714 18.6667 9.74048 18.24 9.99381 17.7867C10.2471 17.3333 10.0605 17.68 10.0871 17.6267C11.8071 14.5867 14.3938 10.0533 17.8338 4H19.1671L17.8338 13.3333H22.5005C23.1538 13.3333 23.2471 13.7733 23.1271 14.0133L23.0338 14.2133C17.7805 23.4 15.1671 28 15.1671 28Z" fill="white"/>
+            </svg>
+            <span class="text-sm font-normal top-bar-font">12 kWh</span>
+            <span class="text-center text-xs font-normal top-bar-font custom-color">Last 24 hrs</span>
+        </div>
+    </div>
+
+    <!-- content for outage -->
+    <ng-template #outage_content>
+        <div class="flex flex-row align-items-start align-self-stretch gap-4" >
+            <div class="flex flex-column align-items-center icon-dimensions">
+                <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M26.1595 21.8876L23.0737 14.1732L21.7537 10.6665H24.5004V13.3332H27.1671V7.99984H20.7537L18.7537 2.6665H14.2471L12.2537 7.9819L14.9383 10.6665H18.9004L19.9004 13.3332H17.6049L20.2716 15.9999H20.9271L21.0337 16.2665L20.7361 16.4643L26.1595 21.8876ZM16.9004 5.33317H16.0737L15.0871 7.99984H17.9004L16.9004 5.33317Z" fill="white"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M6.55368 29.1065L16.4871 22.4399L24.6433 27.9139L26.8741 30.1447L28.7597 28.2591L4.24793 3.74722L2.3623 5.63285L5.83368 9.10421V13.3332H8.50034V11.7709L10.1861 13.4567L4.58034 27.5065L6.55368 29.1065ZM12.0737 15.9999L11.967 16.2665L15.0359 18.3064L12.7293 15.9999H12.0737ZM10.9537 18.7865L8.66034 24.5065L14.1004 20.8932L10.9537 18.7865Z" fill="white"/>
+                </svg>
+                <span class="text-sm font-normal top-bar-font">Power Outage</span>
+                <span class="text-center text-xs font-normal top-bar-font custom-color">Grid</span>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="2" height="65" viewBox="0 0 2 65" fill="none">
+                <path d="M1 0V65" stroke="white" stroke-opacity="0.5"/>
+            </svg>
+            <div class="flex flex-column align-items-center icon-dimensions">
+                <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+                    <path d="M23.1663 6.66663V28C23.1663 28.7333 22.5663 29.3333 21.833 29.3333H11.1663C10.433 29.3333 9.83301 28.7333 9.83301 28V6.66663C9.83301 5.93329 10.433 5.33329 11.1663 5.33329H13.833V2.66663H19.1663V5.33329H21.833C22.5663 5.33329 23.1663 5.93329 23.1663 6.66663ZM20.4997 7.99996H12.4997V10.6666H20.4997V7.99996Z" fill="white"/>
+                </svg>
+                <span class="text-sm font-normal top-bar-font">{{homeSummary?.sourcesRemaining[0].stateOfCharge}} %</span>
+                <span class="text-center text-xs font-normal top-bar-font custom-color">Battery Life</span>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="2" height="65" viewBox="0 0 2 65" fill="none">
+                <path d="M1 0V65" stroke="white" stroke-opacity="0.5"/>
+            </svg>
+            <div class="flex flex-column align-items-center icon-dimensions">
+                <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+                    <path d="M16.487 2.66663C9.12699 2.66663 3.16699 8.63996 3.16699 16C3.16699 23.36 9.12699 29.3333 16.487 29.3333C23.8603 29.3333 29.8337 23.36 29.8337 16C29.8337 8.63996 23.8603 2.66663 16.487 2.66663ZM20.887 22.28L15.167 16.5466V9.33329H17.8337V15.4533L22.7803 20.4L20.887 22.28Z" fill="white"/>
+                </svg>
+                <span class="text-sm font-normal top-bar-font">{{homeSummary?.sourcesRemaining[0].timeRemaining}} hrs</span>
+                <span class="text-center text-xs font-normal top-bar-font custom-color">Time Remaining</span>
+            </div>
+        </div>
+    </ng-template>
+</div>

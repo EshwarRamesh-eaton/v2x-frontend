@@ -14,6 +14,7 @@ import { BadgeModule } from 'primeng/badge';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './demo/service/auth-interceptor';
 import { ToolbarModule } from 'primeng/toolbar';
+import { HomeService } from './demo/service/home.service';
 
 @NgModule({
     declarations: [AppComponent, NotfoundComponent],
@@ -21,7 +22,7 @@ import { ToolbarModule } from 'primeng/toolbar';
     providers: [
         { provide: LocationStrategy, useClass: PathLocationStrategy },
         { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-        DeviceService, UserService, ProductService, MessageService
+        DeviceService, UserService, ProductService, MessageService, HomeService
     ],
     bootstrap: [AppComponent],
 })

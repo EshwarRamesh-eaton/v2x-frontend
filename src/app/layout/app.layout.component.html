@@ -1,7 +1,7 @@
 <div class="layout-wrapper" [ngClass]="containerClass">
-    <app-topbar></app-topbar>
+    <app-topbar [homeSummary]="homeSummary"></app-topbar>
     <div class="layout-sidebar">
-        <app-sidebar></app-sidebar>
+        <app-sidebar [homeSummary]="homeSummary"></app-sidebar>
     </div>
     <div class="layout-main-container">
         <div class="layout-main">
