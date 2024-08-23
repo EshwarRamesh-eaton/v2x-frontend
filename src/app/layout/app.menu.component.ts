@@ -1,6 +1,6 @@
 import { EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Component } from '@angular/core';
-import { HomeSummary } from '../demo/api/home';
+import { GridStateValue, HomeSummary } from '../demo/api/home';
 import { MenuItemValue } from '../demo/api/menuItems';
 
 @Component({
@@ -13,6 +13,7 @@ export class AppMenuComponent implements OnInit {
     menuItem: any[] = [];
     currentYear: string;
     menuValue = MenuItemValue;
+    gridState = GridStateValue;
     constructor() { 
         this.currentYear = new Date().getFullYear().toString();
     }

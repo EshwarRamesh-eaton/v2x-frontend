@@ -1,4 +1,4 @@
-<div [class]="homeSummary?.gridState === 'PRESENT' ? 'flex justify-content-start align-items-end w-full custom-style default-bg' : 'flex justify-content-start align-items-end w-full custom-style outage-bg'">
+<div [class]="homeSummary?.gridState === gridState.present ? 'flex justify-content-start align-items-end w-full custom-style default-bg' : 'flex justify-content-start align-items-end w-full custom-style outage-bg'">
     <div class="flex flex-column justify-content-center align-items-start pb-3 custom-pl">
         <span class="text-2xl font-light custom-menu-header-font">Rebecca B</span>
         <span class="text-base font-normal custom-menu-header-font">{{'RebeccaB@gmail.com'}}</span>

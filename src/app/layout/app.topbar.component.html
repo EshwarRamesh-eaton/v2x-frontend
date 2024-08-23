@@ -1,4 +1,4 @@
-<div [class]="homeSummary?.gridState === 'PRESENT' ?'layout-topbar default-bg': 'layout-topbar outage-bg'">
+<div [class]="homeSummary?.gridState === gridState.present ?'layout-topbar default-bg': 'layout-topbar outage-bg'">
    
     <div *ngIf="homeSummary" class="flex flex-column custom-size w-full">
         <div class="flex flex-row justify-content-between align-items-center align-self-stretch">

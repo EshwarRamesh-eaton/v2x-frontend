@@ -1,15 +1,25 @@
-<div class="layout-load-prioritization" *ngIf="show">
+<div class="layout-battery-extension" *ngIf="show">
     <app-sub-menu-header [header]="'Extend Battery Life'" (closeScreen)="closeScreen.emit(); show = false"></app-sub-menu-header>
     <div class="flex flex-column justify-content-end">
-        <div class="flex flex-column justify-content-center align-items-center gap-2 p-3 custom-content-height">
+        <div class="flex flex-column align-items-center gap-2 p-3 custom-content-height">
             <span class="text-base font-normal custom-load-font">
                 Your battery life is running low. You can choose to turn off certain loads to extend your battery life. Select which loads you would like to turn off by selecting the card toggles below.
             </span>
-            
+            <app-battery-remaining-time-card class="w-full" [timeRemaining]="120"></app-battery-remaining-time-card>
+            <div class="flex flex-column align-items-start w-full" *ngFor="let option of [1,2,3,4]">
+                <div class="flex align-items-center justify-content-between flex-row align-self-stretch gap-2 custom-border">
+                    <div class="flex flex-row align-items-start gap-3 pt-3 pb-3">
+                        <p-checkbox [binary]="true" inputId="binary"/>
+                        <span>Kitchen Breaker</span>
+                    </div>
+                    <div class="flex align-items-center custom-chip-dimensions">
+                        + 1 hr 40 mins 
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="flex flex-column align-items-start gap-3 align-self-stretch custom-button-container w-full">
-            <button id="battery-submit" type="submit" pButton pRipple label="Update" class="flex w-full justify-content-center border-round-xs custom-button-style" (click)="updatePriority()"></button>
-
+            <button id="battery-submit" type="submit" pButton pRipple label="Turn Off Selected Loads" class="flex w-full justify-content-center border-round-xs custom-button-style"></button>
         </div>
     </div>
 </div>

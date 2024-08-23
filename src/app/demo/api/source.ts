@@ -20,3 +20,10 @@ export interface EnergySource {
 export interface EnergySourceTotalUsage {
     totalUsage: string;
 }
+
+export enum SourceTypeValue {
+    solar = 'SOLAR',
+    battery = 'BATTERY',
+    vehicle = 'VEHICLE',
+    grid = 'GRID'
+}

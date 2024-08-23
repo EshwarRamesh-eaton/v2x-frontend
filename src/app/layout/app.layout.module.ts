@@ -27,6 +27,9 @@ import { SubMenuHeaderComponent } from './sub-menu-header/sub-menu-header.compon
 import { ButtonModule } from 'primeng/button';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { BatteryExtensionComponent } from './battery-extension/battery-extension.component';
+import { BatteryRemainingTimeCardComponent } from './battery-remaining-time-card/battery-remaining-time-card.component';
+import { CheckboxModule } from 'primeng/checkbox';
+import { ExtendBatteryLifeNotificationComponent } from './extend-battery-life-notification/extend-battery-life-notification.component';
 
 @NgModule({
     declarations: [
@@ -41,7 +44,9 @@ import { BatteryExtensionComponent } from './battery-extension/battery-extension
         LoadPrioritizationComponent,
         LoadPrioritizationCardComponent,
         SubMenuHeaderComponent,
-        BatteryExtensionComponent
+        BatteryExtensionComponent,
+        BatteryRemainingTimeCardComponent,
+        ExtendBatteryLifeNotificationComponent
     ],
     imports: [
         BrowserModule,
@@ -59,7 +64,8 @@ import { BatteryExtensionComponent } from './battery-extension/battery-extension
         MenuModule,
         ToolbarModule,
         ButtonModule,
-        DragDropModule
+        DragDropModule,
+        CheckboxModule
     ],
     exports: [AppLayoutComponent]
 })

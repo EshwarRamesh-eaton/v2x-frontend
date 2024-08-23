@@ -5,8 +5,9 @@ import { LayoutService } from "./service/app.layout.service";
 import { AppSidebarComponent } from "./app.sidebar.component";
 import { AppTopBarComponent } from './app.topbar.component';
 import { HomeService } from '../demo/service/home.service';
-import { HomeSummary } from '../demo/api/home';
+import { HomeSource, HomeSourceRemaining, HomeSummary } from '../demo/api/home';
 import { MenuItemValue } from '../demo/api/menuItems';
+import { SourceTypeValue } from '../demo/api/source';
 
 @Component({
     selector: 'app-layout',
@@ -27,6 +28,8 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
     homeSummary: HomeSummary;
     selectedScreen: any;
     menuValue = MenuItemValue;
+    sourceRemaining: HomeSourceRemaining;
+    sourceValue = SourceTypeValue;
     constructor(public layoutService: LayoutService, public renderer: Renderer2, public router: Router, private homeService: HomeService) {
         this.overlayMenuOpenSubscription = this.layoutService.overlayOpen$.subscribe(() => {
             if (!this.menuOutsideClickListener) {
@@ -75,6 +78,12 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
         this.homeService.getHomeSummary()
         .then((resp) => {
           this.homeSummary = resp;
+          this.homeSummary.sourcesRemaining.forEach((entry) => {
+            // TODO: We have not accomodated the case where they may be 2 or more batteries
+            if (entry.source.type === this.sourceValue.battery) {
+                this.sourceRemaining = entry;
+            }
+          })
         }).catch(() => {
           this.homeSummary = {
             homeState: 'CONNECTED',
@@ -89,14 +98,19 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
                 source: {
                   id: 'asds',
                   name: 'V2H',
-                  type: '',
+                  type: 'battery',
                   minimumCharge: 80,
                 },
                 timeRemaining: 8,
-                stateOfCharge: 1,
+                stateOfCharge: 10,
               }
             ]
           }
+          this.homeSummary.sourcesRemaining.forEach((entry) => {
+            if (entry.source.type === this.sourceValue.battery) {
+                this.sourceRemaining = entry;
+            }
+          })
           // Currently lets add temporary value for home summary TODO: Change this to real data later
           // this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Unable to obtain details. Please try later', life: 3000 });
         })

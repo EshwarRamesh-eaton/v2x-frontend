@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { HomeSummary } from 'src/app/demo/api/home';
+import { GridStateValue, HomeSummary } from 'src/app/demo/api/home';
 
 @Component({
   selector: 'app-home-summary',
@@ -8,5 +8,6 @@ import { HomeSummary } from 'src/app/demo/api/home';
   styleUrl: './home-summary.component.scss'
 })
 export class HomeSummaryComponent {
-  @Input() homeSummary: HomeSummary
+  @Input() homeSummary: HomeSummary;
+  gridState = GridStateValue;
 }

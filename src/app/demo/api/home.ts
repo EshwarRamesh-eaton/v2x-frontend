@@ -44,3 +44,13 @@ export interface HomeSummary {
   export interface HomeState {
     state: string;
   }
+
+  export enum GridStateValue {
+    lost = 'LOST',
+    present = 'PRESENT'
+  }
+
+  export enum HomeStateValue {
+    connected = 'CONNECTED',
+    isIslanded = 'ISLANDED'
+  }

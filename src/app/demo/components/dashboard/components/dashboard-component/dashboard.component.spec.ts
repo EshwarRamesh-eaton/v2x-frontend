@@ -1,21 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomePowerComponent } from './home-power.component';
+import { DashboardComponent } from './dashboard.component';
 import { AppModule } from 'src/app/app.module';
 import { DashboardModule } from '../../dashboard.module';
 
-fdescribe('HomePowerComponent', () => {
-  let component: HomePowerComponent;
-  let fixture: ComponentFixture<HomePowerComponent>;
-
+fdescribe('DashboardComponent', () => {
+  let component: DashboardComponent;
+  let fixture: ComponentFixture<DashboardComponent>;
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomePowerComponent ],
+      declarations: [ DashboardComponent ],
       imports: [AppModule, DashboardModule],
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(HomePowerComponent);
+    fixture = TestBed.createComponent(DashboardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -23,4 +22,6 @@ fdescribe('HomePowerComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
 });

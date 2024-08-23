@@ -17,3 +17,8 @@ export interface DeviceUsage {
 export interface DeviceState {
     state: string;
 }
+
+export enum DeviceStateValue {
+    connected = 'CONNECTED',
+    isIslanded = 'ISLANDED'
+}

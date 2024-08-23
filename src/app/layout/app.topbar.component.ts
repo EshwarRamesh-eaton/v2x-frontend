@@ -3,7 +3,7 @@ import { MenuItem, MessageService } from 'primeng/api';
 import { LayoutService } from "./service/app.layout.service";
 import { AuthService } from '../demo/service/auth.service';
 import { HomeService } from '../demo/service/home.service';
-import { HomeSummary } from '../demo/api/home';
+import { GridStateValue, HomeSummary } from '../demo/api/home';
 
 @Component({
     selector: 'app-topbar',
@@ -21,6 +21,7 @@ export class AppTopBarComponent {
 
     @Input() homeSummary: HomeSummary;
 
+    gridState = GridStateValue;
     constructor (
       public layoutService: LayoutService, 
       private authService: AuthService,       

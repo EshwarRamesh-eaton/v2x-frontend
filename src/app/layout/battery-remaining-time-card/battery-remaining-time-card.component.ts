@@ -7,5 +7,6 @@ import { Component, Input } from '@angular/core';
   styleUrl: './battery-remaining-time-card.component.scss'
 })
 export class BatteryRemainingTimeCardComponent {
-@Input() timeRemaining: string;
+@Input() timeRemaining: number;
+constructor() {}
 }
