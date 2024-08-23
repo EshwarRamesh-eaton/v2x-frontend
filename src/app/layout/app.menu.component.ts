@@ -1,6 +1,7 @@
-import { Input, OnInit } from '@angular/core';
+import { EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Component } from '@angular/core';
 import { HomeSummary } from '../demo/api/home';
+import { MenuItemValue } from '../demo/api/menuItems';
 
 @Component({
     selector: 'app-menu',
@@ -8,8 +9,10 @@ import { HomeSummary } from '../demo/api/home';
 })
 export class AppMenuComponent implements OnInit {
     @Input() homeSummary: HomeSummary;
+    @Output() selectedMenuOption = new EventEmitter<any>();
     menuItem: any[] = [];
     currentYear: string;
+    menuValue = MenuItemValue;
     constructor() { 
         this.currentYear = new Date().getFullYear().toString();
     }
@@ -18,61 +21,65 @@ export class AppMenuComponent implements OnInit {
         this.menuItem = [
             {
                 label: '805 Walbridge',
+                value: this.menuValue.address,
                 icon: 'assets/layout/images/icons/home.svg',
-                routerLink: ['']
             },
             {
                 label: 'Home Settings',
+                value: this.menuValue.home,
                 icon: 'assets/layout/images/icons/cog.svg',
-                routerLink: ['']
             },
             {
                 label: 'Manage Devices',
+                value: this.menuValue.manageDevices,
                 icon: 'assets/layout/images/icons/manage-device.svg',
-                routerLink: ['']
             },
             {
                 label: 'Load Prioritization',
+                value: this.menuValue.loadPrioritization,
                 icon: 'assets/layout/images/icons/load-prioritization.svg',
-                routerLink: ['']
             },
             {
                 label: 'Outage History',
+                value: this.menuValue.outageHistory,
                 icon: 'assets/layout/images/icons/outage-history.svg',
-                routerLink: ['']
             },
             {
                 label: 'Account & Security',
+                value: this.menuValue.account,
                 icon: 'assets/layout/images/icons/user.svg',
-                routerLink: ['']
             },
             {
                 label: 'Advanced Features',
+                value: this.menuValue.advancedFeatures,
                 icon: 'assets/layout/images/icons/advanced-features.svg',
-                routerLink: ['']
             },
             {
                 label: 'Works With',
+                value: this.menuValue.worksWith,
                 icon: 'assets/layout/images/icons/works-with.svg',
-                routerLink: ['']
             },
             {
                 label: 'App Settings',
+                value: this.menuValue.appSettings,
                 icon: 'assets/layout/images/icons/app-settings.svg',
-                routerLink: ['']
             },
             {
                 label: 'Help & Support',
+                value: this.menuValue.helpSupport,
                 icon: 'assets/layout/images/icons/help.svg',
-                routerLink: ['']
             },
             {
                 label: 'Feedback',
+                value: this.menuValue.feedback,
                 icon: 'assets/layout/images/icons/feedback.svg',
-                routerLink: ['']
             }
 
             
         ]
+    }
+
+    menuOptionSelection(value: any) {
+        this.selectedMenuOption.emit(value);
     }
 }

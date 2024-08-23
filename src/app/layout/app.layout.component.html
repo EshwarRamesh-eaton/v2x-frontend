@@ -1,8 +1,11 @@
 <div class="layout-wrapper" [ngClass]="containerClass">
     <app-topbar [homeSummary]="homeSummary"></app-topbar>
     <div class="layout-sidebar">
-        <app-sidebar [homeSummary]="homeSummary"></app-sidebar>
+        <app-sidebar [homeSummary]="homeSummary" (selectedMenuOption)="toggleScreen($event)"></app-sidebar>
     </div>
+    
+    <app-load-prioritization [show]="selectedScreen === menuValue.loadPrioritization" (closeScreen)="selectedScreen = ''"></app-load-prioritization>
+    <app-battery-extension [show]="selectedScreen === menuValue.manageDevices" (closeScreen)="selectedScreen = ''"></app-battery-extension>
     <div class="layout-main-container">
         <div class="layout-main">
             <router-outlet></router-outlet>

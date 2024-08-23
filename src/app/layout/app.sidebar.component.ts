@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
 import { HomeSummary } from '../demo/api/home';
 
 @Component({
@@ -7,6 +7,7 @@ import { HomeSummary } from '../demo/api/home';
 })
 export class AppSidebarComponent {
     @Input() homeSummary: HomeSummary
+    @Output() selectedMenuOption = new EventEmitter<any>();
     constructor(public el: ElementRef) { }
 }
 

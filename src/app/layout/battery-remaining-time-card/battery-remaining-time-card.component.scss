@@ -1,0 +1,15 @@
+.custom-bg-color {
+    background: var(--Primary-Black-800, #2B353A);    
+}
+
+.custom-flex {
+    flex: 1 0 0;
+}
+
+.time-remaining-font {
+    color: var(--Primary-Black-50, #E8EAEA);
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-family: "Open Sans";
+    font-style: normal;
+    line-height: normal;
+}

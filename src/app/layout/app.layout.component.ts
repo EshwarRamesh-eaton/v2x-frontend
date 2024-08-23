@@ -6,6 +6,7 @@ import { AppSidebarComponent } from "./app.sidebar.component";
 import { AppTopBarComponent } from './app.topbar.component';
 import { HomeService } from '../demo/service/home.service';
 import { HomeSummary } from '../demo/api/home';
+import { MenuItemValue } from '../demo/api/menuItems';
 
 @Component({
     selector: 'app-layout',
@@ -24,7 +25,8 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
     @ViewChild(AppTopBarComponent) appTopbar!: AppTopBarComponent;
 
     homeSummary: HomeSummary;
-
+    selectedScreen: any;
+    menuValue = MenuItemValue;
     constructor(public layoutService: LayoutService, public renderer: Renderer2, public router: Router, private homeService: HomeService) {
         this.overlayMenuOpenSubscription = this.layoutService.overlayOpen$.subscribe(() => {
             if (!this.menuOutsideClickListener) {
@@ -40,8 +42,8 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
 
             if (!this.profileMenuOutsideClickListener) {
                 this.profileMenuOutsideClickListener = this.renderer.listen('document', 'click', event => {
-                    const isOutsideClicked = !(this.appTopbar.menu.nativeElement.isSameNode(event.target) || this.appTopbar.menu.nativeElement.contains(event.target)
-                        || this.appTopbar.topbarMenuButton.nativeElement.isSameNode(event.target) || this.appTopbar.topbarMenuButton.nativeElement.contains(event.target));
+                    const isOutsideClicked = !(this.appTopbar?.menu?.nativeElement.isSameNode(event.target) || this.appTopbar?.menu?.nativeElement.contains(event.target)
+                        || this.appTopbar?.topbarMenuButton?.nativeElement.isSameNode(event.target) || this.appTopbar?.topbarMenuButton?.nativeElement.contains(event.target));
 
                     if (isOutsideClicked) {
                         this.hideProfileMenu();
@@ -63,6 +65,10 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.getHomeSummary();
+    }
+
+    toggleScreen(selectedMenuOption) {
+        this.selectedScreen = selectedMenuOption;
     }
 
     getHomeSummary() {

@@ -5,7 +5,7 @@
     </div>
 
 </div>
-<div class="flex w-full" *ngFor="let options of menuItem">
+<div class="flex w-full" *ngFor="let options of menuItem" (click)="menuOptionSelection(options.value)">
     <div class="flex flex-row w-full align-items-center gap-5 menu-item-dimensions">
         <img [src]="options.icon"/>
         <span class="text-base font-normal custom-menu-header-font ">{{options.label}}</span>

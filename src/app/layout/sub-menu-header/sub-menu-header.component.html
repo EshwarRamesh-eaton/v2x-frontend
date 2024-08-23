@@ -1,0 +1,21 @@
+<div [style]="style" class="flex flex-column align-items-end gap-3 flex-shrink-0">
+    <div class="flex flex-column align-items-start justify-content-between w-full">
+        &nbsp;
+        <div class="flex flex-row align-items-center custom-height">
+            <div *ngIf="backButton" class="flex p-3 align-items-start gap-2 cursor-pointer" (click)="changeVisibility()">
+                <svg  xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+                    <path d="M20.5015 11H8.33146L13.9215 5.41L12.5015 4L4.50146 12L12.5015 20L13.9115 18.59L8.33146 13H20.5015V11Z" fill="#E8EAEA"/>
+                </svg>
+            </div>
+            <div class="flex flex-column justify-content-center">
+                <span class="text-xl font-semibold header-font">{{header}}</span>
+            </div>
+           <div *ngIf="sideMenu" class="flex p-2 gap-2 align-items-start cursor-pointer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5015 8C13.6015 8 14.5015 7.1 14.5015 6C14.5015 4.9 13.6015 4 12.5015 4C11.4015 4 10.5015 4.9 10.5015 6C10.5015 7.1 11.4015 8 12.5015 8ZM12.5015 10C11.4015 10 10.5015 10.9 10.5015 12C10.5015 13.1 11.4015 14 12.5015 14C13.6015 14 14.5015 13.1 14.5015 12C14.5015 10.9 13.6015 10 12.5015 10ZM10.5015 18C10.5015 16.9 11.4015 16 12.5015 16C13.6015 16 14.5015 16.9 14.5015 18C14.5015 19.1 13.6015 20 12.5015 20C11.4015 20 10.5015 19.1 10.5015 18Z" fill="white"/>
+                </svg>
+           </div>
+        </div>
+        
+    </div>
+</div>

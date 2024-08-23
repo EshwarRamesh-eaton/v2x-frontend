@@ -1,0 +1,15 @@
+<div class="layout-load-prioritization" *ngIf="show">
+    <app-sub-menu-header [header]="'Extend Battery Life'" (closeScreen)="closeScreen.emit(); show = false"></app-sub-menu-header>
+    <div class="flex flex-column justify-content-end">
+        <div class="flex flex-column justify-content-center align-items-center gap-2 p-3 custom-content-height">
+            <span class="text-base font-normal custom-load-font">
+                Your battery life is running low. You can choose to turn off certain loads to extend your battery life. Select which loads you would like to turn off by selecting the card toggles below.
+            </span>
+            
+        </div>
+        <div class="flex flex-column align-items-start gap-3 align-self-stretch custom-button-container w-full">
+            <button id="battery-submit" type="submit" pButton pRipple label="Update" class="flex w-full justify-content-center border-round-xs custom-button-style" (click)="updatePriority()"></button>
+
+        </div>
+    </div>
+</div>

@@ -21,6 +21,12 @@ import { MenuModule } from 'primeng/menu';
 import { ToolbarModule } from 'primeng/toolbar';
 import { MobileFooterComponent } from './mobile-footer/mobile-footer.component';
 import { HomeSummaryComponent } from './home-summary/home-summary.component';
+import { LoadPrioritizationComponent } from './load-prioritization/load-prioritization.component';
+import { LoadPrioritizationCardComponent } from './load-prioritization-card/load-prioritization-card.component';
+import { SubMenuHeaderComponent } from './sub-menu-header/sub-menu-header.component';
+import { ButtonModule } from 'primeng/button';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { BatteryExtensionComponent } from './battery-extension/battery-extension.component';
 
 @NgModule({
     declarations: [
@@ -31,7 +37,11 @@ import { HomeSummaryComponent } from './home-summary/home-summary.component';
         AppSidebarComponent,
         AppLayoutComponent,
         MobileFooterComponent,
-        HomeSummaryComponent
+        HomeSummaryComponent,
+        LoadPrioritizationComponent,
+        LoadPrioritizationCardComponent,
+        SubMenuHeaderComponent,
+        BatteryExtensionComponent
     ],
     imports: [
         BrowserModule,
@@ -47,7 +57,9 @@ import { HomeSummaryComponent } from './home-summary/home-summary.component';
         RouterModule,
         AppConfigModule,
         MenuModule,
-        ToolbarModule
+        ToolbarModule,
+        ButtonModule,
+        DragDropModule
     ],
     exports: [AppLayoutComponent]
 })
