@@ -6,7 +6,7 @@
         <path fill-rule="evenodd" clip-rule="evenodd" d="M2 12.5C2 7 6.5 2.5 12 2.5C17.5 2.5 22 7 22 12.5C22 18 17.5 22.5 12 22.5C6.5 22.5 2 18 2 12.5ZM11 13.5L16.2 16.7L17 15.4L12.5 12.7V7.5H11V13.5Z" fill="white"/>
     </svg>
     <div class="flex flex-column justify-content-center align-items-start gap-1 custom-flex">
-        <span class="text-base font-semibold time-remaining-font">{{timeRemaining}} Left</span>
+        <span class="text-base font-semibold time-remaining-font">{{hours === 1 ? hours + ' hr': hours > 1 ? hours + ' hrs' : ''}} {{minutes > 0 ? minutes + ' mins': ''}} Left</span>
         <span class="text-sm font-normal time-remaining-font">Remaining Time Left In Charge Period</span>
     </div>
 </div>

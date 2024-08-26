@@ -87,7 +87,7 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
         }).catch(() => {
           this.homeSummary = {
             homeState: 'CONNECTED',
-            gridState: 'PRESENT',
+            gridState: 'LOST',
             breakersInUse: 10,
             breakersTotal: 12,
             dailyUsage: 15,
@@ -98,11 +98,11 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
                 source: {
                   id: 'asds',
                   name: 'V2H',
-                  type: 'battery',
+                  type: 'BATTERY',
                   minimumCharge: 80,
                 },
                 timeRemaining: 8,
-                stateOfCharge: 10,
+                stateOfCharge: 12, // TODO: What value should this be for the notification to show up
               }
             ]
           }

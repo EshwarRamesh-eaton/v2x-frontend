@@ -30,6 +30,7 @@ import { BatteryExtensionComponent } from './battery-extension/battery-extension
 import { BatteryRemainingTimeCardComponent } from './battery-remaining-time-card/battery-remaining-time-card.component';
 import { CheckboxModule } from 'primeng/checkbox';
 import { ExtendBatteryLifeNotificationComponent } from './extend-battery-life-notification/extend-battery-life-notification.component';
+import { CoreSharedModule } from '../core-shared/core-shared.module';
 
 @NgModule({
     declarations: [
@@ -65,7 +66,8 @@ import { ExtendBatteryLifeNotificationComponent } from './extend-battery-life-no
         ToolbarModule,
         ButtonModule,
         DragDropModule,
-        CheckboxModule
+        CheckboxModule,
+        CoreSharedModule
     ],
     exports: [AppLayoutComponent]
 })

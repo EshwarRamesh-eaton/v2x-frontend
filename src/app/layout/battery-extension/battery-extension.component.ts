@@ -10,8 +10,12 @@ import { HomeSourceRemaining } from 'src/app/demo/api/home';
 export class BatteryExtensionComponent {
   @Input() show = false
   @Output() closeScreen = new EventEmitter();
-
+  constructor() {}
 
   // TODO: The timeremaining needs to be converted into hrs and mins - see what backedn will give here
   // TODO: Get real data see which model pertains to this section 
+
+  selectAllCheckboxes() {
+    // once we have the modal, implement the select all checkbox funtionality
+  }
 }

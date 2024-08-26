@@ -8,7 +8,7 @@
     <app-battery-extension [show]="selectedScreen === menuValue.manageDevices" (closeScreen)="selectedScreen = ''"></app-battery-extension>
     <div class="layout-main-container">
         <div class="layout-main">
-            <app-extend-battery-life-notification [sourceRemaining]="sourceRemaining" [homeSummary]="homeSummary" (showBatteryPage)="selectedScreen = menuValue.manageDevices"></app-extend-battery-life-notification>
+            <app-extend-battery-life-notification *ngIf="homeSummary && sourceRemaining" [sourceRemaining]="sourceRemaining" [homeSummary]="homeSummary" (showBatteryPage)="selectedScreen = menuValue.manageDevices"></app-extend-battery-life-notification>
             <router-outlet></router-outlet>
         </div>
         <app-footer></app-footer>

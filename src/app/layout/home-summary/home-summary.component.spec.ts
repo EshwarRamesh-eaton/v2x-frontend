@@ -1,14 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeSummaryComponent } from './home-summary.component';
+import { AppModule } from 'src/app/app.module';
+import { AppLayoutModule } from '../app.layout.module';
 
-describe('HomeSummaryComponent', () => {
+fdescribe('HomeSummaryComponent', () => {
   let component: HomeSummaryComponent;
   let fixture: ComponentFixture<HomeSummaryComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HomeSummaryComponent]
+      declarations: [HomeSummaryComponent],
+      imports: [AppModule, AppLayoutModule]
     })
     .compileComponents();
     

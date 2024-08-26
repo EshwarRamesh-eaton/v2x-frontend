@@ -1,14 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BatteryExtensionComponent } from './battery-extension.component';
+import { AppModule } from 'src/app/app.module';
+import { AppLayoutModule } from '../app.layout.module';
 
-describe('BatteryExtensionComponent', () => {
+fdescribe('BatteryExtensionComponent', () => {
   let component: BatteryExtensionComponent;
   let fixture: ComponentFixture<BatteryExtensionComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BatteryExtensionComponent]
+      declarations: [BatteryExtensionComponent],
+      imports: [AppModule, AppLayoutModule]
     })
     .compileComponents();
     

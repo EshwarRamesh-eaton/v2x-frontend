@@ -7,7 +7,7 @@ import { GridStateValue, HomeSourceRemaining, HomeSummary } from 'src/app/demo/a
   templateUrl: './extend-battery-life-notification.component.html',
   styleUrl: './extend-battery-life-notification.component.scss'
 })
-export class ExtendBatteryLifeNotificationComponent {
+export class ExtendBatteryLifeNotificationComponent  {
   @Input() sourceRemaining: HomeSourceRemaining;
   @Input() homeSummary: HomeSummary;
   @Output() showBatteryPage = new EventEmitter<any>();

@@ -13,10 +13,10 @@
             </div>
         </div>
         <div class="flex flex-column align-items-start gap-3 align-self-stretch custom-button-container w-full">
-            <button id="load-submit" type="submit" pButton pRipple label="Update" class="flex w-full justify-content-center border-round-xs custom-button-style" (click)="updatePriority()"></button>
-
+            <button id="load-submit" [disabled]="disableButton" type="submit" pButton pRipple label="Update" class="flex w-full justify-content-center border-round-xs custom-button-style" (click)="updatePriority()"></button>
         </div>
     </div>
     
     
 </div>
+<app-device-info-card [visibility]="false"></app-device-info-card>

@@ -1,0 +1,74 @@
+.custom-card-style {
+    border-radius: 8px 8px 0px 0px;
+    background: #1D2529;
+}
+
+.custom-padding {
+    padding: 0px 16px;
+}
+
+.custom-head-font {
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-family: "Open Sans";
+    line-height: normal;
+}
+
+.custom-head-font-color {
+    color: #FFF !important
+}
+
+.button-style {
+    gap: 10px;
+    flex: 1 0 0;
+    padding: 10px 20px
+}
+
+.button-active-color {
+    background: #FFF;
+}
+
+.button-passive-color {
+    background: #2B353A;
+}
+
+.button-active-text-color {
+    color: #000;
+}
+
+.button-active-text-color {
+    color: #000;
+}
+
+.button-passive-text-color {
+    color: #C6CACC;
+}
+
+.custom-data-dimensions {
+    height: 56px;
+}
+
+:host ::ng-deep .p-sidebar .p-sidebar-content {
+    padding: 0;
+}
+
+:host ::ng-deep .p-sidebar .p-sidebar-header {
+    padding: 0;
+}
+
+.custom-bottom-dimensions {
+    height: 34px;
+    padding: 21px 120px 8px 121px;
+    flex-shrink: 0;
+}
+
+.tab {
+    width: 134px;
+    height: 5px;
+    flex-shrink: 0;
+    border-radius: 100px;
+    background: #FFF;
+}
+
+.custom-text-color {
+    color: #80BDE0;
+}

@@ -51,12 +51,15 @@ export class LoadPrioritizationComponent implements OnInit{
       tripState: false,
       tripReason: ''
     }
-  ]
+  ];
+  disableButton = true;
+  showDeviceDetails = false;
   constructor() {}
 
   ngOnInit(): void {}
 
   drop(event: CdkDragDrop<string[]>) {
+    this.disableButton = false;
     moveItemInArray(this.breakers, event.previousIndex, event.currentIndex);
     this.breakers.forEach((e, idx) => {
       e.priority = idx + 1;
@@ -64,6 +67,6 @@ export class LoadPrioritizationComponent implements OnInit{
   }
 
   updatePriority() {
-    
+    this.disableButton = true;
   }
 }
