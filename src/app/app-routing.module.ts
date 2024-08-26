@@ -1,7 +1,7 @@
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { NotfoundComponent } from './demo/components/notfound/notfound.component';
-import { AppLayoutComponent } from "./layout/app.layout.component";
+import { AppLayoutComponent } from "./layout/layout/app.layout.component";
 import { AuthService } from './demo/service/auth.service';
 
 @NgModule({

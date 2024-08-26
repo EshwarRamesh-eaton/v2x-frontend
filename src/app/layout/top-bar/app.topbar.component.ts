@@ -1,9 +1,9 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { MenuItem, MessageService } from 'primeng/api';
-import { LayoutService } from "./service/app.layout.service";
-import { AuthService } from '../demo/service/auth.service';
-import { HomeService } from '../demo/service/home.service';
-import { GridStateValue, HomeSummary } from '../demo/api/home';
+import { LayoutService } from "../service/app.layout.service";
+import { AuthService } from '../../demo/service/auth.service';
+import { HomeService } from '../../demo/service/home.service';
+import { GridStateValue, HomeSummary } from '../../demo/api/home';
 
 @Component({
     selector: 'app-topbar',

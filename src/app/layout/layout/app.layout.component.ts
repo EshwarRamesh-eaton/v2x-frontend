@@ -1,13 +1,13 @@
 import { Component, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
-import { LayoutService } from "./service/app.layout.service";
-import { AppSidebarComponent } from "./app.sidebar.component";
-import { AppTopBarComponent } from './app.topbar.component';
-import { HomeService } from '../demo/service/home.service';
-import { HomeSource, HomeSourceRemaining, HomeSummary } from '../demo/api/home';
-import { MenuItemValue } from '../demo/api/menuItems';
-import { SourceTypeValue } from '../demo/api/source';
+import { LayoutService } from "../service/app.layout.service";
+import { AppSidebarComponent } from "../app.sidebar.component";
+import { AppTopBarComponent } from '../top-bar/app.topbar.component';
+import { HomeService } from '../../demo/service/home.service';
+import { HomeSource, HomeSourceRemaining, HomeSummary } from '../../demo/api/home';
+import { MenuItemValue } from '../../demo/api/menuItems';
+import { SourceTypeValue } from '../../demo/api/source';
 
 @Component({
     selector: 'app-layout',
