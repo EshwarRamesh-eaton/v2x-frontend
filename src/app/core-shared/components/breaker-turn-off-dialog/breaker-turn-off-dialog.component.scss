@@ -1,0 +1,25 @@
+.custom-header-font {
+    color: #E8EAEA;
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-family: "Open Sans";
+    line-height: normal;
+}
+
+.custom-message-font {
+    color: #C6CACC;
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-family: "Open Sans";
+    font-style: normal;
+    line-height: normal;
+}
+
+:host ::ng-deep .custom-button-color-primary {
+    background: #007BC1;
+    color: #FFF;
+    border: 1px solid #007BC1;
+}
+
+:host ::ng-deep .custom-button-color-secondary {
+    border: 1px solid #80BDE0;
+    color: #80BDE0;
+}
