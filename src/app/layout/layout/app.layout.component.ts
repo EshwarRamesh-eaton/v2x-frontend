@@ -76,6 +76,7 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
 
     getHomeSummary() {
         this.homeService.getHomeSummary()
+        
         .then((resp) => {
           this.homeSummary = resp;
           this.homeSummary.sourcesRemaining.forEach((entry) => {
@@ -102,7 +103,7 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
                   minimumCharge: 80,
                 },
                 timeRemaining: 8,
-                stateOfCharge: 12, // TODO: What value should this be for the notification to show up
+                stateOfCharge: 9, // TODO: What value should this be for the notification to show up
               }
             ]
           }

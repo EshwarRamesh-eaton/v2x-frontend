@@ -9,7 +9,7 @@ import { ProductService } from './demo/service/product.service';
 import { DeviceService } from './demo/service/device.service';
 import { UserService } from './demo/service/user.service';
 import { ToastModule } from 'primeng/toast';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { BadgeModule } from 'primeng/badge';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './demo/service/auth-interceptor';
@@ -22,7 +22,7 @@ import { HomeService } from './demo/service/home.service';
     providers: [
         { provide: LocationStrategy, useClass: PathLocationStrategy },
         { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-        DeviceService, UserService, ProductService, MessageService, HomeService
+        DeviceService, UserService, ProductService, MessageService, HomeService, ConfirmationService
     ],
     bootstrap: [AppComponent],
 })

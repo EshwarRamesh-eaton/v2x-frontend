@@ -1,0 +1,18 @@
+<p-confirmDialog >
+    <ng-template pTemplate="header">
+        <div class="flex flex-row align-items-start align-self-stretch pr-3">
+            <span class="pr-3">
+                <svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M23 21L12 2L1 21H23ZM11 18V16H13V18H11ZM11 14H13V10H11V14Z" fill="#D2595A"/>
+                </svg>
+            </span>
+            
+            <span class="text-lg font-semibold custom-header-font">{{header}}</span>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="message">
+        <div class="flex font-normal text-base custom-message-font">
+            {{message}}
+        </div>
+    </ng-template>
+</p-confirmDialog>

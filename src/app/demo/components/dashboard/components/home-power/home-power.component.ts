@@ -40,7 +40,7 @@ export class HomePowerComponent implements OnInit {
               minimumCharge: 80,
             },
             timeRemaining: 8,
-            stateOfCharge: 12, // TODO: What value should this be for the notification to show up
+            stateOfCharge: 9, // TODO: What value should this be for the notification to show up
           }
         ]
       }
