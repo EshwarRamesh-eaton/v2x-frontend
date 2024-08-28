@@ -6,7 +6,7 @@ import { AppLayoutComponent } from './app.layout.component';
 import { HomeService } from 'src/app/demo/service/home.service';
 import { DebugElement } from '@angular/core';
 
-fdescribe('AppLayoutComponent', () => {
+describe('AppLayoutComponent', () => {
   let component: AppLayoutComponent;
   let fixture: ComponentFixture<AppLayoutComponent>;
   let debugElement: DebugElement;
