@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Breakers } from 'src/app/demo/api/breakers';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { BreakerService } from 'src/app/demo/service/breaker.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-load-prioritization',
@@ -54,9 +56,20 @@ export class LoadPrioritizationComponent implements OnInit{
   ];
   disableButton = true;
   showDeviceDetails = false;
-  constructor() {}
+  constructor(private breakerService: BreakerService, private messageService: MessageService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getBreakers();
+  }
+
+  getBreakers() {
+    this.breakerService.getBreakers()
+    .then((resp) => {
+      this.breakers = resp;
+    }).catch(() => {
+      this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'Cannot get breakers at the moment. Please try again later', life: 10000 })
+    })
+  }
 
   drop(event: CdkDragDrop<string[]>) {
     this.disableButton = false;
@@ -67,6 +80,21 @@ export class LoadPrioritizationComponent implements OnInit{
   }
 
   updatePriority() {
+    this.breakers.forEach((e) => {
+      const breakerPriority = {
+        uuid: e.uuid,
+        name: e.name,
+        priority: e.priority
+      }
+      this.breakerService.updateBreakerPriority(breakerPriority)
+      .then(() => {
+        this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'Priority updated successfully', life: 3000 });
+      }).catch(() => {
+        this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'Cannot update priority at the moment. Please try again later', life: 3000 });
+      })
+    })
+    
+    
     this.disableButton = true;
   }
 }
