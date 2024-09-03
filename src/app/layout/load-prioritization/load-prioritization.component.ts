@@ -67,7 +67,7 @@ export class LoadPrioritizationComponent implements OnInit{
     .then((resp) => {
       this.breakers = resp;
     }).catch(() => {
-      this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'Cannot get breakers at the moment. Please try again later', life: 10000 })
+      // this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'Cannot get breakers at the moment. Please try again later', life: 10000 })
     })
   }
 

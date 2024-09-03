@@ -1,45 +1,6 @@
-<p-sidebar [(visible)]="visibility" [style]="style" [showCloseIcon]="false" position="bottom">
-    <div class="flex flex-column align-items-center gap-3 custom-card-style pt-3">
-        <div class="flex flex-row align-items-center align-self-stretch gap-2 custom-padding">
-            <img [src]="imagePath"/>
-            <span class="text-base font-semibold custom-head-font custom-head-font-color">{{header}}</span>
-        </div>
-        <!-- the line below check css -->
-        <div class="flex flex-row align-items-center align-self-stretch gap-2 custom-padding"> 
-            <div class="flex justify-content-center align-items-center button-style border-round-sm	button-active-color">
-                <span class="text-align-center text-sm font-semibold custom-head-font button-active-text-color">On</span>
-            </div>
-            <div class="flex justify-content-center align-items-center button-style border-round-sm	button-passive-color">
-                <span class="text-align-center text-sm font-semibold custom-head-font button-passive-text-color">Off</span>
-            </div>
-        </div>
-        <!-- see how to define the middle section -->
-        <div class="flex w-full flex-column">
-            <ng-container *ngFor="let device of deviceDetails | keyvalue; let last = last">
-           
-                <div class="flex w-full flex-row justify-content-between align-self-stretch align-items-center pr-3 pl-3 custom-data-dimensions">
-                    <div class="flex w-full flex-row align-items-center gap-3">
-                        <img [src]="imagePath"/>
-                        <span>{{device.key | titlecase}}</span>
-                    </div>
-                    <span>{{device.value}}</span>
-                </div>
-                
-                <svg *ngIf="!last" xmlns="http://www.w3.org/2000/svg"  height="2" viewBox="0 0 375 2" fill="none">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M375 1.3501H0V0.350098H375V1.3501Z" fill="#333D43"/>
-                </svg>
-             </ng-container>
-        </div>
-        
-        
-        <div class="flex w-full justify-content-end align-items-center custom-padding">
-                <span class="flex justify-content-center align-items-center gap-2 pr-2 pl-2 custom-text-color">Device Info</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
-                    <path d="M12 4.3501L10.59 5.7601L16.17 11.3501H4V13.3501H16.17L10.59 18.9401L12 20.3501L20 12.3501L12 4.3501Z" fill="#80BDE0"/>
-                </svg>   
-        </div>
-        <div class="flex justify-content-center align-items-center custom-bottom-dimensions">
-            <div class="tab"></div>
-        </div>
-    </div>
+<p-sidebar [(visible)]="visibility" [style]="style" [showCloseIcon]="false" position="bottom" (onHide)="changeVisibility()">
+<!-- TODO: See if device details type is breaker add enum once confirmed-->
+   <app-breaker-info *ngIf="deviceDetails && deviceDetails.type === 'breaker'" [deviceDetails]="deviceDetails"></app-breaker-info>
+<!-- TODO: See if device details type is EV -->
+    <app-ev-info *ngIf="deviceDetails && deviceDetails.type === 'ev'" [deviceDetails]="deviceDetails"></app-ev-info>
 </p-sidebar>

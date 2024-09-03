@@ -3,7 +3,7 @@
     <span [class]="activeIndex === 2 ? 'flex align-items-start gap-2 custom-tab-padding text-base font-semibold selected-font-color' : 'flex align-items-start gap-2 custom-tab-padding text-base font-normal custom-font-color'" (click)="activeIndex=2">Favorites</span>
     <span [class]="activeIndex === 3 ? 'flex align-items-start gap-2 custom-tab-padding text-base font-semibold selected-font-color' : 'flex align-items-start gap-2 custom-tab-padding text-base font-normal custom-font-color'" (click)="activeIndex=3">Areas</span>
 </div>
-<div class="flex flex-column align-items-center gap-2">
+<div class="flex flex-column align-items-center gap-2" *ngIf="devices">
     <div class="flex w-full justify-content-between align-items-center custom-dimensions card mb-0">
         <div class="text-base font-semibold">Total <span class="device-count-color">{{devices.length}}</span> devices</div>
         <div class="flex align-items-start gap-2 p-2">
@@ -18,9 +18,9 @@
     </div>
     <div class="flex align-items-start gap-2 flex-wrap">
         <div class="flex-row inline-block" *ngFor="let device of devices">
-            <app-device-card [device]="device"></app-device-card>
+            <app-device-card [device]="device" (showInfo)="deviceInfo($event)" (click)="deviceInfo(1)"></app-device-card>
         </div>
     </div>
 </div>
 
-
+<app-device-info-card [visibility]="deviceVisibile" (closeScreen)="deviceVisibile = false" [deviceDetails]=""></app-device-info-card>

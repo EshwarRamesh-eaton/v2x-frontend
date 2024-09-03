@@ -1,0 +1,72 @@
+<div class="flex flex-column align-items-center gap-3 custom-card-style">
+    <div class="flex flex-row justify-content-between w-full custom-padding custom-height-header pt-3" [ngClass]="deviceDetails.state === 'Unplugged' || deviceDetails.state === 'Unresponsive' ? 'custom-bg-unplugged' : deviceDetails.state === 'Plugged In' ? 'custom-bg-plugged': (deviceDetails.state === 'Preparing' || deviceDetails.state === 'Charging') ? 'custom-bg-preparing': deviceDetails.state === 'Charged' ? 'custom-bg-charged': 'custom-bg-fault'">
+        <div class="flex flex-row align-items-start align-self-stretch gap-2 ">
+            <img src="assets/demo/images/eaton/ev.svg"/>
+            <span class="text-base font-semibold custom-head-font custom-head-font-color">{{deviceDetails.name}}</span>
+            <p-chip [label]="deviceDetails.state" class="custom-zoom"/>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="19" viewBox="0 0 20 19" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M10 2.09C11.09 0.81 12.76 0 14.5 0C17.58 0 20 2.42 20 5.5C20 9.2769 16.6056 12.3549 11.4627 17.0185L11.45 17.03L10 18.35L8.55 17.04L8.51052 17.0041C3.38263 12.3442 0 9.27033 0 5.5C0 2.42 2.42 0 5.5 0C7.24 0 8.91 0.81 10 2.09ZM10 15.65L10.1 15.55C14.86 11.24 18 8.39 18 5.5C18 3.5 16.5 2 14.5 2C12.96 2 11.46 2.99 10.94 4.36H9.07C8.54 2.99 7.04 2 5.5 2C3.5 2 2 3.5 2 5.5C2 8.39 5.14 11.24 9.9 15.55L10 15.65Z" fill="white"/>
+        </svg>
+            
+    </div>
+    <div class="absolute custom-img-position">
+        <img [src]="deviceDetails.state === 'Unplugged' ? 'assets/demo/images/eaton/ev-car-unplugged.png' : 'assets/demo/images/eaton/ev-car-preparing.png'"/>
+    </div>
+    <div class="flex pt-6 p-3 justify-content-center align-items-center align-self-stretch">
+        <span class="custom-head-font custom-head-font-color text-base font-normal">{{deviceDetails.state === 'Unplugged' ? 'Plug in your vehicle to charge': deviceDetails.state === 'Plugged In' || deviceDetails.state === 'Preparing' ? 'Waiting for vehicle': deviceDetails.state === 'Charging' ? 'Until Full or unplugged': deviceDetails.state === 'Charged' ? '6kWh was added' : 'Unable to Charge'}}</span>
+    </div>
+    <div class="flex flex-column justify-content-center align-items-center custom-box-style">
+        <div class="flex p-3 w-full justify-content-between align-items-center">
+            <span class="custom-head-font custom-parameter-color text-sm font-semibold">{{deviceDetails.state === 'Unplugged' ? 'Last Plug Session': 'Current Plug Session'}}</span>
+            <span class="custom-head-font custom-parameter-color" *ngIf="deviceDetails.state === 'Unplugged'">5 h ago</span>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="343" height="1" viewBox="0 0 343 1" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M343 1H0V0H343V1Z" fill="#424E54"/>
+        </svg>
+        <div class="flex p-3 w-full justify-content-between align-items-center">
+            <div class="flex flex-column align-items-start">
+                <div class="custom-head-font text-base font-semibold">+11 <span class="custom-head-font text-xs font-semibold custom-parameter-unit-color">kWh</span></div>
+                <span class="text-sm font-normal custom-parameter-unit-color">Energy Added</span>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="1" height="41" viewBox="0 0 1 41" fill="none">
+                <path d="M0.5 0V41" stroke="#424E54"/>
+              </svg>
+            <div class="flex flex-column align-items-start">
+                <div class="custom-head-font text-base font-semibold">2 <span class="custom-head-font text-xs font-semibold custom-parameter-unit-color">h</span> 52 <span class="custom-head-font text-xs font-semibold custom-parameter-unit-color">m</span></div>
+                <span class="text-sm font-normal custom-parameter-unit-color">Charge Time</span>
+            </div>
+        </div>
+        
+    </div>
+    <div class="pl-6 pr-6 pt-2 pb-2 flex justify-content-between align-items-center align-self-stretch">
+        <div class="flex flex-column align-items-center p-2 gap-1 ">
+            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M10.1565 0C4.6365 0 0.166504 4.48 0.166504 10C0.166504 15.52 4.6365 20 10.1565 20C15.6865 20 20.1665 15.52 20.1665 10C20.1665 4.48 15.6865 0 10.1565 0ZM10.1665 18C5.7465 18 2.1665 14.42 2.1665 10C2.1665 5.58 5.7465 2 10.1665 2C14.5865 2 18.1665 5.58 18.1665 10C18.1665 14.42 14.5865 18 10.1665 18ZM9.1665 5H10.6665V10.25L15.1665 12.92L14.4165 14.15L9.1665 11V5Z" fill="#A1A7AA"/>
+              </svg>
+            <span class="bottom-icon-color text-sm font-semibold">Schedules</span>
+        </div>
+        <div class="flex flex-column align-items-center p-2 ">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M11.1 5H13.9V19H11.1V5ZM5.5 9.2H8.5V19H5.5V9.2ZM19.5 13H16.7V19H19.5V13Z" fill="#A1A7AA"/>
+              </svg>
+            <span class="bottom-icon-color text-sm font-semibold">Usage History</span>
+        </div>
+        <button *ngIf="deviceDetails.state === 'Plugged In'" type="submit" pButton pRipple label="Start" class="flex justify-content-center border-round-xs custom-button-style"></button>
+        <button *ngIf="deviceDetails.state === 'Preparing' || deviceDetails.state === 'Charging'" type="submit" pButton pRipple label="Stop" class="flex justify-content-center border-round-xs custom-secondary-button-style"></button>
+    
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" width="375" height="1" viewBox="0 0 375 1" fill="none">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M375 1H0V0H375V1Z" fill="#2B353A"/>
+        </svg>
+    <div class="flex w-full justify-content-end align-items-center custom-padding">
+        <span class="flex justify-content-center align-items-center gap-2 pr-2 pl-2 custom-text-color">Device Info</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+            <path d="M12 4.3501L10.59 5.7601L16.17 11.3501H4V13.3501H16.17L10.59 18.9401L12 20.3501L20 12.3501L12 4.3501Z" fill="#80BDE0"/>
+        </svg>   
+    </div>
+    
+    <div class="flex justify-content-center align-items-center custom-bottom-dimensions">
+        <div class="tab"></div>
+    </div>
+</div>

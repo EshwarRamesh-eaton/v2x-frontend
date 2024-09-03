@@ -20,5 +20,5 @@ export interface DeviceState {
 
 export enum DeviceStateValue {
     connected = 'CONNECTED',
-    isIslanded = 'ISLANDED'
+    islanded = 'ISLANDED'
 }
