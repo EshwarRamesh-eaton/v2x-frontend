@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { GridStateValue, HomeSummary } from 'src/app/demo/api/home';
 import { HomeService } from 'src/app/demo/service/home.service';
 
@@ -9,41 +9,9 @@ import { HomeService } from 'src/app/demo/service/home.service';
   styleUrl: './home-power.component.scss'
 })
 export class HomePowerComponent implements OnInit {
-  homeSummary: HomeSummary;
+  @Input() homeSummary: HomeSummary;
   gridValue = GridStateValue;
-  constructor(private homeService: HomeService) {}
+  constructor() {}
   
-  ngOnInit(): void {
-      this.getHomeSummary();
-  }
-
-  
-  getHomeSummary() {
-    this.homeService.getHomeSummary()
-    .then((resp) => {
-      this.homeSummary = resp;
-    }).catch(() => {
-      this.homeSummary = {
-        homeState: 'CONNECTED',
-        gridState: 'PRESENT',
-        breakersInUse: 10,
-        breakersTotal: 12,
-        dailyUsage: 15,
-        devicesInUse: 10,
-        devicesTotal: 12,
-        sourcesRemaining: [
-          {
-            source: {
-              id: 'asds',
-              name: 'V2H',
-              type: 'BATTERY',
-              minimumCharge: 80,
-            },
-            timeRemaining: 8,
-            stateOfCharge: 9, // TODO: What value should this be for the notification to show up
-          }
-        ]
-      }
-    })
-  }
+  ngOnInit(): void {}
 }

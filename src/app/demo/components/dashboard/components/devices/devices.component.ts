@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Device } from 'src/app/demo/api/devices';
+import { GridStateValue, HomeSummary } from 'src/app/demo/api/home';
 import { DeviceService } from 'src/app/demo/service/device.service';
 
 @Component({
@@ -16,6 +17,8 @@ export class DevicesComponent implements OnInit {
   checked = false;
   deviceVisibile = false;
   toggleWasDone = false;
+  @Input() homeSummary: HomeSummary;
+  gridValue = GridStateValue;
   constructor(private deviceService: DeviceService) {}
 
   ngOnInit(): void {
@@ -85,7 +88,8 @@ export class DevicesComponent implements OnInit {
   getDeviceInfo(device: Device) {
     // TODO: This call is yet to be designed so we are creating data here. This will be replaced with actual device data
     const evState = ['Unplugged', 'Plugged In', 'Preparing', 'Charging', 'Charged', 'Error', 'Fault', 'Tripped', 'Unresponsive']
-    const deviceState = evState[Math.floor(Math.random() * (8 - 0 + 1) + 0)];
+    // const deviceState = evState[Math.floor(Math.random() * (8 - 0 + 1) + 0)];
+    const deviceState = evState[0]
     this.devicesInfo.push({
       uuid: device.uuid,
       name: device.name,

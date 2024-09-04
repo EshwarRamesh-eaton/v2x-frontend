@@ -16,5 +16,6 @@ export enum MenuItemValue {
     advancedFeatures = 'advancedFeatures',
     appSettings = 'appSettings',
     helpSupport = 'helpSupport',
-    feedback = 'feedback'
+    feedback = 'feedback',
+    logout = 'logout'
   }

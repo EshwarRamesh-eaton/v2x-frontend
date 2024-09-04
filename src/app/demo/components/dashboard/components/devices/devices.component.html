@@ -17,10 +17,11 @@
         </div>
     </div>
     <div class="flex align-items-start gap-2 flex-wrap">
-        <div class="flex-row inline-block" *ngFor="let device of devices">
+        <div class="flex-row inline-block" [ngClass]="homeSummary.gridState === gridValue.lost ? 'session-disabled' : ''"  *ngFor="let device of devices">
             <app-device-card [device]="device" (showInfo)="deviceInfo($event)" (click)="deviceInfo(1, device)"></app-device-card>
         </div>
     </div>
 </div>
 <app-device-favorites *ngIf="activeIndex === 2"></app-device-favorites>
+<app-device-areas *ngIf="activeIndex === 3"></app-device-areas>
 <app-device-info-card [visibility]="deviceVisibile" (closeScreen)="deviceVisibile = false" [deviceDetails]="currentDeviceInfo"></app-device-info-card>

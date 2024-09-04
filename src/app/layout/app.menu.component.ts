@@ -2,6 +2,7 @@ import { EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Component } from '@angular/core';
 import { GridStateValue, HomeSummary } from '../demo/api/home';
 import { MenuItemValue } from '../demo/api/menuItems';
+import { AuthService } from '../demo/service/auth.service';
 
 @Component({
     selector: 'app-menu',
@@ -14,7 +15,7 @@ export class AppMenuComponent implements OnInit {
     currentYear: string;
     menuValue = MenuItemValue;
     gridState = GridStateValue;
-    constructor() { 
+    constructor(private authService: AuthService) { 
         this.currentYear = new Date().getFullYear().toString();
     }
 
@@ -74,6 +75,11 @@ export class AppMenuComponent implements OnInit {
                 label: 'Feedback',
                 value: this.menuValue.feedback,
                 icon: 'assets/layout/images/icons/feedback.svg',
+            },
+            {
+                label: 'Logout',
+                value: this.menuValue.logout,
+                icon: 'assets/layout/images/icons/logout.svg',
             }
 
             
@@ -81,6 +87,11 @@ export class AppMenuComponent implements OnInit {
     }
 
     menuOptionSelection(value: any) {
-        this.selectedMenuOption.emit(value);
+        if (value === this.menuValue.logout) {
+            this.authService.logout();
+        } else {
+            this.selectedMenuOption.emit(value);
+        }
+        
     }
 }

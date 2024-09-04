@@ -33,7 +33,7 @@ export class DeviceCompleteInfoComponent implements OnChanges {
     } else if (this.deviceInfo.status === 'Preparing' || this.deviceInfo.status === 'Charging') {
       this.style = {'background': 'radial-gradient(121.28% 56.25% at 16.45% 100%, rgba(43, 115, 224, 0.60) 0%, rgba(191, 203, 115, 0.00) 100%), radial-gradient(100% 82.89% at 100% 0%, rgba(7, 225, 255, 0.94) 0%, rgba(0, 192, 88, 0.00) 100%), #0068B3', 'height': '239px' }
     } else if (this.deviceInfo.status === 'Charged') {
-      this.style = {'background': 'radial-gradient(121.28% 56.25% at 16.45% 100%, rgba(43, 115, 224, 0.60) 0%, rgba(191, 203, 115, 0.00) 100%), radial-gradient(100% 82.89% at 100% 0%, rgba(7, 225, 255, 0.94) 0%, rgba(0, 192, 88, 0.00) 100%), #0068B3', 'height': '239px' }
+      this.style = {'background': 'radial-gradient(103.74% 66.21% at 0% 100%, rgba(168, 233, 82, 0.60) 0%, rgba(168, 233, 82, 0.00) 100%), radial-gradient(100% 82.89% at 100% 0%, rgba(168, 233, 82, 0.60) 0%, rgba(229, 241, 215, 0.00) 100%), #4F8C00', 'height': '239px' }
     } else {
       this.style = {'background': 'radial-gradient(64.78% 65.16% at 3.43% 100%, #F97461 0%, rgba(202, 60, 61, 0.35) 69.84%), radial-gradient(100% 82.89% at 100% 0%, #F4956D 0%, rgba(255, 132, 63, 0.00) 100%), #CA3C3D', 'height': '239px' }
     }
