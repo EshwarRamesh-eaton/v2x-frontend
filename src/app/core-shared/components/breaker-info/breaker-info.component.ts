@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { DeviceService } from 'src/app/demo/service/device.service';
 
 @Component({
   selector: 'app-breaker-info',
@@ -8,4 +9,13 @@ import { Component, Input } from '@angular/core';
 })
 export class BreakerInfoComponent {
 @Input() deviceDetails
+@Output() triggerCloseScreen = new EventEmitter();
+
+constructor(private deviceService: DeviceService) {}
+
+  passDeviceDetails() {
+    this.deviceService.deviceData(this.deviceDetails)
+    this.deviceService.showInfoVariable(true);
+    this.triggerCloseScreen.emit();
+  }
 }

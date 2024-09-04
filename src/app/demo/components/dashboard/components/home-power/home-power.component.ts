@@ -25,7 +25,7 @@ export class HomePowerComponent implements OnInit {
     }).catch(() => {
       this.homeSummary = {
         homeState: 'CONNECTED',
-        gridState: 'LOST',
+        gridState: 'PRESENT',
         breakersInUse: 10,
         breakersTotal: 12,
         dailyUsage: 15,

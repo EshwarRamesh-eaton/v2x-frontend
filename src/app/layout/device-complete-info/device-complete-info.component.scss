@@ -1,0 +1,14 @@
+.layout-device-info {
+    position: fixed;
+    width: 100%;
+    height: calc(100vh);
+    z-index: 999;
+    overflow-y: auto;
+    user-select: none; 
+    background: #1D2529;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, .02), 0px 0px 2px rgba(0, 0, 0, .05), 0px 1px 4px rgba(0, 0, 0, .08);
+}
+
+.background-fault {
+    background: radial-gradient(64.78% 65.16% at 3.43% 100%, #F97461 0%, rgba(202, 60, 61, 0.35) 69.84%), radial-gradient(100% 82.89% at 100% 0%, #F4956D 0%, rgba(255, 132, 63, 0.00) 100%), #CA3C3D;
+}

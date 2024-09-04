@@ -1,0 +1,5 @@
+<div class="layout-device-info" *ngIf="show">
+    <app-sub-menu-header [header]="deviceInfo.name" [sideMenu]="true" [style]="style" [deviceCard]="true" [deviceType]="deviceInfo.type" (closeScreen)="closeScreen()"></app-sub-menu-header>
+    <app-breaker-complete-detail-card *ngIf="deviceInfo.type === 'Breaker'" [deviceInfo]="deviceInfo"></app-breaker-complete-detail-card>
+    <app-ev-complete-detail-card *ngIf="deviceInfo.type === 'EV'" [deviceInfo]="deviceInfo"></app-ev-complete-detail-card>
+</div>

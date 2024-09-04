@@ -1,0 +1,61 @@
+<div class="flex flex-column">
+    <div class="flex w-full flex-row p-3 align-items-center header-tab-color">
+        <div class="flex pr-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M11 7H13V9H11V7ZM11 11H13V17H11V11ZM12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z" fill="white"/>
+            </svg>
+        </div>        
+        <span class="header-font header-font-color text-base font-semibold">Basic Details</span>
+    </div>
+    <div class="flex flex-column">
+        <div class="flex flex-row justify-content-between p-3">
+            <span class="header-font header-font-color text-base font-normal">Name</span>
+            <span class="header-font header-value-color text-base font-normal">{{deviceInfo?.name}}</span>
+        </div>
+        <svg class="pl-3 pr-3 w-full" xmlns="http://www.w3.org/2000/svg" width="375" height="1" viewBox="0 0 375 1" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M375 1H0V0H375V1Z" fill="#2B353A"/>
+          </svg>
+    </div>
+    <div class="flex flex-column">
+        <div class="flex flex-row justify-content-between p-3">
+            <span class="header-font header-font-color text-base font-normal">Energy Added</span>
+            <span class="header-font header-value-color text-base font-normal">+{{deviceInfo?.energy_added}} kWh</span>
+        </div>
+        <svg class="pl-3 pr-3 w-full" xmlns="http://www.w3.org/2000/svg" width="375" height="1" viewBox="0 0 375 1" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M375 1H0V0H375V1Z" fill="#2B353A"/>
+          </svg>
+    </div>
+    <div class="flex flex-column">
+        <div class="flex flex-row justify-content-between p-3">
+            <span class="header-font header-font-color text-base font-normal">Charge Time</span>
+            <span class="header-font header-value-color text-base font-normal">{{hours}} h {{minutes}} m</span>
+        </div>
+        <svg class="pl-3 pr-3 w-full" xmlns="http://www.w3.org/2000/svg" width="375" height="1" viewBox="0 0 375 1" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M375 1H0V0H375V1Z" fill="#2B353A"/>
+          </svg>
+    </div>
+    <div class="flex flex-column">
+        <div class="flex flex-row justify-content-between p-3">
+            <span class="header-font header-font-color text-base font-normal">Saved (Gas)</span>
+            <span class="header-font header-value-color text-base font-normal">$ 146</span>
+        </div>
+        <svg class="pl-3 pr-3 w-full" xmlns="http://www.w3.org/2000/svg" width="375" height="1" viewBox="0 0 375 1" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M375 1H0V0H375V1Z" fill="#2B353A"/>
+          </svg>
+    </div>
+    <div class="flex flex-column">
+        <div class="flex flex-row justify-content-between p-3">
+            <span class="header-font header-font-color text-base font-normal">CO2 Saved (Gas)</span>
+            <span class="header-font header-value-color text-base font-normal">21 g</span>
+        </div>
+        <svg class="pl-3 pr-3 w-full" xmlns="http://www.w3.org/2000/svg" width="375" height="1" viewBox="0 0 375 1" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M375 1H0V0H375V1Z" fill="#2B353A"/>
+          </svg>
+    </div>
+    
+    <div class="flex flex-column w-full p-3 gap-3">
+        <button type="submit" pButton pRipple label="Troubleshoot Device" class="flex w-full justify-content-center border-round-xs custom-troubleshoot-button"></button>
+        <button type="submit" pButton pRipple label="Remove Device" class="flex w-full justify-content-center border-round-xs custom-remove-button"></button>
+
+    </div>
+</div>

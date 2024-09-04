@@ -8,6 +8,7 @@ import { HomeService } from '../../demo/service/home.service';
 import { HomeSource, HomeSourceRemaining, HomeSummary } from '../../demo/api/home';
 import { MenuItemValue } from '../../demo/api/menuItems';
 import { SourceTypeValue } from '../../demo/api/source';
+import { DeviceService } from 'src/app/demo/service/device.service';
 
 @Component({
     selector: 'app-layout',
@@ -30,7 +31,14 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
     menuValue = MenuItemValue;
     sourceRemaining: HomeSourceRemaining;
     sourceValue = SourceTypeValue;
-    constructor(public layoutService: LayoutService, public renderer: Renderer2, public router: Router, private homeService: HomeService) {
+    showDeviceInfo = false;
+    deviceInfo: any;
+    constructor(public layoutService: LayoutService, 
+        public renderer: Renderer2, 
+        public router: Router, 
+        private homeService: HomeService,
+        private deviceService: DeviceService
+    ) {
         this.overlayMenuOpenSubscription = this.layoutService.overlayOpen$.subscribe(() => {
             if (!this.menuOutsideClickListener) {
                 this.menuOutsideClickListener = this.renderer.listen('document', 'click', event => {
@@ -64,6 +72,14 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
                 this.hideMenu();
                 this.hideProfileMenu();
             });
+
+        this.deviceService.showInfo.subscribe((resp) => {
+            this.showDeviceInfo = resp;
+        })
+
+        this.deviceService.deviceFullData.subscribe((resp) => {
+            this.deviceInfo = resp;
+        })
     }
 
     ngOnInit(): void {
@@ -88,7 +104,7 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
         }).catch(() => {
           this.homeSummary = {
             homeState: 'CONNECTED',
-            gridState: 'LOST',
+            gridState: 'PRESENT',
             breakersInUse: 10,
             breakersTotal: 12,
             dailyUsage: 15,

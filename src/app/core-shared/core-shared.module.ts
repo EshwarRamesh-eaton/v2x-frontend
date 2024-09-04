@@ -6,10 +6,12 @@ import { BreakerInfoComponent } from './components/breaker-info/breaker-info.com
 import { EvInfoComponent } from './components/ev-info/ev-info.component';
 import { ChipModule } from 'primeng/chip';
 import { ButtonModule } from 'primeng/button';
+import { BreakerCompleteDetailCardComponent } from './components/breaker-complete-detail-card/breaker-complete-detail-card.component';
+import { EvCompleteDetailCardComponent } from './components/ev-complete-detail-card/ev-complete-detail-card.component';
 
 @NgModule({
-  declarations: [DeviceInfoCardComponent, BreakerInfoComponent, EvInfoComponent],
+  declarations: [DeviceInfoCardComponent, BreakerInfoComponent, EvInfoComponent, BreakerCompleteDetailCardComponent, EvCompleteDetailCardComponent],
   imports: [CommonModule, SidebarModule, ChipModule, ButtonModule],
-  exports: [DeviceInfoCardComponent]
+  exports: [DeviceInfoCardComponent, BreakerCompleteDetailCardComponent, EvCompleteDetailCardComponent]
 })
 export class CoreSharedModule { }

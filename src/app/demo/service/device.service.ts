@@ -1,12 +1,31 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { lastValueFrom } from 'rxjs';
+import { lastValueFrom, ReplaySubject } from 'rxjs';
 import { DeviceUsage, Device } from '../api/devices';
 
 @Injectable()
 export class DeviceService {
     baseUrl = `api/devices`
+    private deviceData$ = new ReplaySubject<any>(1);
+    private showDeviceFullInfo$ = new ReplaySubject<any>(1); 
     constructor(private http: HttpClient) { }
+
+    // TODO: Device Info has to be set a type
+    deviceData(deviceData: any) {
+        this.deviceData$.next(deviceData)
+    }
+
+    showInfoVariable(toggle) {
+        this.showDeviceFullInfo$.next(toggle);
+    }
+
+    get deviceFullData() {
+        return this.deviceData$.asObservable();
+    }
+
+    get showInfo() {
+        return this.showDeviceFullInfo$.asObservable();
+    }
 
     getDevices() {
         return lastValueFrom(this.http.get<Device[]>(`${this.baseUrl}`));
