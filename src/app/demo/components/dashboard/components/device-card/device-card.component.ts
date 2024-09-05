@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Device } from 'src/app/demo/api/devices';
 
 @Component({
@@ -9,10 +9,15 @@ import { Device } from 'src/app/demo/api/devices';
 })
 export class DeviceCardComponent implements OnInit, OnDestroy {
   @Input() device: Device;
+  @Output() showInfo = new EventEmitter<any>();
   constructor() {
 
   }
   ngOnInit() {}
+
+  toggleInputSwitch(state: number) {
+   this.showInfo.emit(state);
+  }
 
   ngOnDestroy() {}
 }

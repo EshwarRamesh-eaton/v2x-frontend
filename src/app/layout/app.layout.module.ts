@@ -31,6 +31,7 @@ import { BatteryRemainingTimeCardComponent } from './battery-remaining-time-card
 import { CheckboxModule } from 'primeng/checkbox';
 import { ExtendBatteryLifeNotificationComponent } from './extend-battery-life-notification/extend-battery-life-notification.component';
 import { CoreSharedModule } from '../core-shared/core-shared.module';
+import { DeviceCompleteInfoComponent } from './device-complete-info/device-complete-info.component';
 
 @NgModule({
     declarations: [
@@ -47,7 +48,8 @@ import { CoreSharedModule } from '../core-shared/core-shared.module';
         SubMenuHeaderComponent,
         BatteryExtensionComponent,
         BatteryRemainingTimeCardComponent,
-        ExtendBatteryLifeNotificationComponent
+        ExtendBatteryLifeNotificationComponent,
+        DeviceCompleteInfoComponent
     ],
     imports: [
         BrowserModule,

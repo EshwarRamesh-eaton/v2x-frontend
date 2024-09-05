@@ -1,21 +1,47 @@
 <div [style]="style" class="flex flex-column align-items-end gap-3 flex-shrink-0">
     <div class="flex flex-column align-items-start justify-content-between w-full">
         &nbsp;
-        <div class="flex flex-row align-items-center custom-height">
-            <div *ngIf="backButton" id="back-button" class="flex p-3 align-items-start gap-2 cursor-pointer" (click)="changeVisibility()">
-                <svg  xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+        <div class="flex w-full justify-content-between flex-row align-items-center custom-height">
+            <div id="back-button" class="flex p-3 align-items-start gap-2 cursor-pointer" (click)="changeVisibility()">
+                <svg *ngIf="backButton" xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
                     <path d="M20.5015 11H8.33146L13.9215 5.41L12.5015 4L4.50146 12L12.5015 20L13.9115 18.59L8.33146 13H20.5015V11Z" fill="#E8EAEA"/>
                 </svg>
+                <div class="flex flex-column justify-content-center">
+                    <span class="text-xl font-semibold header-font">{{header}}</span>
+                </div>
             </div>
-            <div class="flex flex-column justify-content-center">
-                <span class="text-xl font-semibold header-font">{{header}}</span>
-            </div>
+            
            <div *ngIf="sideMenu" class="flex p-2 gap-2 align-items-start cursor-pointer">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5015 8C13.6015 8 14.5015 7.1 14.5015 6C14.5015 4.9 13.6015 4 12.5015 4C11.4015 4 10.5015 4.9 10.5015 6C10.5015 7.1 11.4015 8 12.5015 8ZM12.5015 10C11.4015 10 10.5015 10.9 10.5015 12C10.5015 13.1 11.4015 14 12.5015 14C13.6015 14 14.5015 13.1 14.5015 12C14.5015 10.9 13.6015 10 12.5015 10ZM10.5015 18C10.5015 16.9 11.4015 16 12.5015 16C13.6015 16 14.5015 16.9 14.5015 18C14.5015 19.1 13.6015 20 12.5015 20C11.4015 20 10.5015 19.1 10.5015 18Z" fill="white"/>
                 </svg>
            </div>
+           
         </div>
-        
+        <div *ngIf="deviceCard" class="flex flex-column align-items-center gap-3 background-fault w-full">
+            <svg *ngIf="deviceType === 'Breaker'" xmlns="http://www.w3.org/2000/svg" width="97" height="96" viewBox="0 0 97 96" fill="none">
+                <circle cx="48.5" cy="48" r="48" fill="white" fill-opacity="0.2"/>
+              </svg>
+              <svg *ngIf="deviceType === 'Breaker'" class="custom-margin" xmlns="http://www.w3.org/2000/svg" width="41" height="40" viewBox="0 0 41 40" fill="none">
+                <path d="M2.16528 23.3333H12.1653V26.6667H2.16528V23.3333ZM28.8319 23.3333H38.8319V26.6667H28.8319V23.3333ZM27.5653 20.8333C27.0465 19.3741 26.0887 18.1113 24.8234 17.2182C23.5581 16.3252 22.0473 15.8458 20.4986 15.8458C18.9499 15.8458 17.4392 16.3252 16.1739 17.2182C14.9086 18.1113 13.9507 19.3741 13.4319 20.8333L8.71528 19.1667C9.57766 16.7308 11.1738 14.6221 13.2839 13.1306C15.3941 11.6392 17.9146 10.8384 20.4986 10.8384C23.0826 10.8384 25.6032 11.6392 27.7133 13.1306C29.8235 14.6221 31.4196 16.7308 32.2819 19.1667L27.5653 20.8333Z" fill="white"/>
+              </svg>
+
+              <svg *ngIf="deviceType === 'EV'" xmlns="http://www.w3.org/2000/svg" width="97" height="96" viewBox="0 0 97 96" fill="none">
+                <circle cx="48.5" cy="48" r="48" fill="white" fill-opacity="0.2"/>
+              </svg>
+              <svg *ngIf="deviceType === 'EV'" class="custom-margin" xmlns="http://www.w3.org/2000/svg" width="41" height="40" viewBox="0 0 41 40" fill="none">
+                <path d="M32.0436 3.34984C31.7103 2.3665 30.7769 1.6665 29.6769 1.6665H11.3436C10.2436 1.6665 9.32692 2.3665 8.97692 3.34984L5.51025 13.3332V26.6665C5.51025 27.5832 6.26025 28.3332 7.17692 28.3332H8.84359C9.76025 28.3332 10.5103 27.5832 10.5103 26.6665V24.9998H30.5103V26.6665C30.5103 27.5832 31.2603 28.3332 32.1769 28.3332H33.8436C34.7603 28.3332 35.5103 27.5832 35.5103 26.6665V13.3332L32.0436 3.34984ZM11.3436 19.9998C9.96025 19.9998 8.84359 18.8832 8.84359 17.4998C8.84359 16.1165 9.96025 14.9998 11.3436 14.9998C12.7269 14.9998 13.8436 16.1165 13.8436 17.4998C13.8436 18.8832 12.7269 19.9998 11.3436 19.9998ZM29.6769 19.9998C28.2936 19.9998 27.1769 18.8832 27.1769 17.4998C27.1769 16.1165 28.2936 14.9998 29.6769 14.9998C31.0603 14.9998 32.1769 16.1165 32.1769 17.4998C32.1769 18.8832 31.0603 19.9998 29.6769 19.9998ZM8.84359 11.6665L11.3436 4.1665H29.6769L32.1769 11.6665H8.84359Z" fill="white"/>
+                <path d="M12.1769 33.3332H18.8436V29.9998L28.8436 34.9998H22.1769V38.3332L12.1769 33.3332Z" fill="white"/>
+                </svg>
+                <svg *ngIf="deviceType === 'MID'" xmlns="http://www.w3.org/2000/svg" width="97" height="96" viewBox="0 0 97 96" fill="none">
+                    <circle cx="48.5" cy="48" r="48" fill="white" fill-opacity="0.2"/>
+                  </svg>
+                <svg *ngIf="deviceType === 'MID'" class="custom-margin" xmlns="http://www.w3.org/2000/svg" width="41" height="40" viewBox="0 0 24 24" fill="none">
+                    <path d="M17 14.0001V16.0001H23V14.0001H17ZM1 16.0001H7V14.0001H1V16.0001Z" fill="white"/>
+                    <path d="M5.514 14.5831L12.585 7.51206L14 8.92606L6.929 15.9961L5.514 14.5831Z" fill="white"/>
+                    <path d="M11.88 6.81006L4.81 13.8801L3 16.0001H6.93L14 8.93006L11.88 6.81006Z" fill="white"/>
+                  </svg>
+        </div>
     </div>
+   
 </div>

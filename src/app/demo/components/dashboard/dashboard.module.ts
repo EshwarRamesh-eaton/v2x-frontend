@@ -20,6 +20,9 @@ import { HomePowerComponent } from './components/home-power/home-power.component
 import { DevicesComponent } from './components/devices/devices.component';
 import { DeviceCardComponent } from './components/device-card/device-card.component';
 import { InputSwitchModule } from 'primeng/inputswitch';
+import { CoreSharedModule } from 'src/app/core-shared/core-shared.module';
+import { DeviceFavoritesComponent } from './components/device-favorites/device-favorites.component';
+import { DeviceAreasComponent } from './components/device-areas/device-areas.component';
 
 @NgModule({
     imports: [
@@ -36,9 +39,10 @@ import { InputSwitchModule } from 'primeng/inputswitch';
         AvatarModule,
         TagModule,
         OrderListModule,
-        InputSwitchModule
+        InputSwitchModule,
+        CoreSharedModule
     ],
-    declarations: [DashboardComponent, EulaComponent, HomePowerComponent, DevicesComponent, DeviceCardComponent],
+    declarations: [DashboardComponent, EulaComponent, HomePowerComponent, DevicesComponent, DeviceCardComponent, DeviceFavoritesComponent, DeviceAreasComponent],
     providers: [EulaService, DialogService]
 })
 export class DashboardModule { }

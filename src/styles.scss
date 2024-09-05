@@ -85,3 +85,18 @@ body {
 .default-bg {
   background: radial-gradient(121.28% 56.25% at 16.45% 100%, rgba(43, 115, 224, 0.60) 0%, rgba(191, 203, 115, 0.00) 100%), radial-gradient(100% 82.89% at 100% 0%, rgba(7, 225, 255, 0.94) 0%, rgba(0, 192, 88, 0.00) 100%), #0068B3;
 }
+
+.p-checkbox .p-checkbox-box.p-highlight {
+  border-color: #80BDE0;
+  background: #80BDE0;
+}
+
+.p-checkbox .p-checkbox-box {
+  border: 2px solid #424b57;
+  background: #1D2529;
+  width: 22px;
+  height: 22px;
+  color: rgba(255, 255, 255, 0.87);
+  border-radius: 4px;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+}

@@ -13,7 +13,7 @@ export class BreakerService {
     }
 
     getBreakers() {
-        return lastValueFrom(this.http.get<Breakers>(`${this.baseUrl}`));
+        return lastValueFrom(this.http.get<Breakers[]>(`${this.baseUrl}`));
     }
 
     updateBreaker(data: Breakers) {

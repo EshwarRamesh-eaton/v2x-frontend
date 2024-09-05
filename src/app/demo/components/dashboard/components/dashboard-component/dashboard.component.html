@@ -4,10 +4,10 @@
             <h5>Average Charge Duration</h5>
             <p-chart #myCanvas id="canvas" type="line" [data]="chartData" [options]="chartOptions"></p-chart>
         </div>
-        <app-home-power></app-home-power>
+        <app-home-power [homeSummary]="homeSummary"></app-home-power>
     </div>
     <div class="col-12 xl:col-9">
-        <app-devices></app-devices>
+        <app-devices [homeSummary]="homeSummary"></app-devices>
     </div>
 </div>
 

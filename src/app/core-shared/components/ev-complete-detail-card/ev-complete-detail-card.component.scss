@@ -1,0 +1,30 @@
+.header-font {
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-family: "Open Sans";
+}
+
+.header-font-color {
+    color: #E8EAEA;
+}
+
+.header-tab-color {
+    background: #2B353A;
+}
+
+.header-value-color {
+    color: #A1A7AA;
+}
+
+.custom-troubleshoot-button {
+    background: #007BC1;
+    border: 1px solid #007BC1;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.20), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    color: #EEEEEE;
+}
+
+.custom-remove-button {
+    background: transparent;
+    border: 1px solid #80BDE0;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.20), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    color: #80BDE0;
+}

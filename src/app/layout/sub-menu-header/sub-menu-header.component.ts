@@ -9,6 +9,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class SubMenuHeaderComponent {
   @Input() header = '';
   @Input() backButton = true;
+  @Input() deviceCard = false;
+  @Input() deviceType = 'Breaker';
   @Input() sideMenu = false;
   @Input() icon = false;
   @Input() style = {'background': '#2B353A', 'height': '100px'}

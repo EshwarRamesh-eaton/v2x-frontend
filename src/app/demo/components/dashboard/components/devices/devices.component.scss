@@ -21,3 +21,14 @@
 .selected-font-color {
     color: #E8EAEA;
 }
+
+.custom-rect-dimensions {
+    width: 50px;
+    height: 30px;
+    background-color: transparent;
+}
+
+.session-disabled {
+    opacity: 0.7;
+    pointer-events: none;
+}

@@ -15,6 +15,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './demo/service/auth-interceptor';
 import { ToolbarModule } from 'primeng/toolbar';
 import { HomeService } from './demo/service/home.service';
+import { BreakerService } from './demo/service/breaker.service';
 
 @NgModule({
     declarations: [AppComponent, NotfoundComponent],
@@ -22,7 +23,7 @@ import { HomeService } from './demo/service/home.service';
     providers: [
         { provide: LocationStrategy, useClass: PathLocationStrategy },
         { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-        DeviceService, UserService, ProductService, MessageService, HomeService, ConfirmationService
+        DeviceService, UserService, ProductService, MessageService, HomeService, ConfirmationService, BreakerService
     ],
     bootstrap: [AppComponent],
 })
