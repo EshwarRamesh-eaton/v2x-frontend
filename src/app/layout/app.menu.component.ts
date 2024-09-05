@@ -46,36 +46,37 @@ export class AppMenuComponent implements OnInit {
                 value: this.menuValue.outageHistory,
                 icon: 'assets/layout/images/icons/outage-history.svg',
             },
-            {
-                label: 'Account & Security',
-                value: this.menuValue.account,
-                icon: 'assets/layout/images/icons/user.svg',
-            },
-            {
-                label: 'Advanced Features',
-                value: this.menuValue.advancedFeatures,
-                icon: 'assets/layout/images/icons/advanced-features.svg',
-            },
-            {
-                label: 'Works With',
-                value: this.menuValue.worksWith,
-                icon: 'assets/layout/images/icons/works-with.svg',
-            },
-            {
-                label: 'App Settings',
-                value: this.menuValue.appSettings,
-                icon: 'assets/layout/images/icons/app-settings.svg',
-            },
-            {
-                label: 'Help & Support',
-                value: this.menuValue.helpSupport,
-                icon: 'assets/layout/images/icons/help.svg',
-            },
-            {
-                label: 'Feedback',
-                value: this.menuValue.feedback,
-                icon: 'assets/layout/images/icons/feedback.svg',
-            },
+            // Commented ones are not required for demo
+            // {
+            //     label: 'Account & Security',
+            //     value: this.menuValue.account,
+            //     icon: 'assets/layout/images/icons/user.svg',
+            // },
+            // {
+            //     label: 'Advanced Features',
+            //     value: this.menuValue.advancedFeatures,
+            //     icon: 'assets/layout/images/icons/advanced-features.svg',
+            // },
+            // {
+            //     label: 'Works With',
+            //     value: this.menuValue.worksWith,
+            //     icon: 'assets/layout/images/icons/works-with.svg',
+            // },
+            // {
+            //     label: 'App Settings',
+            //     value: this.menuValue.appSettings,
+            //     icon: 'assets/layout/images/icons/app-settings.svg',
+            // },
+            // {
+            //     label: 'Help & Support',
+            //     value: this.menuValue.helpSupport,
+            //     icon: 'assets/layout/images/icons/help.svg',
+            // },
+            // {
+            //     label: 'Feedback',
+            //     value: this.menuValue.feedback,
+            //     icon: 'assets/layout/images/icons/feedback.svg',
+            // },
             {
                 label: 'Logout',
                 value: this.menuValue.logout,
