@@ -104,7 +104,7 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
         }).catch(() => {
           this.homeSummary = {
             homeState: 'CONNECTED',
-            gridState: 'LOST',
+            gridState: 'PRESENT',
             breakersInUse: 10,
             breakersTotal: 12,
             dailyUsage: 15,
