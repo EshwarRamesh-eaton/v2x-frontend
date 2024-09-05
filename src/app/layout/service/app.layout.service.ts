@@ -106,7 +106,8 @@ export class LayoutService {
     }
 
     isDesktop() {
-        return window.innerWidth > 991;
+        // this was 991
+        return window.innerWidth > 1201;
     }
 
     isMobile() {

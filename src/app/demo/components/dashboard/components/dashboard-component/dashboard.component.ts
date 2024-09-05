@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
         }).catch(() => {
           this.homeSummary = {
             homeState: 'CONNECTED',
-            gridState: 'PRESENT',
+            gridState: 'LOST',
             breakersInUse: 10,
             breakersTotal: 12,
             dailyUsage: 15,
