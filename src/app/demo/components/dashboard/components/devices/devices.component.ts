@@ -89,7 +89,7 @@ export class DevicesComponent implements OnInit {
     // TODO: This call is yet to be designed so we are creating data here. This will be replaced with actual device data
     const evState = ['Unplugged', 'Plugged In', 'Preparing', 'Charging', 'Charged', 'Error', 'Fault', 'Tripped', 'Unresponsive']
     // const deviceState = evState[Math.floor(Math.random() * (8 - 0 + 1) + 0)];
-    const deviceState = evState[0]
+    const deviceState = evState[4]
     this.devicesInfo.push({
       uuid: device.uuid,
       name: device.name,

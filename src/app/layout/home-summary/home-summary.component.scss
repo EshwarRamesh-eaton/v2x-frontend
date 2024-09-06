@@ -1,0 +1,15 @@
+.custom-size {
+    padding-bottom: 18px;
+    gap: 7px;
+    flex-shrink: 0;
+}
+
+.top-bar-font {
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-family: "Open Sans";
+    line-height: normal;
+}
+
+.custom-min-width {
+    min-width: max-content;
+}

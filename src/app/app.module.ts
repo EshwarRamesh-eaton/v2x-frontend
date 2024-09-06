@@ -16,10 +16,10 @@ import { AuthInterceptor } from './demo/service/auth-interceptor';
 import { ToolbarModule } from 'primeng/toolbar';
 import { HomeService } from './demo/service/home.service';
 import { BreakerService } from './demo/service/breaker.service';
-
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
 @NgModule({
     declarations: [AppComponent, NotfoundComponent],
-    imports: [AppRoutingModule, AppLayoutModule, ToastModule, BadgeModule, ToolbarModule, CommonModule],
+    imports: [AppRoutingModule, AppLayoutModule, ToastModule, BadgeModule, ToolbarModule, CommonModule, ConfirmPopupModule],
     providers: [
         { provide: LocationStrategy, useClass: PathLocationStrategy },
         { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

@@ -1,37 +1,38 @@
 <div class="layout-battery-extension" *ngIf="show">
     <app-sub-menu-header [header]="'Extend Battery Life'" (closeScreen)="closeScreen.emit(); show = false"></app-sub-menu-header>
     <div class="flex flex-column justify-content-end">
-        <div class="flex flex-column align-items-center gap-2 p-3 custom-content-height">
+        <div class="flex flex-column align-items-center gap-2 p-3" [ngClass]="showComfortModeButton ? 'custom-content-height-load' : 'custom-content-height'">
             <span class="text-base font-normal custom-load-font p-3">
                 Your battery life is running low. You can choose to turn off certain loads to extend your battery life. Select which loads you would like to turn off by selecting the card toggles below.
             </span>
-            <app-battery-remaining-time-card class="w-full pb-3 pl-3 pr-3" [timeRemaining]="120"></app-battery-remaining-time-card>
+            <app-battery-remaining-time-card class="w-full pb-3 pl-3 pr-3" [timeRemaining]="sourceRemaining?.timeRemaining"></app-battery-remaining-time-card>
             <div class="flex flex-column align-items-start w-full pl-3 pr-3" >
                 <div class="flex align-items-center justify-content-between flex-row align-self-stretch gap-2 custom-border">
                     <div class="flex flex-row align-items-start gap-3 pt-3 pb-3">
-                        <p-checkbox [binary]="true" inputId="binary" (onChange)="selectAllCheckboxes()"/>
+                        <p-checkbox [binary]="true" inputId="binary" [(ngModel)]="allBoxes" (onChange)="selectOrDeselectAllCheckboxes()"/>
                         <span class="text-base font-semibold custom-load-font list-font-color">Turn Off All Loads</span>
                     </div>
                     <div class="flex align-items-center custom-chip-dimensions">
-                        <span class="text-sm font-semibold custom-load-font list-time-color">+ 1 hr 40 mins</span> 
+                        <span class="text-sm font-semibold custom-load-font list-time-color">+ {{totalHours}} h {{totalMinutes}} m</span> 
                     </div>
                 </div>
-                <ng-container *ngFor="let option of [1,2,3,4]">
+                <ng-container *ngFor="let option of deviceInfo">
                     <div class="flex align-items-center justify-content-between flex-row align-self-stretch gap-2 custom-border">
                         <div class="flex flex-row align-items-start gap-3 pt-3 pb-3">
-                            <p-checkbox [binary]="true" inputId="binary"/>
-                            <span class="text-base font-semibold custom-load-font list-font-color">Kitchen Breaker</span>
+                            <p-checkbox [binary]="true" inputId="binary" [(ngModel)]="option.status" (onChange)="disableTurnOffLoadButton = false"/>
+                            <span class="text-base font-semibold custom-load-font list-font-color">{{option.name}}</span>
                         </div>
                         <div class="flex align-items-center custom-chip-dimensions">
-                            <span class="text-sm font-semibold custom-load-font list-time-color">+ 1 hr 40 mins</span>
+                            <span class="text-sm font-semibold custom-load-font list-time-color">+ {{option.hours}} h {{option.minutes}} m</span>
                         </div>
                     </div>
                 </ng-container>
                 
             </div>
         </div>
-        <div class="flex flex-column align-items-start gap-3 align-self-stretch custom-button-container w-full">
-            <button id="battery-submit" type="submit" pButton pRipple label="Turn Off Selected Loads" class="flex w-full justify-content-center border-round-xs custom-button-style"></button>
+        <div class="flex flex-column align-items-start gap-3 align-self-stretch custom-button-container w-full mb-2">
+            <button *ngIf="showComfortModeButton" id="return-load-prioritization-button" type="submit" pButton pRipple label="Return to Comfort Mode with Load Prioritization" class="flex w-full justify-content-center border-round-xs custom-button-style-load-priority" (click)="turnOnComfortMode()"></button>
+            <button [disabled]="disableTurnOffLoadButton" id="battery-submit" type="submit" pButton pRipple label="Turn Off Selected Loads" class="flex w-full justify-content-center border-round-xs custom-button-style" (click)="turnOffSelectedLoads($event)"></button>
         </div>
     </div>
 </div>

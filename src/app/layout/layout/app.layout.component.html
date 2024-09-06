@@ -5,7 +5,7 @@
     </div>
     
     <app-load-prioritization [show]="selectedScreen === menuValue.loadPrioritization" (closeScreen)="selectedScreen = ''"></app-load-prioritization>
-    <app-battery-extension [show]="selectedScreen === menuValue.manageDevices" (closeScreen)="selectedScreen = ''"></app-battery-extension>
+    <app-battery-extension [show]="selectedScreen === menuValue.manageDevices" (closeScreen)="selectedScreen = ''" [sourceRemaining]="sourceRemaining"></app-battery-extension>
     <app-device-complete-info *ngIf="deviceInfo" [show]="showDeviceInfo" [deviceInfo]="deviceInfo"></app-device-complete-info>
     <div class="layout-main-container">
         <div class="layout-main">

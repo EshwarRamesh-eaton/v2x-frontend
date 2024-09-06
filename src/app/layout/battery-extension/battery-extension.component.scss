@@ -13,6 +13,12 @@
     overflow-y: scroll;
 }
 
+
+.custom-content-height-load {
+    height: 72vh;
+    overflow-y: scroll;
+}
+
 .layout-battery-extension {
     position: fixed;
     width: 100%;
@@ -49,4 +55,10 @@
 
 .list-time-color {
     color: #FFF !important
+}
+
+.custom-button-style-load-priority {
+    border: 1px solid #80BDE0;  
+    color: #80BDE0;
+    background: transparent;
 }
