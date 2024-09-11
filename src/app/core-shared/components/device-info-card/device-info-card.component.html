@@ -1,6 +1,5 @@
 <p-sidebar [(visible)]="visibility" [style]="style" [showCloseIcon]="false" position="bottom" (onHide)="changeVisibility()">
 <!-- TODO: See if device details type is breaker add enum once confirmed-->
    <app-breaker-info *ngIf="deviceDetails && (deviceDetails.type === deviceTypeValue.breaker || deviceDetails.type === deviceTypeValue.mid)" [deviceDetails]="deviceDetails" (triggerCloseScreen)="changeVisibility()"></app-breaker-info>
-<!-- TODO: See if device details type is EV -->
-    <app-ev-info *ngIf="deviceDetails && deviceDetails.type === deviceTypeValue.source" [deviceDetails]="deviceDetails" (triggerCloseScreen)="changeVisibility()"></app-ev-info>
+   <app-ev-info *ngIf="deviceDetails && deviceDetails.type === deviceTypeValue.source" [deviceDetails]="deviceDetails" (triggerCloseScreen)="changeVisibility()"></app-ev-info>
 </p-sidebar>

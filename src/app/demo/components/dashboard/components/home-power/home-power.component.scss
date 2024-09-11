@@ -9,3 +9,65 @@
     font-style: normal;
     line-height: normal;
 }
+
+.custom-margin-1-mobile {
+    margin-top: 235px;
+    margin-left: 23px;
+}
+
+@media (max-width: 480px) {
+    .custom-margin-1 {
+        margin-top: calc(100vw/1.7);
+        margin-left: calc(3vh);
+    }
+
+    .custom-margin-2 {
+        margin-top: calc(100vw/3.3);
+        margin-left: calc(39vw);
+    }
+
+    .custom-margin-3 {
+        margin-top: calc(100vw/1.26);
+        margin-left: calc(39vw);
+    }
+
+    .custom-margin-4 {
+        margin-top: calc(100vw/1.7);
+        margin-left: calc(33vh);
+    }
+}
+
+@media  (min-width: 481px) and (max-width: 1201px) {
+    .custom-margin-1 {
+        margin-top: calc(100vw/1.7);
+        margin-left: calc(6vh);
+    }
+
+    .custom-margin-2 {
+        margin-top: calc(100vw/3.4);
+        margin-left: calc(42vw);
+    }    
+
+    .custom-margin-3 {
+        margin-top: calc(100vw/1.26);
+        margin-left: calc(42vw);
+    }
+
+    .custom-margin-4 {
+        margin-top: calc(100vw/1.7);
+        margin-left: calc(52vh);
+    }
+}
+
+
+
+
+
+.custom-margin-4-mobile {
+    margin-top: 235px;
+    margin-left: 272px;
+}
+
+// .custom-m-1 {
+//     margin-top: 
+// }
