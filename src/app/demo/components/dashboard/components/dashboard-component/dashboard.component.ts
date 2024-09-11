@@ -65,11 +65,21 @@ export class DashboardComponent implements OnInit, OnDestroy {
           this.devices = resp;
         }).catch(() => {
           // TODO: Add errors here
-          this.devices = [    {
+          this.devices = [    
+          {
+            id: '4',
+            uuid: 'hsjasdhjas',
+            name: 'MID 1',
+            isEnabled: true,
+            state: 'ON',
+            type: 'MID',
+            critical: false
+          },
+          {
             id: '1',
             uuid: 'ufhmdasd',
             name: 'Garage EV Charger',
-            isEnabled: false,
+            isEnabled: true,
             state: 'ON',
             type: 'Source',
             critical: true
@@ -92,15 +102,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
             type: 'Breaker',
             critical: false
           },
-          {
-            id: '4',
-            uuid: 'hsjasdhjas',
-            name: 'MID 1',
-            isEnabled: true,
-            state: 'ON',
-            type: 'MID',
-            critical: false
-          },
+          
           {
             id: '5',
             uuid: 'sadasd',

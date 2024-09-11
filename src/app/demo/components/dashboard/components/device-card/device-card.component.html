@@ -4,7 +4,7 @@
         <img *ngIf="device.type === deviceTypeValue.mid" src="assets/demo/images/eaton/mid.svg"/>
         <img *ngIf="device.type !== deviceTypeValue.breaker && device.type !== deviceTypeValue.mid" src="assets/demo/images/eaton/electric_car.svg"/>
         <img *ngIf="!device.isEnabled" [src]="device.type === deviceTypeValue.breaker ? 'assets/demo/images/eaton/wifi_off.svg' : 'assets/demo/images/eaton/power_off.svg'"/>
-        <div *ngIf="device.isEnabled" class="flex justify-content-between custom-rectangle-style" >
+        <div *ngIf="device.isEnabled && (device.type === deviceTypeValue.mid || device.type === deviceTypeValue.breaker)" class="flex justify-content-between custom-rectangle-style" >
             &nbsp;
             <p-inputSwitch [disabled]="device.type === deviceTypeValue.mid" class="mt-1" [(ngModel)]="toggleState" (onChange)="toggleInputSwitch(2)"/>
         </div>

@@ -64,13 +64,16 @@ export class DevicesComponent implements OnInit, OnChanges {
     this.deviceVisibile = !this.deviceVisibile;
   }
 
-  deviceInfo(stateChange: number, deviceInfo: any) {
+  deviceInfo(stateChange: number, device: any) {
     // we are toggling a switch when state is 2
-    // we are clicking on the body of the card when stae is 1
+    // we are clicking on the body of the card when state is 1
     if(stateChange === 2) {
       this.toggleWasDone = true;
     } else if (stateChange === 1 && !this.toggleWasDone) {
-      this.currentDeviceInfo = this.devicesInfo.find((element) => element.uuid === deviceInfo.uuid)
+      // ideally latest device information will already be here but for now lets update the device info to match what the card has
+      this.currentDeviceInfo = this.devicesInfo.find((element) => element.uuid === device.uuid)
+      // this can be removed later (only thing that can be updated is the state)
+      this.currentDeviceInfo.state = device.state
       this.toggleDeviceVisibility();
     } else {
       this.toggleWasDone = false;
