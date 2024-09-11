@@ -1,10 +1,11 @@
 export interface Device {
-    uuid: string
-    name: string
-    isEnabled: boolean
-    state: boolean
-    type: string
-    critical: boolean
+    uuid: string;
+    name: string;
+    isEnabled?: boolean;
+    state: any;
+    type: string;
+    critical: boolean;
+    id?: string;
 }
 
 export interface DeviceUsage {
@@ -18,7 +19,13 @@ export interface DeviceState {
     state: string;
 }
 
+export enum DeviceType {
+    source = 'Source',
+    breaker = 'Breaker',
+    mid = 'MID'
+}
+
 export enum DeviceStateValue {
-    connected = 'CONNECTED',
-    islanded = 'ISLANDED'
+    on = 'ON',
+    off = 'OFF'
 }

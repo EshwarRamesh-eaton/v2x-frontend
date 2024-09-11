@@ -14,11 +14,15 @@ export class AuthService implements CanLoad, CanActivate, CanActivateChild {
   }
 
   userLogin(u: string, p: string, headers?: HttpHeaders): Promise<any> {
-    return lastValueFrom(this.http.post(`${environment.tokenEndpoint}/login`, {username: u, password: p}, {headers}))
+    return lastValueFrom(this.http.post(`${environment.tokenEndpoint}/auth/login`, {username: u, password: p}, {headers}))
   }
 
   userLogout(headers?: HttpHeaders): Promise<any> {
-    return lastValueFrom(this.http.get(`${environment.tokenEndpoint}/logout`, {headers}))
+    return lastValueFrom(this.http.get(`${environment.tokenEndpoint}/auth/logout`, {headers}))
+  }
+
+  refreshToken(headers?: HttpHeaders): Promise<any> {
+    return lastValueFrom(this.http.post(`${environment.tokenEndpoint}/auth/refresh`, {headers}))
   }
 
   updateEula(headers?: HttpHeaders): Promise<any> {
@@ -31,7 +35,8 @@ export class AuthService implements CanLoad, CanActivate, CanActivateChild {
 
   async login(u: string, p: string, headers?: HttpHeaders): Promise<void> {
     return this.userLogin(u, p, headers).then((resp) => {
-        this.setAccessToken(resp.token);
+        this.setAccessToken(resp.accessToken);
+        this.setRefreshToken(resp.refreshToken);
         return resp;
     })
   }
@@ -117,6 +122,10 @@ export class AuthService implements CanLoad, CanActivate, CanActivateChild {
 
   private setAccessToken(token: string) {
     sessionStorage.setItem('accessToken', token);
+  }
+
+  private setRefreshToken(token: string) {
+    sessionStorage.setItem('refreshToken', token);
   }
 
   async canActivate(): Promise<boolean> {

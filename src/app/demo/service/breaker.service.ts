@@ -1,14 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
-import { BreakerPriority, BreakerUsage, Breakers, UpdateBreaker } from '../api/breakers';
+import { BreakerPriority, BreakerUsage, Breakers, UpdateBreakerMode } from '../api/breakers';
 
 @Injectable()
 export class BreakerService {
     baseUrl = `api/breakers`
     constructor(private http: HttpClient) { }
 
-    updateBreakers(data: UpdateBreaker[]) {
+    updateBreakerMode(data: UpdateBreakerMode) {
         return lastValueFrom(this.http.patch<any>(`${this.baseUrl}`, data));
     }
 

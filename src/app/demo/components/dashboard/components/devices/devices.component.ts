@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Device } from 'src/app/demo/api/devices';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Device, DeviceStateValue, DeviceType } from 'src/app/demo/api/devices';
 import { GridStateValue, HomeSummary } from 'src/app/demo/api/home';
 import { DeviceService } from 'src/app/demo/service/device.service';
 
@@ -9,8 +9,8 @@ import { DeviceService } from 'src/app/demo/service/device.service';
   templateUrl: './devices.component.html',
   styleUrl: './devices.component.scss'
 })
-export class DevicesComponent implements OnInit {
-  devices: Device[];
+export class DevicesComponent implements OnInit, OnChanges {
+  @Input() devices: Device[];
   devicesInfo: any = [];
   currentDeviceInfo: any;
   activeIndex = 1
@@ -19,83 +19,38 @@ export class DevicesComponent implements OnInit {
   toggleWasDone = false;
   @Input() homeSummary: HomeSummary;
   gridValue = GridStateValue;
+  deviceTypeValue = DeviceType;
+  deviceStateValue = DeviceStateValue
   constructor(private deviceService: DeviceService) {}
 
   ngOnInit(): void {
-      this.getDevices();
+    
   }
 
-  getDevices() {
-    this.deviceService.getDevices()
-    .then((resp) => {
-      this.devices = resp;
-    }).catch(() => {
-      // TODO: Add errors here
-      this.devices = [    {
-        uuid: 'ufhmdasd',
-        name: 'Garage EV Charger',
-        isEnabled: false,
-        state: false,
-        type: 'EV',
-        critical: true
-      },
-      {
-        uuid: 'hasdhjas',
-        name: 'Pool Pump Breaker',
-        isEnabled: true,
-        state: true,
-        type: 'Breaker',
-        critical: true
-      },
-      {
-        uuid: 'hjasdhjas',
-        name: 'Kitchen Breaker',
-        isEnabled: true,
-        state: false,
-        type: 'Breaker',
-        critical: false
-      },
-      {
-        uuid: 'hjasdhjas',
-        name: 'MID Breaker',
-        isEnabled: false,
-        state: false,
-        type: 'Breaker',
-        critical: false
-      },
-      {
-        uuid: 'sadasd',
-        name: 'MID Breaker 2',
-        isEnabled: false,
-        state: false,
-        type: 'Breaker',
-        critical: false
-      },
-      {
-        uuid: 'hjhasd97',
-        name: 'TDD Workshop',
-        isEnabled: true,
-        state: true,
-        type: 'Breaker',
-        critical: true
-      }]
-      this.devices.forEach((device) => {
-        this.getDeviceInfo(device)
-      })
-    })
+  ngOnChanges(changes: SimpleChanges): void {
+      if (changes['devices']) {
+        this.devices = changes['devices'].currentValue;
+        this.devices?.forEach((device) => {
+          this.getDeviceInfo(device)
+        })
+      }
+      if (changes['homeSummary']) {
+        this.homeSummary = changes['homeSummary'].currentValue;
+      }
   }
+  
 
   getDeviceInfo(device: Device) {
     // TODO: This call is yet to be designed so we are creating data here. This will be replaced with actual device data
     const evState = ['Unplugged', 'Plugged In', 'Preparing', 'Charging', 'Charged', 'Error', 'Fault', 'Tripped', 'Unresponsive']
     // const deviceState = evState[Math.floor(Math.random() * (8 - 0 + 1) + 0)];
-    const deviceState = evState[4]
+    const deviceState = evState[0]
     this.devicesInfo.push({
       uuid: device.uuid,
       name: device.name,
       type: device.type,
       state: device.state,
-      status: device.type === 'Breaker' && device.state === true ? 'ON' : device.type === 'breaker' && device.state === false ? 'OFF' : device.type === 'EV' ? deviceState : '',
+      status: device.type === this.deviceTypeValue.breaker && device.state === this.deviceStateValue.on ? this.deviceStateValue.on : device.type === this.deviceTypeValue.breaker && device.state === this.deviceStateValue.off ? this.deviceStateValue.off : device.type === this.deviceTypeValue.source ? deviceState : '',
       power: 120, 
       total_current: 20, 
       current: 10, 

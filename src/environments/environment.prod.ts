@@ -1,5 +1,5 @@
 export const environment = {
-  tokenEndpoint: '',
+  tokenEndpoint: 'eaton',
   production: true,
   wsProtocol: 'wss',
   wsPort: '7012',

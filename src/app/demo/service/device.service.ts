@@ -37,7 +37,7 @@ export class DeviceService {
 
     //TODO: there is a PUT and a PATCH call -> see what is required here later
 
-    updateDeviceById(id: string, data: any) {
+    updateDeviceById(id: string, data: Device) {
         return lastValueFrom(this.http.put<any>(`${this.baseUrl}/${id}`, data));
     }
 

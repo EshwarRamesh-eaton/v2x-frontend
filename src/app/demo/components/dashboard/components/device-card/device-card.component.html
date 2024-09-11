@@ -1,17 +1,18 @@
-<div [class]="device?.state ? 'flex flex-column card card-dimensions justify-content-between align-items-start on-color': 'flex flex-column card card-dimensions justify-content-between align-items-start off-color'">
+<div [class]="device?.state === deviceStateValue.on ? 'flex flex-column card card-dimensions justify-content-between align-items-start on-color': 'flex flex-column card card-dimensions justify-content-between align-items-start off-color'">
     <div class="flex justify-content-between align-items-start w-full">
-        <img *ngIf="device.type === 'Breaker'" src="assets/demo/images/eaton/breaker.svg"/>
-        <img *ngIf="device.type !== 'Breaker'" src="assets/demo/images/eaton/electric_car.svg"/>
-        <img *ngIf="!device.isEnabled" [src]="device.type === 'Breaker' ? 'assets/demo/images/eaton/wifi_off.svg' : 'assets/demo/images/eaton/power_off.svg'"/>
+        <img *ngIf="device.type === deviceTypeValue.breaker" src="assets/demo/images/eaton/breaker.svg"/>
+        <img *ngIf="device.type === deviceTypeValue.mid" src="assets/demo/images/eaton/mid.svg"/>
+        <img *ngIf="device.type !== deviceTypeValue.breaker && device.type !== deviceTypeValue.mid" src="assets/demo/images/eaton/electric_car.svg"/>
+        <img *ngIf="!device.isEnabled" [src]="device.type === deviceTypeValue.breaker ? 'assets/demo/images/eaton/wifi_off.svg' : 'assets/demo/images/eaton/power_off.svg'"/>
         <div *ngIf="device.isEnabled" class="flex justify-content-between custom-rectangle-style" >
             &nbsp;
-            <p-inputSwitch class="mt-1" [(ngModel)]="device.state" (onChange)="toggleInputSwitch(2)"/>
+            <p-inputSwitch [disabled]="device.type === deviceTypeValue.mid" class="mt-1" [(ngModel)]="toggleState" (onChange)="toggleInputSwitch(2)"/>
         </div>
         
     </div>
     <div class="flex flex-column align-items-start gap-1">
-        <span class="text-right text-xs	font-normal" *ngIf="device.type === 'Breaker'">{{device?.state ? 'On': 'Off'}}</span>
-        <span class="text-right text-xs	font-normal" *ngIf="device.type !== 'Breaker'">{{device?.state ? 'Plugged': 'Unplugged'}}</span>
+        <span class="text-right text-xs	font-normal" *ngIf="device.type === deviceTypeValue.breaker">{{device?.state | titlecase}}</span>
+        <span class="text-right text-xs	font-normal" *ngIf="device.type !== deviceTypeValue.breaker && device.type !== deviceTypeValue.mid">{{device?.state === deviceStateValue.on ? 'Plugged': 'Unplugged'}}</span>
         <span class="name-font font-normal">{{device?.name}}</span>
     </div>
 </div>

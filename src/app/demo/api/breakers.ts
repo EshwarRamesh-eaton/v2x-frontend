@@ -31,8 +31,8 @@ export interface Breakers {
 }
 
 
-export interface UpdateBreaker {
-    id: string;
+export interface UpdateBreakerMode {
+    uuid: string;
     mode: string;
 }
 

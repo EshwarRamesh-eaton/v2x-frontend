@@ -16,6 +16,9 @@
     <div class="flex pt-6 p-3 justify-content-center align-items-center align-self-stretch">
         <span class="custom-head-font custom-head-font-color text-base font-normal">{{deviceDetails.status === 'Unplugged' ? 'Plug in your vehicle to charge': deviceDetails.status === 'Plugged In' || deviceDetails.status === 'Preparing' ? 'Waiting for vehicle': deviceDetails.status === 'Charging' ? 'Until Full or unplugged': deviceDetails.status === 'Charged' ? '6kWh was added' : 'Unable to Charge'}}</span>
     </div>
+    <div class="flex p-2 pt-0 justify-content-center align-items-center align-self-stretch">
+        <button type="submit" [disabled]="disableUnplugButton" pButton pRipple [label]="deviceDetails.status === 'Unplugged' ? 'Plug In' : 'Unplug'" class="flex justify-content-center border-round-xs custom-button-style" (click)="cycleStates()"></button>
+    </div>
     <div class="flex flex-column justify-content-center align-items-center custom-box-style">
         <div class="flex p-3 w-full justify-content-between align-items-center">
             <span class="custom-head-font custom-parameter-color text-sm font-semibold">{{deviceDetails.status === 'Unplugged' ? 'Last Plug Session': 'Current Plug Session'}}</span>
