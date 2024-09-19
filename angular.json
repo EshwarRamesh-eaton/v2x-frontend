@@ -70,8 +70,7 @@
                             "buildTarget": "sakai-ng:build:production"
                         },
                         "development": {
-                            "buildTarget": "sakai-ng:build:development",
-                            "proxyConfig": "src/proxy.conf.json"
+                            "buildTarget": "sakai-ng:build:development"
                         }
                     },
                     "defaultConfiguration": "development"

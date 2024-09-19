@@ -2,10 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { HomeBreakdown, HomeMode, HomeOutage, HomeState, HomeSummary, HomeTrend } from '../api/home';
+import { environment } from '@environments/environment';
 
 @Injectable()
 export class HomeService {
-    baseUrl = `api/home`
+    baseUrl = `${environment.tokenEndpoint}/home`
     constructor(private http: HttpClient) { }
 
     getHomeDeviceState() {

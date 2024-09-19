@@ -3,10 +3,11 @@ import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { HomeBreakdown, HomeMode, HomeOutage, HomeState, HomeSummary, HomeTrend } from '../api/home';
 import { EnergySource, EnergySourceTotalUsage, PowerSource, Sources } from '../api/source';
+import { environment } from '@environments/environment';
 
 @Injectable()
 export class SourceService {
-    baseUrl = `api/sources`
+    baseUrl = `${environment.tokenEndpoint}/sources`
     constructor(private http: HttpClient) { }
 
     getTimeRemaining() {

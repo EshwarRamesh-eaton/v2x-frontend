@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
+import { environment } from '@environments/environment';
 import { BreakerPriority, BreakerUsage, Breakers, UpdateBreakerMode } from '../api/breakers';
 
 @Injectable()
 export class BreakerService {
-    baseUrl = `api/breakers`
+    baseUrl = `${environment.tokenEndpoint}/breakers`
     constructor(private http: HttpClient) { }
 
     updateBreakerMode(data: UpdateBreakerMode) {

@@ -5,12 +5,13 @@
             <span class="text-base font-normal custom-load-font">
                 You can pre-select the priority of each load in your home. In the event of a power outage lower priority loads will be shed or turned off automatically to help preserve and extend your battery life.
             </span>
+            <span *ngIf="breakers.length === 0" class="text-base font-normal mt-3 text-center">No breakers available</span>
             <div class="flex flex-column align-items-start p-2 border-round-sm custom-box-dimensions w-full" cdkDropList (cdkDropListDropped)="drop($event)">
                 <div class="flex flex-row align-items-center gap-3 w-full" *ngFor="let breaker of breakers; let i = index" cdkDrag>
                     <span class="text-base font-normal">{{i + 1}}</span>
                     <app-load-prioritization-card class="w-full" [breaker]="breaker"></app-load-prioritization-card>
                 </div>
-            </div>
+            </div>      
         </div>
         <div class="flex flex-column align-items-start gap-3 align-self-stretch custom-button-container w-full mb-2">
             <button id="load-submit" [disabled]="disableButton" type="submit" pButton pRipple label="Update" class="flex w-full justify-content-center border-round-xs custom-button-style" (click)="updatePriority()"></button>

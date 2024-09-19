@@ -20,6 +20,7 @@
         <div class="flex-row inline-block" [ngClass]="homeSummary?.gridState === gridValue.lost ? 'session-disabled' : ''"  *ngFor="let device of devices">
             <app-device-card [device]="device" (showInfo)="deviceInfo($event)" (click)="deviceInfo(1, device)"></app-device-card>
         </div>
+        <span *ngIf="devices.length === 0" class="text-base font-normal mt-3 text-center">No devices available</span>
     </div>
 </div>
 <app-device-favorites *ngIf="activeIndex === 2"></app-device-favorites>

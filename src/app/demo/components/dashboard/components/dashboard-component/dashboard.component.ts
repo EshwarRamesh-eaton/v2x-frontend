@@ -62,7 +62,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       getDevices() {
         this.deviceService.getDevices()
         .then((resp) => {
-          this.devices = resp;
+          this.devices = resp.devices;
         }).catch(() => {
           // TODO: Add errors here
           this.devices = [    

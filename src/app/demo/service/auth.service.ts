@@ -11,6 +11,9 @@ import { lastValueFrom } from 'rxjs';
 export class AuthService implements CanLoad, CanActivate, CanActivateChild {
   refreshTokenTimeout: any;
   constructor(private router: Router, private http: HttpClient) {
+    if (this.access_token) {
+      this.startRefreshTokenTimer(this.access_token)
+    }
   }
 
   userLogin(u: string, p: string, headers?: HttpHeaders): Promise<any> {
@@ -37,6 +40,7 @@ export class AuthService implements CanLoad, CanActivate, CanActivateChild {
     return this.userLogin(u, p, headers).then((resp) => {
         this.setAccessToken(resp.accessToken);
         this.setRefreshToken(resp.refreshToken);
+        this.startRefreshTokenTimer(resp.accessToken);
         return resp;
     })
   }
@@ -56,6 +60,7 @@ export class AuthService implements CanLoad, CanActivate, CanActivateChild {
   async logout(redirect: boolean = true): Promise<void> {
     this.userLogout();
     sessionStorage.clear();
+    this.stopRefreshTokenTimer();
     if (redirect) {
       await this.navToLogin();
     }
@@ -88,8 +93,13 @@ export class AuthService implements CanLoad, CanActivate, CanActivateChild {
     return accessToken !== null ? accessToken : '';
   }
 
+  get refresh_token(): string {
+    const refreshToken = sessionStorage.getItem('refreshToken');
+    return refreshToken !== null ? refreshToken : '';
+  }
+
   get isAuthenticated(): boolean {
-    return this.access_token && this.user_id ? true : false;
+    return this.access_token ? true : false;
   }
 
   get eula(): string {
@@ -127,6 +137,28 @@ export class AuthService implements CanLoad, CanActivate, CanActivateChild {
   private setRefreshToken(token: string) {
     sessionStorage.setItem('refreshToken', token);
   }
+
+  private startRefreshTokenTimer(authToken) {
+    // parse json object from base64 encoded jwt token
+    const jwtBase64 = authToken.split('.')[1];
+    const jwtToken = JSON.parse(atob(jwtBase64));
+
+    // set a timeout to refresh the token a minute before it expires
+    const expires = new Date(jwtToken.exp * 1000);
+    const timeout = expires.getTime() - Date.now() - (60 * 1000);
+    this.refreshTokenTimeout = setTimeout(() => {
+      this.refreshToken()
+      .then((resp) => {
+        this.setAccessToken(resp.accessToken);
+        this.setRefreshToken(resp.refreshToken);
+        this.startRefreshTokenTimer(resp.accessToken);
+      })
+    }, timeout);
+}
+
+private stopRefreshTokenTimer() {
+    clearTimeout(this.refreshTokenTimeout);
+}
 
   async canActivate(): Promise<boolean> {
     if (!this.isAuthenticated) {

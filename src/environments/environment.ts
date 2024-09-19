@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  tokenEndpoint: 'http://10.130.107.42:3000/',
+  tokenEndpoint: 'http://10.130.107.42:3000',
   production: false,
   wsProtocol: 'ws',
   wsPort: '7011',

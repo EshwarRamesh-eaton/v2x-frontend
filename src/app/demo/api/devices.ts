@@ -8,6 +8,11 @@ export interface Device {
     id?: string;
 }
 
+export interface Devices {
+    count: number;
+    devices: Device[]
+}
+
 export interface DeviceUsage {
     uuid: string;
     name: string;

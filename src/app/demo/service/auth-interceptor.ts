@@ -10,11 +10,20 @@ export class AuthInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // add authorization header
         if (this.auth.isAuthenticated) {
-            request = request.clone({
-                setHeaders: {
-                    Authorization: `Bearer ${this.auth.access_token}`,
-                }
-            });
+            if (request.url.includes('refresh')) {
+                request = request.clone({
+                    setHeaders: {
+                        Authorization: `Bearer ${this.auth.refresh_token}`,
+                    }
+                });
+            } else {
+                request = request.clone({
+                    setHeaders: {
+                        Authorization: `Bearer ${this.auth.access_token}`,
+                    }
+                });
+            }
+            
         }
 
         return next.handle(request);

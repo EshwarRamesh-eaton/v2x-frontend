@@ -30,9 +30,12 @@ export class DevicesComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
       if (changes['devices']) {
         this.devices = changes['devices'].currentValue;
-        this.devices?.forEach((device) => {
-          this.getDeviceInfo(device)
-        })
+        if (this.devices?.length > 0) {
+          this.devices?.forEach((device) => {
+            this.getDeviceInfo(device)
+          })
+        }
+       
       }
       if (changes['homeSummary']) {
         this.homeSummary = changes['homeSummary'].currentValue;

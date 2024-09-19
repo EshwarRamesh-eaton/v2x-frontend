@@ -92,15 +92,19 @@ export class AppLayoutComponent implements OnInit, OnDestroy {
 
     getHomeSummary() {
         this.homeService.getHomeSummary()
-        
         .then((resp) => {
           this.homeSummary = resp;
-          this.homeSummary.sourcesRemaining.forEach((entry) => {
-            // TODO: We have not accomodated the case where they may be 2 or more batteries
-            if (entry.source.type === this.sourceValue.battery) {
-                this.sourceRemaining = entry;
-            }
-          })
+          if (this.homeSummary?.sourcesRemaining?.length > 0) {
+            this.homeSummary.sourcesRemaining.forEach((entry) => {
+                // TODO: We have not accomodated the case where they may be 2 or more batteries
+                if (entry.source.type === this.sourceValue.battery) {
+                    this.sourceRemaining = entry;
+                }
+              })
+          } else {
+            this.sourceRemaining =null;
+          }
+          
         }).catch(() => {
           this.homeSummary = {
             homeState: 'CONNECTED',

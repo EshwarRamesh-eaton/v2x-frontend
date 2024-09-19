@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom, ReplaySubject } from 'rxjs';
-import { DeviceUsage, Device } from '../api/devices';
+import { DeviceUsage, Device, Devices } from '../api/devices';
+import { environment } from '@environments/environment';
 
 @Injectable()
 export class DeviceService {
-    baseUrl = `api/devices`
+    baseUrl = `${environment.tokenEndpoint}/devices`
     private deviceData$ = new ReplaySubject<any>(1);
     private showDeviceFullInfo$ = new ReplaySubject<any>(1); 
     constructor(private http: HttpClient) { }
@@ -28,7 +29,7 @@ export class DeviceService {
     }
 
     getDevices() {
-        return lastValueFrom(this.http.get<Device[]>(`${this.baseUrl}`));
+        return lastValueFrom(this.http.get<Devices>(`${this.baseUrl}`));
     }
 
     getDevicesById(id: string) {

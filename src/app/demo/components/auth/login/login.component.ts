@@ -38,14 +38,12 @@ export class LoginComponent implements OnInit {
     }
 
     submitLogin() {
-        // this.authService.login(this.userLoginForm.controls['username'].value, this.userLoginForm.controls['password'].value)
-        // .then(() => {
-        //     this.authService.navToDashboard();
-        //     this.messageService.add({ severity: 'success', summary: 'Successful', detail: 'Login Successful', life: 3000 });
-        // }).catch(() => {
-        //     this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Invalid Credentials', life: 3000 });
-        // })
-        this.authService.bypassLogin();
+        this.authService.login(this.userLoginForm.controls['username'].value, this.userLoginForm.controls['password'].value)
+        .then(() => {
+            this.authService.navToDashboard();
+        }).catch(() => {
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Invalid Credentials', life: 3000 });
+        })
     }
 
 

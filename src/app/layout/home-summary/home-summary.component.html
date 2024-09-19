@@ -53,7 +53,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
                     <path d="M23.1663 6.66663V28C23.1663 28.7333 22.5663 29.3333 21.833 29.3333H11.1663C10.433 29.3333 9.83301 28.7333 9.83301 28V6.66663C9.83301 5.93329 10.433 5.33329 11.1663 5.33329H13.833V2.66663H19.1663V5.33329H21.833C22.5663 5.33329 23.1663 5.93329 23.1663 6.66663ZM20.4997 7.99996H12.4997V10.6666H20.4997V7.99996Z" fill="white"/>
                 </svg>
-                <span class="text-sm font-normal top-bar-font">{{homeSummary?.sourcesRemaining[0].stateOfCharge}} %</span>
+                <span *ngIf="homeSummary?.sourcesRemaining?.length > 0" class="text-sm font-normal top-bar-font">{{homeSummary?.sourcesRemaining[0].stateOfCharge}} %</span>
                 <span class="text-center text-xs font-normal top-bar-font custom-color">Battery Life</span>
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" width="2" height="65" viewBox="0 0 2 65" fill="none">
@@ -63,7 +63,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
                     <path d="M16.487 2.66663C9.12699 2.66663 3.16699 8.63996 3.16699 16C3.16699 23.36 9.12699 29.3333 16.487 29.3333C23.8603 29.3333 29.8337 23.36 29.8337 16C29.8337 8.63996 23.8603 2.66663 16.487 2.66663ZM20.887 22.28L15.167 16.5466V9.33329H17.8337V15.4533L22.7803 20.4L20.887 22.28Z" fill="white"/>
                 </svg>
-                <span class="text-sm font-normal top-bar-font">{{homeSummary?.sourcesRemaining[0].timeRemaining}} hrs</span>
+                <span *ngIf="homeSummary?.sourcesRemaining?.length > 0" class="text-sm font-normal top-bar-font">{{homeSummary?.sourcesRemaining[0].timeRemaining}} hrs</span>
                 <span class="text-center text-xs font-normal top-bar-font custom-color custom-min-width">Time Remaining</span>
             </div>
         </div>
